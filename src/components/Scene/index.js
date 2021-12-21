@@ -3,8 +3,8 @@ import styles from './style.module.scss';
 import { Canvas, useLoader, useFrame, extend, useThree } from '@react-three/fiber'
 import { Rhino3dmLoader } from 'three/examples/jsm/loaders/3DMLoader'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { BoxGeometry, Mesh, Vector3, Vector2, Color, MathUtils, EdgesGeometry } from 'three';
-import { Instances, Instance, Environment, ContactShadows } from '@react-three/drei'
+import { BoxGeometry, Color, EdgesGeometry } from 'three';
+// import { Instances, Instance, Environment, ContactShadows } from '@react-three/drei'
 import { EffectComposer, SSAO } from '@react-three/postprocessing'
 import { useControls } from 'leva'
 

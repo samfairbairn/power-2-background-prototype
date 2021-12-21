@@ -24,8 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-'use strict';
-
 // const canvas = document.getElementsByTagName('canvas')[0];
 
 const canvas = document.createElement("canvas");
@@ -1303,19 +1301,19 @@ function splatPointer (pointer) {
     splat(pointer.texcoordX, pointer.texcoordY, dx, dy, pointer.color);
 }
 
-function multipleSplats (amount) {
-    for (let i = 0; i < amount; i++) {
-        const color = generateColor();
-        color.r *= 10.0;
-        color.g *= 10.0;
-        color.b *= 10.0;
-        const x = Math.random();
-        const y = Math.random();
-        const dx = 1000 * (Math.random() - 0.5);
-        const dy = 1000 * (Math.random() - 0.5);
-        splat(x, y, dx, dy, color);
-    }
-}
+// function multipleSplats (amount) {
+//     for (let i = 0; i < amount; i++) {
+//         const color = generateColor();
+//         color.r *= 10.0;
+//         color.g *= 10.0;
+//         color.b *= 10.0;
+//         const x = Math.random();
+//         const y = Math.random();
+//         const dx = 1000 * (Math.random() - 0.5);
+//         const dy = 1000 * (Math.random() - 0.5);
+//         splat(x, y, dx, dy, color);
+//     }
+// }
 
 function splat (x, y, dx, dy, color) {
     gl.viewport(0, 0, velocity.width, velocity.height);
@@ -1426,9 +1424,9 @@ function updatePointerMoveData (pointer, posX, posY) {
     pointer.deltaY = correctDeltaY(pointer.texcoordY - pointer.prevTexcoordY);
 }
 
-function updatePointerUpData (pointer) {
-    pointer.down = false;
-}
+// function updatePointerUpData (pointer) {
+//     pointer.down = false;
+// }
 
 function correctDeltaX (delta) {
     let aspectRatio = canvas.width / canvas.height;
