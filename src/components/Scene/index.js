@@ -3,8 +3,8 @@ import styles from './style.module.scss';
 import { Canvas, useLoader, useFrame, extend, useThree } from '@react-three/fiber'
 import { Rhino3dmLoader } from 'three/examples/jsm/loaders/3DMLoader'
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { BoxGeometry, Color, EdgesGeometry } from 'three';
-// import { Instances, Instance, Environment, ContactShadows } from '@react-three/drei'
+import { BoxGeometry, Color, MathUtils, EdgesGeometry } from 'three';
+import { Instances, Instance, Environment, ContactShadows } from '@react-three/drei'
 import { EffectComposer, SSAO } from '@react-three/postprocessing'
 import { useControls } from 'leva'
 
@@ -59,7 +59,6 @@ function Scene() {
   })
 
   useEffect(() => {
-    console.log('_toggleLightMode')
     window.toggleLightMode()
   }, [lightMode])
 
@@ -113,14 +112,15 @@ function Scene() {
   function ModelGrid () {
 
     const object = useLoader(Rhino3dmLoader, '/assets/3d/POWER2-1_cube_Mesh.3dm', (loader) => {
-      loader.setLibraryPath('https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/')
+      // loader.setLibraryPath('https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/')
+      loader.setLibraryPath('/assets/rhino3dm/')
     })
     const geo = object.children[16].geometry;
 
     const ref = useRef()
 
     useFrame((state, delta) => {
-      const time = state.clock.getElapsedTime() * 0.05 + 15;
+      const time = state.clock.getElapsedTime() * 0.15 + 15;
       const mouseTimeY = time + (state.mouse.x * 0.1);
       const mouseTimeX = time + (state.mouse.y * 0.1);
 
@@ -130,7 +130,8 @@ function Scene() {
     })
 
     const outerEdges = useMemo(() => {
-      const boundingBox = new BoxGeometry( 6, 6, 6 );
+      const width = 7.5;
+      const boundingBox = new BoxGeometry( width, width, width );
       return new EdgesGeometry(boundingBox)
     }, [])
 
@@ -155,8 +156,11 @@ function Scene() {
           <boxBufferGeometry attach="geometry" args={[7, 7, 7]} />
           <meshBasicMaterial attach="material" wireframe={true} />
         </mesh> */}
+        {/* new Color( 0x15084d ) */}
         <lineSegments geometry={outerEdges} renderOrder={100}>
-          <lineBasicMaterial color="white" />
+          {/* <lineBasicMaterial color={new Color( 0x333333 )} opacity={0.2} /> */}
+          {/* <lineBasicMaterial color="white" opacity={0.2} /> */}
+          <lineBasicMaterial color="grey" fog={false} opacity={0.1} />
         </lineSegments>
       </group>
     )
@@ -195,16 +199,16 @@ function Scene() {
     if (lightMode) {
       return (<fog attach="fog" args={[new Color( 0x15084d ), 5, 14]} />)
     } else if (showMaterial || animateMaterial) {
-      return (<fog attach="fog" args={[new Color( 0x15084d ), 5, 12]} />)
+      return (<fog attach="fog" args={[new Color( 0xF9678D ), 15, 22]} />) // 0xED9FB2
     } else {
-      // return (<fog attach="fog" args={[new Color( 0x15084d ), 5, 11]} />)
-      return (<fog attach="fog" args={[new Color( 0x15084d ), 5, 14]} />)
+      // return (<fog attach="fog" args={[new Color( 0x15084d ), 15, 22]} />)
+      return (<fog attach="fog" args={[new Color( 0xF9678D ), 15, 24]} />) // 0xED9FB2
     }
   }
 
   return (
     <div className={styles.scene}>
-      <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 75, position: [0, 0, 10], near: 1, far: 150 }}>
+      <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 20], near: 1, far: 150 }}>
         { cameraControls && <CameraControls /> }
         {/* <fog attach="fog" args={[new Color( 0x15084d ), 5, 11]} /> */}
         <Fog />

@@ -1353,6 +1353,10 @@ let pointer = pointers.find(p => p.id === -1);
 if (pointer == null) pointer = new pointerPrototype();
 updatePointerDownData(pointer, -1, 1, 1);
 
+setInterval(() => {
+    pointer.color = generateColor()
+}, 50)
+
 window.addEventListener('mousemove', e => {
     let posX = scaleByPixelRatio(e.offsetX);
     let posY = scaleByPixelRatio(e.offsetY);
@@ -1440,12 +1444,15 @@ function correctDeltaY (delta) {
     return delta;
 }
 
+
+
 function generateColor () {
     let brightness = config.LIGHTMODE ? 0.1 : 0.2
-    let c = HSVtoRGB(0.7, 0.9, brightness);
-    c.r *= 0.1;
-    c.g *= 0.1;
-    c.b *= 0.1;
+    let opacity = 0.2;
+    let c = HSVtoRGB(Math.random(), 0.9, brightness);
+    c.r *= opacity;
+    c.g *= opacity;
+    c.b *= opacity;
     return c;
 }
 
