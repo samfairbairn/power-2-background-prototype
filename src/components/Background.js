@@ -1355,7 +1355,7 @@ updatePointerDownData(pointer, -1, 1, 1);
 
 setInterval(() => {
     pointer.color = generateColor()
-}, 50)
+}, 100)
 
 window.addEventListener('mousemove', e => {
     let posX = scaleByPixelRatio(e.offsetX);

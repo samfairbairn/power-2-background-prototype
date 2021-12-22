@@ -199,12 +199,11 @@ function Scene() {
 
   function Fog() {
     if (lightMode) {
-      return (<fog attach="fog" args={[new Color( 0x15084d ), 5, 14]} />)
+      return (<fog attach="fog" args={[new Color( 0xF43880 ), 15, 28]} />) // 0xED9FB2
     } else if (showMaterial || animateMaterial) {
-      return (<fog attach="fog" args={[new Color( 0xF9678D ), 15, 22]} />) // 0xED9FB2
+      return (<fog attach="fog" args={[new Color( 0xF43880 ), 15, 28]} />) // 0xED9FB2
     } else {
-      // return (<fog attach="fog" args={[new Color( 0x15084d ), 15, 22]} />)
-      return (<fog attach="fog" args={[new Color( 0xF9678D ), 15, 24]} />) // 0xED9FB2
+      return (<fog attach="fog" args={[new Color( 0xF43880 ), 15, 24]} />) // 0xED9FB2
     }
   }
 
