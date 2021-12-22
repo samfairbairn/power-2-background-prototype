@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import React, { useEffect, useRef, Suspense, useMemo, useState } from 'react';
 import styles from './style.module.scss';
 import { Canvas, useLoader, useFrame, extend, useThree } from '@react-three/fiber'
