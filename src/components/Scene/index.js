@@ -11,7 +11,7 @@ import { EffectComposer, SSAO } from '@react-three/postprocessing'
 import { Leva, useControls } from 'leva'
 import Screens from '../Screens'
 
-import { TimelineLite, CSSPlugin, ScrollToPlugin, Draggable, Power0, Power1, Power2, Power3 } from "gsap/all"; 
+import { TimelineLite, Power0, Power1, Power2, Power3 } from "gsap/all"; 
 
 import { softShadows } from "@react-three/drei"
 import Grid from "./Grid"
@@ -154,7 +154,7 @@ function Scene() {
       rotationTL.seek(rotationRange)
 
       const blocksRange = scroll.range(7 / 10, 3 / 10)
-      const _blocks = Math.floor(blocksRange * 8) + 1
+      const _blocks = Math.ceil(blocksRange * 7) + 1
       if (_blocks !== numberOfShapes) {
         setNumberOfShapes(_blocks)
         setNumberOfRows(Math.ceil(Math.pow(_blocks, 1/3)));
