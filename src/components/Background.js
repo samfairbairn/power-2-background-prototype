@@ -1447,9 +1447,10 @@ function correctDeltaY (delta) {
 
 
 function generateColor () {
-    let brightness = config.LIGHTMODE ? 0.1 : 0.2
+    let brightness = config.LIGHTMODE ? 0.1 : 0.15
     let opacity = 0.2;
-    let c = HSVtoRGB(Math.random(), 0.9, brightness);
+    let hue = config.LIGHTMODE ? Math.random() : (Math.random() * 0.5) + 0.4
+    let c = HSVtoRGB(hue, 0.8, brightness);
     c.r *= opacity;
     c.g *= opacity;
     c.b *= opacity;
