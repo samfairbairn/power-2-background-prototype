@@ -9,6 +9,7 @@ import { BoxGeometry, Color, MathUtils, EdgesGeometry } from 'three';
 import { Instances, Instance, Environment, ContactShadows, ScrollControls, useScroll, Scroll } from '@react-three/drei'
 import { EffectComposer, SSAO } from '@react-three/postprocessing'
 import { useControls } from 'leva'
+import Screens from '../Screens'
 
 import { softShadows } from "@react-three/drei"
 import Grid from "./Grid"
@@ -112,6 +113,21 @@ function Scene() {
     const scroll = useScroll()
     const { width, height } = useThree((state) => state.viewport)
 
+    useFrame((state, delta) => {
+      const r1 = scroll.range(0 / 10, 6 / 10)
+      const r2 = scroll.range(0 / 10, 3 / 10)
+      const r3 = scroll.range(3 / 10, 6 / 10)
+      // const r2 = scroll.range(3 / 10, 5 / 10)
+      // const r2 = scroll.range(1 / 4, 4 / 4)
+
+      let startX = -4
+      let stop1 = 15
+      // let stop2 = -20
+      
+      state.camera.lookAt(startX + (r1 * stop1), 0, 0)
+      state.camera.position.z = 20 + (r2 * 8) - (r3 * 12)
+    })
+
     return (
       <>
         { cameraControls && <CameraControls /> }
@@ -150,7 +166,12 @@ function Scene() {
   return (
     <div className={styles.scene}>
       <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 20], near: 1, far: 150 }}>
+        <ScrollControls damping={10} pages={5}>
           <Composition />
+          <Scroll html style={{ width: '100%' }}>
+            <Screens />
+          </Scroll>
+        </ScrollControls>
       </Canvas>
     </div>
   );
