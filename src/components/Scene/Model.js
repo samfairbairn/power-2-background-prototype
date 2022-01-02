@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, Suspense, useMemo, useState } from 'react';
-import styles from './style.module.scss';
-import { Canvas, useLoader, useFrame, extend, useThree } from '@react-three/fiber'
-import { Rhino3dmLoader } from 'three/examples/jsm/loaders/3DMLoader'
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { BoxGeometry, Color, MathUtils, EdgesGeometry } from 'three';
-import { Instances, Instance, Environment, ContactShadows, ScrollControls, useScroll } from '@react-three/drei'
-import { EffectComposer, SSAO } from '@react-three/postprocessing'
-import { useControls } from 'leva'
+import React, { useMemo, useState } from 'react';
+// import styles from './style.module.scss';
+import { useFrame } from '@react-three/fiber'
+// import { Canvas, useLoader, useFrame, extend, useThree } from '@react-three/fiber'
+// import { Rhino3dmLoader } from 'three/examples/jsm/loaders/3DMLoader'
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+// import { BoxGeometry, Color, MathUtils, EdgesGeometry } from 'three';
+import { EdgesGeometry } from 'three';
+// import { Instances, Instance, Environment, ContactShadows, ScrollControls, useScroll } from '@react-three/drei'
+// import { EffectComposer, SSAO } from '@react-three/postprocessing'
+// import { useControls } from 'leva'
 
 function Model({showMaterial, animateMaterial, lightMode, shapes, rows, geo, x, y, z}) {
 
