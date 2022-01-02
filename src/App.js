@@ -1,6 +1,4 @@
 import Scene from './components/Scene'
-import './styles/App.scss';
-
 import './components/Background'
 
 function App() {

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap');
+@import './variables';
+
+h1 {
+  font-size: $text-size-xl;
+  line-height: 1.1em;
+  color: $color-white;
+  margin: 0 0 $spacing-l 0;
+  letter-spacing: -2px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: $text-size-l;
+  line-height: 1.1em;
+  color: $color-white;
+  margin: 0 0 $spacing-l 0;
+  letter-spacing: -1px;
+}
+
+p {
+  font-size: $text-size-m;
+  line-height: 1.5em;
+  color: $color-white;
+  margin: 0 0 $spacing-m 0;
+  letter-spacing: 0px;
+  font-weight: 300;
+}
