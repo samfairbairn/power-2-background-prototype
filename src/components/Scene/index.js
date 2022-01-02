@@ -8,8 +8,10 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { BoxGeometry, Color, MathUtils, EdgesGeometry } from 'three';
 import { Instances, Instance, Environment, ContactShadows, ScrollControls, useScroll, Scroll } from '@react-three/drei'
 import { EffectComposer, SSAO } from '@react-three/postprocessing'
-import { useControls } from 'leva'
+import { Leva, useControls } from 'leva'
 import Screens from '../Screens'
+
+import { TimelineLite, CSSPlugin, ScrollToPlugin, Draggable, Power0, Power1, Power2, Power3 } from "gsap/all"; 
 
 import { softShadows } from "@react-three/drei"
 import Grid from "./Grid"
@@ -45,20 +47,20 @@ function Scene() {
     animateMaterial,
     frontLightShadows,
     movingLightShadows,
-    numberOfShapes,
+    // numberOfShapes,
     lightMode
   } = useControls({
     cameraControls: false,
     showMaterial: false,
     animateMaterial: false,
-    frontLightShadows: true,
-    movingLightShadows: true,
-    numberOfShapes: {
-      value: 8,
-      min: 1,
-      max: 125,
-      step: 1,
-    },
+    frontLightShadows: false,
+    movingLightShadows: false,
+    // numberOfShapes: {
+    //   value: 1,
+    //   min: 1,
+    //   max: 125,
+    //   step: 1,
+    // },
     lightMode: false
   })
 
@@ -66,7 +68,7 @@ function Scene() {
     window.toggleLightMode()
   }, [lightMode])
 
-  const numberOfRows = Math.ceil(Math.pow(numberOfShapes, 1/3));
+  // const numberOfRows = Math.ceil(Math.pow(numberOfShapes, 1/3));
 
   
 
@@ -112,20 +114,52 @@ function Scene() {
   function Composition() {
     const scroll = useScroll()
     const { width, height } = useThree((state) => state.viewport)
+    const [numberOfShapes, setNumberOfShapes] = useState(1)
+    const [numberOfRows, setNumberOfRows] = useState(1)
+
+    const properties = useRef()
+    
+    properties.current = {
+      lookatX: -(width/6),
+      positionZ: 20,
+      rotation: 0.005
+    }
+
+    var lookatTL = new TimelineLite();
+    lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
+    lookatTL.to(properties.current, {lookatX: -width/4, duration: 1, ease: Power1.easeInOut});
+    lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
+    lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power0.easeInOut});
+    lookatTL.pause();
+
+    var positionTL = new TimelineLite();
+    positionTL.to(properties.current, {positionZ: 26, duration: 1.5, ease: Power1.easeInOut});
+    positionTL.to(properties.current, {positionZ: 16, duration: 1.5, ease: Power1.easeInOut, delay: 1});
+    positionTL.pause();
+
+    var rotationTL = new TimelineLite();
+    rotationTL.to(properties.current, {rotation: 0.00005, duration: 1, ease: Power1.easeInOut});
+    rotationTL.pause();
 
     useFrame((state, delta) => {
-      const r1 = scroll.range(0 / 10, 6 / 10)
-      const r2 = scroll.range(0 / 10, 3 / 10)
-      const r3 = scroll.range(3 / 10, 6 / 10)
-      // const r2 = scroll.range(3 / 10, 5 / 10)
-      // const r2 = scroll.range(1 / 4, 4 / 4)
 
-      let startX = -4
-      let stop1 = 15
-      // let stop2 = -20
+      const positionRange = scroll.range(0 / 10, 10 / 10)
+      lookatTL.seek(positionRange * lookatTL.duration())
+      positionTL.seek(positionRange * positionTL.duration())
       
-      state.camera.lookAt(startX + (r1 * stop1), 0, 0)
-      state.camera.position.z = 20 + (r2 * 8) - (r3 * 12)
+      state.camera.lookAt(properties.current.lookatX, 0, 0)
+      state.camera.position.z = properties.current.positionZ
+      
+      const rotationRange = scroll.range(0 / 10, 10 / 10)
+      rotationTL.seek(rotationRange)
+
+      const blocksRange = scroll.range(7 / 10, 3 / 10)
+      const _blocks = Math.floor(blocksRange * 8) + 1
+      if (_blocks !== numberOfShapes) {
+        setNumberOfShapes(_blocks)
+        setNumberOfRows(Math.ceil(Math.pow(_blocks, 1/3)));
+      }
+
     })
 
     return (
@@ -152,6 +186,7 @@ function Scene() {
             showMaterial={showMaterial}
             animateMaterial={animateMaterial}
             lightMode={lightMode}
+            rotationSpeed={properties.current.rotation}
             />
         </Suspense>
 
@@ -165,6 +200,7 @@ function Scene() {
 
   return (
     <div className={styles.scene}>
+      <Leva collapsed={true} />
       <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 20], near: 1, far: 150 }}>
         <ScrollControls damping={10} pages={5}>
           <Composition />

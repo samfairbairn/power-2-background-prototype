@@ -15,7 +15,7 @@ import Model from './Model'
 import { softShadows } from "@react-three/drei"
 // import { ThreeBSP } from 'three-js-csg-es6';
 
-function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes}) {
+function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotationSpeed}) {
   const scroll = useScroll()
 
   const object = useLoader(Rhino3dmLoader, '/assets/3d/POWER2-1_cube_Mesh.3dm', (loader) => {
@@ -29,12 +29,16 @@ function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes}) {
 
   const [rotation, updateRotation] = useState({x: 0, y: 0, z: 0})
 
+  useEffect(() => {
+    console.log('.rotationSpeed', rotationSpeed)
+  }, [rotationSpeed])
+
   useFrame((state, delta) => {
   
-    const r1 = scroll.range(0 / 5, 1 / 5)
+    // const r1 = scroll.range(0 / 5, 1 / 5)
 
-    let spin = ((1-r1) * 0.004) + 0.001;
-    const time = (state.clock.getElapsedTime() * spin);
+    // let spin = ((1-r1) * 0.004) + 0.001;
+    const time = (state.clock.getElapsedTime() * rotationSpeed);
     
     const mouseTimeY = time + (state.mouse.x * 0.1);
     const mouseTimeX = time + (state.mouse.y * 0.1);
@@ -43,10 +47,10 @@ function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes}) {
     // ref.current.rotation.x = Math.sin(mouseTimeX) * Math.PI
     // ref.current.rotation.z = Math.sin(time) * Math.PI
 
-    updateRotation({x: rotation.x + spin, y: rotation.y + spin, z: rotation.z + spin})
+    updateRotation({x: rotation.x + rotationSpeed, y: rotation.y + rotationSpeed, z: rotation.z + rotationSpeed})
 
-    let xOffset = state.mouse.x * 0.5 + r1;
-    let yOffset = state.mouse.y * 0.5 + r1;
+    let xOffset = state.mouse.x * 0.5;
+    let yOffset = state.mouse.y * 0.5;
 
     // let newPosX = ref.current.rotation.x - 0.005
 
