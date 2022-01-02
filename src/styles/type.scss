@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap');
 @import './variables';
 
 h1 {
@@ -6,8 +6,9 @@ h1 {
   line-height: 1.1em;
   color: $color-white;
   margin: 0 0 $spacing-l 0;
-  letter-spacing: -2px;
-  font-weight: 600;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -15,7 +16,9 @@ h2 {
   line-height: 1.1em;
   color: $color-white;
   margin: 0 0 $spacing-l 0;
-  letter-spacing: -1px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 p {
@@ -24,5 +27,5 @@ p {
   color: $color-white;
   margin: 0 0 $spacing-m 0;
   letter-spacing: 0px;
-  font-weight: 300;
+  font-weight: normal;
 }
