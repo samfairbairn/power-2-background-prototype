@@ -10,6 +10,8 @@ import { Instances, Instance, Environment, ContactShadows, ScrollControls, useSc
 import { EffectComposer, SSAO } from '@react-three/postprocessing'
 import { useControls } from 'leva'
 
+import { TimelineLite, Power0, Power1 } from "gsap/all"; 
+
 import Model from './Model'
 
 import { softShadows } from "@react-three/drei"
@@ -27,26 +29,26 @@ function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotation
   const ref = useRef()
   const { width, height } = useThree((state) => state.viewport)
 
-  const [rotation, updateRotation] = useState({x: 0, y: 0, z: 0})
+  const properties = useRef()
+    
+  properties.current = {
+    xRotation: 0
+  }
 
-  useEffect(() => {
-    console.log('.rotationSpeed', rotationSpeed)
-  }, [rotationSpeed])
+  var rotationTL = new TimelineLite();
+  rotationTL.to(properties.current, {xRotation: Math.PI * 0.5, duration: 1, ease: Power1.easeInOut});
+  rotationTL.to(properties.current, {xRotation: -Math.PI * 0.2, duration: 1, ease: Power1.easeInOut});
+  rotationTL.to(properties.current, {xRotation: Math.PI * 0.5, duration: 1, ease: Power1.easeInOut});
+  rotationTL.to(properties.current, {xRotation: Math.PI * 0.7, duration: 1, ease: Power0.easeInOut});
+  rotationTL.pause();
+
+  const [rotation, updateRotation] = useState({x: 0, y: 0, z: 0})
 
   useFrame((state, delta) => {
   
-    // const r1 = scroll.range(0 / 5, 1 / 5)
-
-    // let spin = ((1-r1) * 0.004) + 0.001;
-    const time = (state.clock.getElapsedTime() * rotationSpeed);
+    const r1 = scroll.range(0 / 5, 5 / 5)
+    rotationTL.seek(r1 * rotationTL.duration())
     
-    const mouseTimeY = time + (state.mouse.x * 0.1);
-    const mouseTimeX = time + (state.mouse.y * 0.1);
-
-    // ref.current.rotation.y = Math.sin(mouseTimeY) * Math.PI
-    // ref.current.rotation.x = Math.sin(mouseTimeX) * Math.PI
-    // ref.current.rotation.z = Math.sin(time) * Math.PI
-
     updateRotation({x: rotation.x + rotationSpeed, y: rotation.y + rotationSpeed, z: rotation.z + rotationSpeed})
 
     let xOffset = state.mouse.x * 0.5;
@@ -54,8 +56,8 @@ function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotation
 
     // let newPosX = ref.current.rotation.x - 0.005
 
-    ref.current.rotation.y = rotation.y + xOffset
-    ref.current.rotation.x = rotation.x + yOffset
+    ref.current.rotation.y = rotation.y + xOffset + properties.current.xRotation
+    ref.current.rotation.x = rotation.x + yOffset + (properties.current.xRotation / 2)
     ref.current.rotation.z = rotation.z
   })
 
