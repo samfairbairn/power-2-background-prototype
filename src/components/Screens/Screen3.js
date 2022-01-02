@@ -1,17 +1,23 @@
 import styles from './screen.module.scss';
 
-const Screen1 = () => {
+const Screen3 = () => {
   return (
     <div className={styles.screen} style={{top: `200vh`}}>
       <div className={styles.left}>
         <h2>
-          POWER 2:<br/>
-          Always Free Draw<br />
-          for Dual Lotos<br />
-          With Double Luck
+          Thanks to the <br />
+          magic of defi! <br />
+          It is no loss! <br />
+          You can only win,<br />
+          Never lose!
         </h2>
+
         <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam molestie ullamcorper felis id placerat. Proin mollis eleifend purus eget imperdiet. Integer ut congue massa. Donec ut convallis ex. Proin nulla tellus, interdum sit amet convallis vitae, vehicula a tortor. Nulla auctor augue at eros auctor, quis pulvinar odio egestas.
+          It all starts from a block on the chain.
+        </p>
+
+        <p>
+          When a deposit is made into POWER2 that deposit is automatically routed to other decentralized fincance protocols to begin earning interest, and the deposits can be withdrawn at any time with no fee! The deposits help create the prize fund but is never taken from you. You play for no losses!
         </p>
       </div>
       <div className={styles.right}>
@@ -20,4 +26,4 @@ const Screen1 = () => {
   )
 };
 
-export default Screen1;
+export default Screen3;
