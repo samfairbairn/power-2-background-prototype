@@ -104,7 +104,7 @@ function Scene() {
     } else if (showMaterial || animateMaterial) {
       return (<fog attach="fog" args={[new Color( 0xF43880 ), 15, 28]} />) // 0xED9FB2
     } else {
-      return (<fog attach="fog" args={[new Color( 0xF43880 ), 15, 24]} />) // 0xED9FB2
+      return (<fog attach="fog" args={[new Color( 0xcb3350 ), 15, 24]} />) // 0xED9FB2
     }
   }
 
