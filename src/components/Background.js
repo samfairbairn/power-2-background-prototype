@@ -28,35 +28,37 @@ SOFTWARE.
 
 const canvas = document.createElement("canvas");
 canvas.classList.add('bg-canvas');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = scaleByPixelRatio(window.innerWidth);
+canvas.height = scaleByPixelRatio(window.innerHeight);
+canvas.style.width = '100%'
+canvas.style.height = '100%'
 document.body.prepend(canvas);
 
 resizeCanvas();
 
 let config = {
     SIM_RESOLUTION: 128,
-    DYE_RESOLUTION: 256,
+    DYE_RESOLUTION: 512,
     CAPTURE_RESOLUTION: 512,
-    DENSITY_DISSIPATION: 0.5,
-    VELOCITY_DISSIPATION: 1.2,
-    PRESSURE: 0.5,
+    DENSITY_DISSIPATION: 0.97,
+    VELOCITY_DISSIPATION: 0.98,
+    PRESSURE: 0.8,
     PRESSURE_ITERATIONS: 10,
-    CURL: 10,
-    SPLAT_RADIUS: 0.2,
+    CURL: 5,
+    SPLAT_RADIUS: 0.6,
     SPLAT_FORCE: 7000,
-    SHADING: false,
-    COLORFUL: false,
-    COLOR_UPDATE_SPEED: 10,
+    SHADING: true,
+    COLORFUL: true,
+    COLOR_UPDATE_SPEED: 4,
     PAUSED: false,
     BACK_COLOR: { r: 0, g: 0, b: 0 },
     TRANSPARENT: false,
-    BLOOM: true,
-    BLOOM_ITERATIONS: 8,
-    BLOOM_RESOLUTION: 256,
-    BLOOM_INTENSITY: 1.8,
-    BLOOM_THRESHOLD: 0.6,
-    BLOOM_SOFT_KNEE: 0.7,
+    BLOOM: false,
+    BLOOM_ITERATIONS: 2,
+    BLOOM_RESOLUTION: 64,
+    BLOOM_INTENSITY: 1.0,
+    BLOOM_THRESHOLD: 0.5,
+    BLOOM_SOFT_KNEE: 0.5,
     SUNRAYS: false,
     SUNRAYS_RESOLUTION: 196,
     SUNRAYS_WEIGHT: 1.0,
@@ -653,15 +655,18 @@ const advectionShader = compileShader(gl.FRAGMENT_SHADER, `
     }
 
     void main () {
-    #ifdef MANUAL_FILTERING
-        vec2 coord = vUv - dt * bilerp(uVelocity, vUv, texelSize).xy * texelSize;
-        vec4 result = bilerp(uSource, coord, dyeTexelSize);
-    #else
+    // #ifdef MANUAL_FILTERING
+    //     vec2 coord = vUv - dt * bilerp(uVelocity, vUv, texelSize).xy * texelSize;
+    //     vec4 result = bilerp(uSource, coord, dyeTexelSize);
+    // #else
+    //     vec2 coord = vUv - dt * texture2D(uVelocity, vUv).xy * texelSize;
+    //     vec4 result = texture2D(uSource, coord);
+    // #endif
+
         vec2 coord = vUv - dt * texture2D(uVelocity, vUv).xy * texelSize;
-        vec4 result = texture2D(uSource, coord);
-    #endif
-        float decay = 1.0 + dissipation * dt;
-        gl_FragColor = result / decay;
+        gl_FragColor = dissipation * texture2D(uSource, coord);
+        gl_FragColor.a = 1.0;
+
     }`,
     ext.supportLinearFiltering ? null : ['MANUAL_FILTERING']
 );
@@ -1038,6 +1043,7 @@ setTimeout(autosplat, config.AUTOSPLAT_DELAY*1000);
 
 let lastUpdateTime = Date.now();
 let colorUpdateTimer = 0.0;
+
 update();
 
 function update () {
@@ -1353,10 +1359,6 @@ let pointer = pointers.find(p => p.id === -1);
 if (pointer == null) pointer = new pointerPrototype();
 updatePointerDownData(pointer, -1, 1, 1);
 
-setInterval(() => {
-    pointer.color = generateColor()
-}, 100)
-
 document.body.addEventListener('mousemove', e => {
     let posX = scaleByPixelRatio(e.offsetX);
     let posY = scaleByPixelRatio(e.offsetY);
@@ -1447,13 +1449,10 @@ function correctDeltaY (delta) {
 
 
 function generateColor () {
-    let brightness = config.LIGHTMODE ? 0.1 : 0.15
-    let opacity = 0.2;
-    let hue = config.LIGHTMODE ? Math.random() : (Math.random() * 0.5) + 0.4
-    let c = HSVtoRGB(hue, 0.8, brightness);
-    c.r *= opacity;
-    c.g *= opacity;
-    c.b *= opacity;
+    let c = HSVtoRGB(Math.random(), 1, 1);
+    c.r *= .15;
+    c.g *= .15;
+    c.b *= .15;
     return c;
 }
 
@@ -1543,8 +1542,7 @@ function getTextureScale (texture, width, height) {
 }
 
 function scaleByPixelRatio (input) {
-    // let pixelRatio = window.devicePixelRatio || 1;
-    let pixelRatio = 1;
+    let pixelRatio = window.devicePixelRatio || 1;
     return Math.floor(input * pixelRatio);
 }
 
