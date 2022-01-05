@@ -143,7 +143,7 @@ function Scene() {
       properties.current.rotationTL.pause();
   
       properties.current.blocksTL = new TimelineLite();
-      properties.current.blocksTL.to(properties.current, {blocks: 27, duration: 1, ease: Power1.easeInOut});
+      properties.current.blocksTL.to(properties.current, {blocks: 27, duration: 1, ease: Power3.easeIn});
       properties.current.blocksTL.pause();
     }, [])
 
