@@ -63,8 +63,10 @@ let config = {
     AUTOSPLAT_ENABLED: false,
     AUTOSPLAT_DELAY: 4,
     AUTOSPLAT_COUNT: 2,
-    LIGHTMODE: true
+    LIGHTMODE: false
 }
+
+window._bgConfig = config;
 
 window.toggleLightMode = () => {
     config.LIGHTMODE = !config.LIGHTMODE

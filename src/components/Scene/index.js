@@ -58,7 +58,7 @@ function Scene() {
   })
 
   useEffect(() => {
-    window.toggleLightMode()
+    if (lightMode !== window._bgConfig.LIGHTMODE) window.toggleLightMode()
   }, [lightMode])
 
   function Light() {
