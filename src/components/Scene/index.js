@@ -47,7 +47,6 @@ function Scene() {
     animateMaterial,
     frontLightShadows,
     movingLightShadows,
-    // numberOfShapes,
     lightMode
   } = useControls({
     cameraControls: false,
@@ -55,29 +54,12 @@ function Scene() {
     animateMaterial: false,
     frontLightShadows: false,
     movingLightShadows: false,
-    // numberOfShapes: {
-    //   value: 1,
-    //   min: 1,
-    //   max: 125,
-    //   step: 1,
-    // },
     lightMode: false
   })
 
   useEffect(() => {
     window.toggleLightMode()
   }, [lightMode])
-
-  // const numberOfRows = Math.ceil(Math.pow(numberOfShapes, 1/3));
-
-  
-
-  // useFrame((state, delta) => {
-  //   // This function runs 60 times/second inside the global render-loop
-  //   console.log(delta)
-  // })
-
-  // useFrame((state) => (ref.current.rotation.y = Math.sin(state.clock.getElapsedTime() / 2) * Math.PI))
 
   function Light() {
     const ref = useRef()
