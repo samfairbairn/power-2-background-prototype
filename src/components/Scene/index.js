@@ -4,13 +4,12 @@ import React, { useEffect, useRef, Suspense, useState, useContext } from 'react'
 import styles from './style.module.scss';
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Color, MathUtils } from 'three';
-import { ScrollControls, useScroll } from '@react-three/drei'
+import { ScrollControls, useScroll, Html } from '@react-three/drei'
 import { EffectComposer, SSAO } from '@react-three/postprocessing'
 import { Leva, useControls } from 'leva'
 import Screens from '../Screens'
 import { AppContext } from "../../context/appContext";
 import { TimelineLite, Power0, Power1, Power3 } from "gsap/all"; 
-
 import Grid from "./Grid"
 
 // moving light
@@ -45,7 +44,9 @@ function Fog() {
 
 // main composition
 
-function Composition({lightMode}) {
+function Composition({context}) {
+
+  const { lightMode, setScrollPos } = context;
 
   const scroll = useScroll()
   const { width, height } = useThree((state) => state.viewport)
@@ -99,6 +100,9 @@ function Composition({lightMode}) {
   }, [])
 
   useFrame((state, delta) => {
+
+    const currentScroll = (scroll.pages - 1) * scroll.offset * window.innerHeight;
+    setScrollPos(currentScroll)
 
     // ranges
     const fullRange = scroll.range(0 / 10, 10 / 10)
@@ -175,7 +179,7 @@ function Composition({lightMode}) {
 
       { lightMode && (
         <EffectComposer multisampling={0}>
-          <SSAO samples={50} radius={20} intensity={50} luminanceInfluence={0.2} />
+          <SSAO samples={50} radius={10} intensity={50} luminanceInfluence={0.4} />
         </EffectComposer>
       )}
     </>
@@ -199,7 +203,7 @@ function Scene() {
       <Leva collapsed={false} />
       <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 20], near: 1, far: 150 }}>
         <ScrollControls damping={10} pages={5} >
-          <Composition lightMode={lightMode} />
+          <Composition context={context} />
           <Screens />
         </ScrollControls>
       </Canvas>
