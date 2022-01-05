@@ -28,14 +28,11 @@
   position: relative;
   display: inline-block;
   opacity: 0;
-  transition-property: opacity, transform;
   transform: translate3d(0, -20px, 0);
-  transition-timing-function: $easeInOutCubic, $easeOutCubic;
-  transition-duration: 1s;
   
   @for $i from 1 through 6 {
     &:nth-child(#{$i}) {
-      transition-delay: #{$i * .05}s;
+      transition: opacity 1s $easeInOutCubic #{$i * .05}s, transform 1s $easeOutCubic #{$i * .05}s;
     }
   }
 }
@@ -43,7 +40,7 @@
 .titleLine2 {
   @for $i from 1 through 6 {
     &:nth-child(#{$i}) {
-      transition-delay: #{($i * .05) + 0.25}s;
+      transition: opacity 1s $easeInOutCubic #{($i * .05) + 0.25}s, transform 1s $easeOutCubic #{($i * .05) + 0.25}s;
     }
   }
 }
