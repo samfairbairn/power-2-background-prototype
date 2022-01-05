@@ -45,8 +45,7 @@ const Screen4 = () => {
         <p>
           Because everyone wants to feel lucky<br/>
           POWER2 gives you double luck<br/>
-          Have fun,<br/>
-          With frequent small prizes,<br/>
+          Have fun with frequent small prizes,<br/>
           while waiting for the big prize.
         </p>
 
