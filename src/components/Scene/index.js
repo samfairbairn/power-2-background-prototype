@@ -98,49 +98,97 @@ function Scene() {
     const { width, height } = useThree((state) => state.viewport)
     const [numberOfShapes, setNumberOfShapes] = useState(1)
     const [numberOfRows, setNumberOfRows] = useState(1)
+    const [scaleFactor, setScaleFactor] = useState(1)
+
+    const [currentScaleFactor, setCurrentScaleFactor] = useState(1)
+    const [currentScale, setCurrentScale] = useState(1)
 
     const properties = useRef()
+
+    useState(() => {
+
+      properties.current = {
+        lookatX: -(width/6),
+        positionZ: 20,
+        scale: 1,
+        rotation: 0.008,
+        blocks: 0,
+        lookatTL: undefined,
+        positionTL: undefined,
+        rotationTL: undefined,
+        blocksTL: undefined,
+        scaleFactor: 1,
+        currentScale: 1
+      }
+
+      properties.current.lookatTL = new TimelineLite();
+      properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
+      properties.current.lookatTL.to(properties.current, {lookatX: -width/4, duration: 1, ease: Power1.easeInOut});
+      properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
+      properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power0.easeInOut});
+      properties.current.lookatTL.pause();
+  
+      properties.current.positionTL = new TimelineLite();
+      properties.current.positionTL.to(properties.current, {positionZ: 25, duration: 2, ease: Power1.easeInOut});
+      properties.current.positionTL.to(properties.current, {positionZ: 20, duration: 1, ease: Power1.easeInOut});
+      // positionTL.to(properties.current, {positionZ: 10, duration: 1, ease: Power1.easeInOut});
+      properties.current.positionTL.pause();
+
+      properties.current.scaleTL = new TimelineLite();
+      properties.current.scaleTL.to(properties.current, {scale: 0.5, duration: 1, ease: Power1.easeInOut});
+      properties.current.scaleTL.pause();
+  
+      properties.current.rotationTL = new TimelineLite();
+      properties.current.rotationTL.to(properties.current, {rotation: 0.005, duration: 1, ease: Power1.easeInOut});
+      properties.current.rotationTL.pause();
+  
+      properties.current.blocksTL = new TimelineLite();
+      properties.current.blocksTL.to(properties.current, {blocks: 27, duration: 1, ease: Power1.easeInOut});
+      properties.current.blocksTL.pause();
+    }, [])
+
     
-    properties.current = {
-      lookatX: -(width/6),
-      positionZ: 20,
-      rotation: 0.005
-    }
-
-    var lookatTL = new TimelineLite();
-    lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
-    lookatTL.to(properties.current, {lookatX: -width/4, duration: 1, ease: Power1.easeInOut});
-    lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
-    lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power0.easeInOut});
-    lookatTL.pause();
-
-    var positionTL = new TimelineLite();
-    positionTL.to(properties.current, {positionZ: 26, duration: 1.5, ease: Power1.easeInOut});
-    positionTL.to(properties.current, {positionZ: 16, duration: 1.5, ease: Power1.easeInOut, delay: 1});
-    positionTL.pause();
-
-    var rotationTL = new TimelineLite();
-    rotationTL.to(properties.current, {rotation: 0.00005, duration: 1, ease: Power1.easeInOut});
-    rotationTL.pause();
 
     useFrame((state, delta) => {
 
-      const positionRange = scroll.range(0 / 10, 10 / 10)
-      lookatTL.seek(positionRange * lookatTL.duration())
-      positionTL.seek(positionRange * positionTL.duration())
-      
-      state.camera.lookAt(properties.current.lookatX, 0, 0)
-      state.camera.position.z = properties.current.positionZ
-      
-      const rotationRange = scroll.range(0 / 10, 10 / 10)
-      rotationTL.seek(rotationRange)
+      // ranges
+      const fullRange = scroll.range(0 / 10, 10 / 10)
+      const positionRange = scroll.range(0 / 10, 8 / 10)
 
+      // horizontal position
+      properties.current.lookatTL.seek(fullRange * properties.current.lookatTL.duration())
+      state.camera.lookAt(properties.current.lookatX, 0, 0)
+      
+      // rotation speed
+      properties.current.rotationTL.seek(fullRange)
+      
+      // set number of blocks
       const blocksRange = scroll.range(7 / 10, 3 / 10)
-      const _blocks = Math.ceil(blocksRange * 7) + 1
+      properties.current.blocksTL.seek(blocksRange)
+      const _blocks = MathUtils.clamp(Math.floor(properties.current.blocks) + 1, 1, 27)
+      
       if (_blocks !== numberOfShapes) {
         setNumberOfShapes(_blocks)
-        setNumberOfRows(Math.ceil(Math.pow(_blocks, 1/3)));
+        const _noOfRows = Math.ceil(Math.pow(_blocks, 1/3));
+        setNumberOfRows(_noOfRows);
+
+        if (_noOfRows === 1) properties.current.scaleFactor = 1
+        if (_noOfRows === 2) properties.current.scaleFactor = 2.3
+        if (_noOfRows === 3) properties.current.scaleFactor = 3.6
       }
+
+      // scrolling scale
+      properties.current.scaleTL.seek(positionRange * properties.current.scaleTL.duration())
+      
+      // set scale
+      setCurrentScaleFactor(MathUtils.damp(currentScaleFactor, properties.current.scaleFactor, 20, delta))
+      setCurrentScale(MathUtils.damp(currentScale, properties.current.scale, 10, delta))
+      // performance: remove damp
+      // setCurrentScale(properties.current.scale)
+
+      // camera z position 
+      properties.current.positionTL.seek(fullRange * properties.current.positionTL.duration())
+      state.camera.position.z = properties.current.positionZ
 
     })
 
@@ -169,6 +217,8 @@ function Scene() {
             animateMaterial={animateMaterial}
             lightMode={lightMode}
             rotationSpeed={properties.current.rotation}
+            scaleFactor={currentScaleFactor}
+            scale={currentScale}
             />
         </Suspense>
 

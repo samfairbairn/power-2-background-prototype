@@ -17,7 +17,7 @@ import Model from './Model'
 import { softShadows } from "@react-three/drei"
 // import { ThreeBSP } from 'three-js-csg-es6';
 
-function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotationSpeed}) {
+function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotationSpeed, scale, scaleFactor}) {
   const scroll = useScroll()
 
   const object = useLoader(Rhino3dmLoader, '/assets/3d/POWER2-1_cube_Mesh.3dm', (loader) => {
@@ -92,7 +92,7 @@ function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotation
   }
 
   return (
-    <group ref={ref}>
+    <group ref={ref} scale={scale * scaleFactor}>
 
       {_shapes}
       
