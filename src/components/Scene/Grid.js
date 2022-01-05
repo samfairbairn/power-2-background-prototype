@@ -1,21 +1,12 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useEffect, useRef, Suspense, useMemo, useState } from 'react';
-import styles from './style.module.scss';
-import { Canvas, useLoader, useFrame, extend, useThree } from '@react-three/fiber'
+import React, { useRef, useMemo, useState } from 'react';
+import { useLoader, useFrame, useThree } from '@react-three/fiber'
 import { Rhino3dmLoader } from 'three/examples/jsm/loaders/3DMLoader'
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { BoxGeometry, Color, MathUtils, EdgesGeometry } from 'three';
-import { Instances, Instance, Environment, ContactShadows, ScrollControls, useScroll } from '@react-three/drei'
-import { EffectComposer, SSAO } from '@react-three/postprocessing'
-import { useControls } from 'leva'
-
-import { TimelineLite, Power0, Power1 } from "gsap/all"; 
-
-import Model from './Model'
-
-import { softShadows } from "@react-three/drei"
-// import { ThreeBSP } from 'three-js-csg-es6';
+import { BoxGeometry, MathUtils, EdgesGeometry } from 'three';
+import { useScroll } from '@react-three/drei'
+import { TimelineLite, Power0, Power1 } from "gsap/all";
+import Model from './Model';
 
 function Rig({ children }) {
   const ref = useRef()
@@ -26,7 +17,7 @@ function Rig({ children }) {
   return <group ref={ref}>{children}</group>
 }
 
-function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotationSpeed, scale, scaleFactor}) {
+function Grid ({lightMode, rows, shapes, rotationSpeed, scale, scaleFactor}) {
   const scroll = useScroll()
 
   const object = useLoader(Rhino3dmLoader, '/assets/3d/POWER2-1_cube_Mesh.3dm', (loader) => {
@@ -79,15 +70,12 @@ function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotation
         if (_shapes.length < shapes) {
           _shapes.push(
             <Model
-              shapes={shapes}
               rows={rows}
               key={`shape-${x}-${y}-${z}`}
               geo={geo}
               x={x}
               y={y}
-              z={z} 
-              showMaterial={showMaterial}
-              animateMaterial={animateMaterial}
+              z={z}
               lightMode={lightMode}
             />)
         }
@@ -100,7 +88,7 @@ function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotation
       <group ref={ref} scale={scale * scaleFactor}>
         {_shapes}
         <lineSegments geometry={outerEdges} renderOrder={100}>
-          <lineBasicMaterial color="white" fog={false} transparent={true} opacity={0.1} />
+          <lineBasicMaterial color={lightMode ? 'black' : 'white'} fog={false} transparent={true} opacity={lightMode ? 0.8 : 0.4} />
         </lineSegments>
       </group>
     </Rig>

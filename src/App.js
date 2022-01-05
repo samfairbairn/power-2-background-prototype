@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import Scene from './components/Scene';
 import background from './components/Background';
+import AppProvider from './context/appContext';
 
 function App() {
 
@@ -10,7 +11,9 @@ function App() {
 
   return (
     <div className="App">
-      <Scene />
+      <AppProvider>
+        <Scene />
+      </AppProvider>
     </div>
   );
 }

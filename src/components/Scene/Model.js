@@ -1,16 +1,8 @@
 import React, { useMemo, useState } from 'react';
-// import styles from './style.module.scss';
 import { useFrame } from '@react-three/fiber'
-// import { Canvas, useLoader, useFrame, extend, useThree } from '@react-three/fiber'
-// import { Rhino3dmLoader } from 'three/examples/jsm/loaders/3DMLoader'
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-// import { BoxGeometry, Color, MathUtils, EdgesGeometry } from 'three';
 import { EdgesGeometry } from 'three';
-// import { Instances, Instance, Environment, ContactShadows, ScrollControls, useScroll } from '@react-three/drei'
-// import { EffectComposer, SSAO } from '@react-three/postprocessing'
-// import { useControls } from 'leva'
 
-function Model({showMaterial, animateMaterial, lightMode, shapes, rows, geo, x, y, z}) {
+function Model({lightMode, rows, geo, x, y, z}) {
 
   const [showMat, setShowMat] = useState(false);
   const [lastChange, setLastChange] = useState(false);
@@ -37,10 +29,7 @@ function Model({showMaterial, animateMaterial, lightMode, shapes, rows, geo, x, 
     }
   })
 
-  const show = animateMaterial ? showMat : showMaterial
-  let color = lightMode ? 'black' : 'white'
-
-  if (show) {
+  if (lightMode) {
     return (
       <mesh position={[0, 0, 0]} geometry={geo} castShadow receiveShadow>
         <meshStandardMaterial roughness={0.5} color='white' />
@@ -49,7 +38,7 @@ function Model({showMaterial, animateMaterial, lightMode, shapes, rows, geo, x, 
   } else {
     return (
       <lineSegments geometry={edges} renderOrder={100}>
-        <lineBasicMaterial color={color} />
+        <lineBasicMaterial color={'white'} />
       </lineSegments>
     )
   }

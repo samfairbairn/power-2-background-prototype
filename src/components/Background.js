@@ -1455,10 +1455,11 @@ function correctDeltaY (delta) {
 
 
 function generateColor () {
+    const scale = config.LIGHTMODE ? 0.05 : 0.15
     let c = HSVtoRGB(Math.random(), 1, 1);
-    c.r *= .15;
-    c.g *= .15;
-    c.b *= .15;
+    c.r *= scale;
+    c.g *= scale;
+    c.b *= scale;
     return c;
 }
 
