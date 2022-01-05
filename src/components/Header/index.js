@@ -1,7 +1,4 @@
-import Headroom from 'react-headroom';
 import React, { useRef, useState, useContext, useEffect } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useScroll, Html } from '@react-three/drei'
 import { MathUtils } from 'three';
 import styles from './header.module.scss';
 import { AppContext } from "../../context/appContext";
