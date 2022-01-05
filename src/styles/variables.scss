@@ -18,3 +18,7 @@ $spacing-xl: 60px;
 $spacing-l: 40px;
 $spacing-m: 20px;
 $spacing-s: 10px;
+
+$easeInOutCubic: cubic-bezier(0.65, 0, 0.35, 1);
+$easeOutCubic: cubic-bezier(0.33, 1, 0.68, 1);
+$easeOutQuint: cubic-bezier(0.22, 1, 0.36, 1);

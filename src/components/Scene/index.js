@@ -200,7 +200,7 @@ function Scene() {
       <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 20], near: 1, far: 150 }}>
         <ScrollControls damping={10} pages={5} >
           <Composition lightMode={lightMode} />
-            <Screens />
+          <Screens />
         </ScrollControls>
       </Canvas>
     </div>

@@ -21,3 +21,36 @@
   padding: $spacing-l;
   pointer-events: none;
 }
+
+.titleLine,
+.titleLine2 {
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  transition-property: opacity, transform;
+  transform: translate3d(0, -20px, 0);
+  transition-timing-function: $easeInOutCubic, $easeOutCubic;
+  transition-duration: 1s;
+  
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{$i * .05}s;
+    }
+  }
+}
+
+.titleLine2 {
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{($i * .05) + 0.25}s;
+    }
+  }
+}
+
+.show {
+  .titleLine,
+  .titleLine2 {
+    opacity: 1;
+    transform: translate3d(0, 0px, 0);
+  }
+}
