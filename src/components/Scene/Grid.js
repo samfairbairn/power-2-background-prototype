@@ -17,6 +17,15 @@ import Model from './Model'
 import { softShadows } from "@react-three/drei"
 // import { ThreeBSP } from 'three-js-csg-es6';
 
+function Rig({ children }) {
+  const ref = useRef()
+  useFrame((state) => {
+    ref.current.rotation.y = MathUtils.lerp(ref.current.rotation.y, (state.mouse.x * Math.PI) / 2, 0.05)
+    ref.current.rotation.x = MathUtils.lerp(ref.current.rotation.x, (state.mouse.y * Math.PI) / 2, 0.05)
+  })
+  return <group ref={ref}>{children}</group>
+}
+
 function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotationSpeed, scale, scaleFactor}) {
   const scroll = useScroll()
 
@@ -51,13 +60,8 @@ function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotation
     
     updateRotation({x: rotation.x + rotationSpeed, y: rotation.y + rotationSpeed, z: rotation.z + rotationSpeed})
 
-    let xOffset = state.mouse.x * 0.5;
-    let yOffset = state.mouse.y * 0.5;
-
-    // let newPosX = ref.current.rotation.x - 0.005
-
-    ref.current.rotation.y = rotation.y + xOffset + properties.current.xRotation
-    ref.current.rotation.x = rotation.x + yOffset + (properties.current.xRotation / 2)
+    ref.current.rotation.x = rotation.x + properties.current.xRotation
+    ref.current.rotation.y = rotation.y + (properties.current.xRotation / 2)
     ref.current.rotation.z = rotation.z
   })
 
@@ -92,21 +96,14 @@ function Grid ({showMaterial, animateMaterial, lightMode, rows, shapes, rotation
   }
 
   return (
-    <group ref={ref} scale={scale * scaleFactor}>
-
-      {_shapes}
-      
-      {/* <mesh>
-        <boxBufferGeometry attach="geometry" args={[7, 7, 7]} />
-        <meshBasicMaterial attach="material" wireframe={true} />
-      </mesh> */}
-      {/* new Color( 0x15084d ) */}
-      <lineSegments geometry={outerEdges} renderOrder={100}>
-        {/* <lineBasicMaterial color={new Color( 0x333333 )} opacity={0.2} /> */}
-        {/* <lineBasicMaterial color="white" opacity={0.2} /> */}
-        <lineBasicMaterial color="white" fog={false} transparent={true} opacity={0.1} />
-      </lineSegments>
-    </group>
+    <Rig>
+      <group ref={ref} scale={scale * scaleFactor}>
+        {_shapes}
+        <lineSegments geometry={outerEdges} renderOrder={100}>
+          <lineBasicMaterial color="white" fog={false} transparent={true} opacity={0.1} />
+        </lineSegments>
+      </group>
+    </Rig>
   )
 }
 
