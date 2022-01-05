@@ -21,7 +21,7 @@ const Screen2 = () => {
       setVisible(false)
     }
 
-    offset.current = MathUtils.lerp(offset.current, isVisible ? 0 : window.innerHeight * 0.1, 0.05)
+    offset.current = MathUtils.lerp(offset.current, isVisible ? 0 : window.innerHeight * 0.2, 0.05)
     titleRef.current.style.transform = `translate3d(0, ${offset.current}px, 0)`
     titleRef.current.style.opacity = MathUtils.lerp(titleRef.current.style.opacity, isVisible ? 1 : 0, 0.05)
 
