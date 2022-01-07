@@ -1,0 +1,40 @@
+@mixin type-title-l {
+  font-size: $text-size-xl;
+  line-height: 1.1em;
+  margin: 0 0 $spacing-l 0;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+@mixin type-title-m {
+  font-size: $text-size-l;
+  line-height: 1.1em;
+  margin: 0 0 $spacing-l 0;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+@mixin type-body {
+  font-size: $text-size-m;
+  line-height: 1.5em;
+  margin: 0 0 $spacing-m 0;
+  letter-spacing: 0px;
+  font-weight: normal;
+}
+
+@mixin type-link {
+  font-size: $text-size-s;
+  line-height: 1.5em;
+  margin: 0;
+  letter-spacing: 0px;
+  font-weight: 500;
+  opacity: 0.6;
+  transition: opacity $transition-fast ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+}
