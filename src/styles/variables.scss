@@ -6,7 +6,7 @@ $typeface: 'Brandon Grotesque', sans-serif;
 $text-size-xl: 68px;
 $text-size-l: 52px;
 $text-size-m: 22px;
-$text-size-2: 12px;
+$text-size-s: 16px;
 
 $color-white: #ffffff;
 $color-black: #000000;
@@ -22,3 +22,6 @@ $spacing-s: 10px;
 $easeInOutCubic: cubic-bezier(0.65, 0, 0.35, 1);
 $easeOutCubic: cubic-bezier(0.33, 1, 0.68, 1);
 $easeOutQuint: cubic-bezier(0.22, 1, 0.36, 1);
+
+$transition-fast: 0.25s;
+$transition-normal: 0.5s;
