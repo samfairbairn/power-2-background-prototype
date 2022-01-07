@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .container {
   display: flex;
@@ -6,42 +7,69 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 $spacing-l;
-
   height: 80px;
   width: 100%;
   background-color: rgba($color-black, 0);
-
-  transition: background-color 0.5s ease-in-out;
-
+  transition: background-color $transition-normal ease-in-out;
   will-change: transform;
-  
   z-index: 999;
   
   .logo {
-    height: 40px;
+    height: 35px;
+    margin-left: 2px;
   }
-  
   
   &.inTop {
     position: absolute;
     // transform: translate3d(0, -80px, 0);
+    background-color: rgba($color-black, 0);
   }
   
   &.goingDown {
     position: fixed;
-    transition: transform 0.5s $easeOutCubic;
-    background-color: rgba($color-black, 0.6);
+    transition: transform $transition-normal $easeOutCubic;
+    background-color: rgba($color-black, 0.8);
     &.lightMode {
-      background-color: rgba($color-white, 0.8);
+      background-color: rgba($color-white, 0.9);
     }
   }
   
   &.goingUp {
     position: fixed;
-    transition: transform 0.5s $easeOutCubic;
-    background-color: rgba($color-black, 0.6);
+    transition: transform $transition-normal $easeOutCubic;
+    background-color: rgba($color-black, 0.8);
     &.lightMode {
-      background-color: rgba($color-white, 0.8);
+      background-color: rgba($color-white, 0.9);
+    }
+  }
+
+  .menu {
+    position: relative;
+
+    .links {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      flex-direction: row;
+
+      .link {
+        display: inline-block;
+        padding: 0 $spacing-m;
+        margin: 0 $spacing-m;
+        @include type-link;
+        color: $color-white;
+      }
+    }
+  }
+
+  &.lightMode {
+    .menu {
+      .links {
+        .link {
+          color: $color-darkGrey;
+        }
+      }
     }
   }
 
