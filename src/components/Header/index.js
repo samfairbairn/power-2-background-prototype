@@ -4,6 +4,7 @@ import styles from './header.module.scss';
 import { AppContext } from "../../context/appContext";
 import classNames from 'classnames';
 import { ReactComponent as LogoIcon } from '../../assets/logo.svg';
+import Menu from './Menu'
 
 function Header() {
 
@@ -15,31 +16,40 @@ function Header() {
   const [offset, setOffset] = useState(0) // 0: abstop, 1: hidden, 2: visible
   const lastPos = useRef()
 
+  const headerHeight = 80;
+  const topOffset = 20;
+
   useEffect(() => {
     const threshold = window.innerHeight / 4;
     const scrollDiff = scrollPos - lastPos.current
     lastPos.current = scrollPos
 
-    if (scrollPos <= 1) {
+    let _offset = offset;
+
+    if (scrollPos <= topOffset && pos !== 0) {
       setPos(0)
     }
 
     // setInTop(scrollPos <= threshold)
 
     if (pos === 0) {
-      setOffset(MathUtils.clamp(scrollPos, 1, 80))
+      _offset = -MathUtils.clamp(scrollPos, 0, headerHeight) + topOffset;
     }
     
     if (scrollDiff > 1 && pos !== 1 && scrollPos > threshold) {
 
-      // if (pos === 2)
       setPos(1)
-      setOffset(80)
+      _offset = -headerHeight
 
     } else if (scrollDiff < -1 && pos !== 2 && scrollPos > threshold) {
       // going up
       setPos(2)
-      setOffset(1)
+      // setOffset(0)
+      _offset = 0
+    }
+
+    if (Math.floor(_offset * 1000) !== Math.floor(offset * 1000)) {
+      setOffset(_offset)
     }
 
   }, [scrollPos, pos, offset])
@@ -53,9 +63,10 @@ function Header() {
         pos === 1 && styles.goingDown,
         pos === 0 && styles.inTop,
       ])}
-      style={{transform: `translate3d(0, -${offset}px, 0)`}}
+      style={{transform: `translate3d(0, ${offset}px, 0)`}}
       >
         <LogoIcon className={styles.logo} />
+        <Menu />
       </div>
   );
 }
