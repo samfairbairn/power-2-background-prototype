@@ -46,9 +46,10 @@ function Fog() {
 
 function Composition({context}) {
 
-  const { lightMode, setScrollPos } = context;
+  const { lightMode, setScrollPos, setScroll } = context;
 
   const scroll = useScroll()
+
   const { width, height } = useThree((state) => state.viewport)
   const [numberOfShapes, setNumberOfShapes] = useState(1)
   const [numberOfRows, setNumberOfRows] = useState(1)
@@ -59,6 +60,8 @@ function Composition({context}) {
   const properties = useRef()
 
   useState(() => {
+
+    setScroll({pages: scroll.pages, el: scroll.el})
 
     properties.current = {
       lookatX: -(width/6),
