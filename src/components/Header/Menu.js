@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { AppContext } from "../../context/appContext";
 import styles from './header.module.scss';
+import DarkModeToggle from "react-dark-mode-toggle";
 
 import { gsap, Power1, ScrollToPlugin } from "gsap/all"; 
 gsap.registerPlugin(ScrollToPlugin);
@@ -11,7 +12,7 @@ gsap.registerPlugin(ScrollToPlugin);
 
 function Menu() {
   const context = useContext(AppContext);
-  const { scroll, scrollPos } = context
+  const { setLightMode, lightMode, scroll, scrollPos } = context
   const [activeIndex, setActiveIndex] = useState()
 
   useEffect(() => {
@@ -39,6 +40,7 @@ function Menu() {
     }
   }
 
+
   return (
     <div className={styles.menu}>
       <ul className={styles.links}>
@@ -46,6 +48,13 @@ function Menu() {
         <li className={styles.link}>Roadmap</li>
         <li className={styles.link}>Whitepaper</li>
       </ul>
+      <div className={styles.lightModeToggle}>
+        <DarkModeToggle
+          onChange={() => { setLightMode(!lightMode) }}
+          checked={!lightMode}
+          size={50}
+        />
+      </div>
     </div>
   );
 }

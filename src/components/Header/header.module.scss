@@ -45,6 +45,9 @@
 
   .menu {
     position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     .links {
       position: relative;
@@ -81,6 +84,16 @@
           }
         }
       }
+    }
+
+    .lightModeToggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // width: 50px;
+      // height: 25px;
+      margin-left: $spacing-s;
     }
   }
 

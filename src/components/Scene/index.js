@@ -4,7 +4,7 @@ import React, { useEffect, useRef, Suspense, useState, useContext } from 'react'
 import styles from './style.module.scss';
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Color, MathUtils } from 'three';
-import { ScrollControls, useScroll, Html } from '@react-three/drei'
+import { ScrollControls, useScroll } from '@react-three/drei'
 import { EffectComposer, SSAO } from '@react-three/postprocessing'
 import { Leva, useControls } from 'leva'
 import Screens from '../Screens'
@@ -194,16 +194,15 @@ function Scene() {
   const context = useContext(AppContext);
   const { lightMode, setLightMode } = context
 
-  const { _lightMode } = useControls({ _lightMode: false })
+  // const { _lightMode } = useControls({ _lightMode: false })
 
   useEffect(() => {
-    if (_lightMode !== window._bgConfig.LIGHTMODE) window.toggleLightMode()
-    if (_lightMode !== lightMode) setLightMode(_lightMode)
-  }, [_lightMode, setLightMode, lightMode])
+    if (lightMode !== window._bgConfig.LIGHTMODE) window.toggleLightMode()
+  }, [lightMode])
 
   return (
     <div className={styles.scene + ` ${lightMode ? 'is-light-mode' : ''}`}>
-      <Leva collapsed={false} />
+      {/* <Leva collapsed={false} /> */}
       <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 20], near: 1, far: 150 }}>
         <ScrollControls damping={10} pages={5} >
           <Composition context={context} />
