@@ -54,11 +54,32 @@
       flex-direction: row;
 
       .link {
+        position: relative;
         display: inline-block;
         padding: 0 $spacing-m;
         margin: 0 $spacing-m;
         @include type-link;
         color: $color-white;
+
+        &::after {
+          content: ' ';
+          position: absolute;
+          bottom: -6px;
+          width: 30px;
+          height: 1px;
+          left: 50%;
+          margin-left: -15px;
+          background-color: $color-white;
+          transform: scaleX(0);
+          transition: transform $transition-normal $easeInOutCubic;
+        }
+
+        &.isActive {
+          opacity: 1;
+          &::after {
+            transform: scaleX(1);
+          }
+        }
       }
     }
   }
@@ -68,6 +89,9 @@
       .links {
         .link {
           color: $color-darkGrey;
+          &::after {
+            background-color: $color-darkGrey;
+          }
         }
       }
     }
