@@ -62,7 +62,11 @@
         padding: 0 $spacing-m;
         margin: 0 $spacing-m;
         @include type-link;
-        color: $color-white;
+        color: darken($color: $color-white, $amount: 40);
+        
+        &:hover {
+          color: darken($color: $color-white, $amount: 0);
+        }
 
         &::after {
           content: ' ';
@@ -75,6 +79,7 @@
           background-color: $color-white;
           transform: scaleX(0);
           transition: transform $transition-normal $easeInOutCubic;
+          will-change: transform;
         }
 
         &.isActive {
@@ -85,26 +90,119 @@
         }
       }
     }
-
-    .lightModeToggle {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      // width: 50px;
-      // height: 25px;
-      margin-left: $spacing-s;
-    }
   }
 
   &.lightMode {
     .menu {
       .links {
         .link {
-          color: $color-darkGrey;
+          color: lighten($color: $color-darkGrey, $amount: 20);
+          &:hover {
+            color: lighten($color: $color-darkGrey, $amount: 0);
+          }
           &::after {
             background-color: $color-darkGrey;
           }
+        }
+      }
+    }
+  }
+
+  .darkmodeSwitch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    border: 1px solid darken($color: $color-white, $amount: 40);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: border $transition-fast ease-in-out;
+    will-change: border;
+    margin-left: $spacing-xl;
+
+    .knob {
+      position: absolute;
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-color: darken($color: $color-white, $amount: 40);
+      border-radius: 9px;
+      top: 2px;
+      left: 2px;
+      transition: background-color $transition-fast ease-in-out, transform $transition-normal $easeInOutCubic;
+      will-change: background-color, transform;
+      transform: translate3d(0, 0, 0);
+    }
+
+    &:hover {
+      .knob {
+        background-color: darken($color: $color-white, $amount: 0);
+      }
+    }
+
+    .switchIcon {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity $transition-normal ease-in-out, transform $transition-normal $easeInOutCubic;
+      will-change: opacity, transform;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      &.moon {
+        right: 8px;
+        transform: translate3d(0, 0, 0);
+        width: 10px;
+        height: 10px;
+        top: 6px;
+        svg {
+          path {
+            fill: darken($color: $color-white, $amount: 40)
+          }
+        }
+      }
+      
+      &.sun {
+        left: 7px;
+        width: 12px;
+        height: 12px;
+        top: 5px;
+        opacity: 0;
+        transform: translate3d(5px, 0, 0);
+        svg {
+          path {
+            fill: lighten($color: $color-darkGrey, $amount: 20);
+          }
+        }
+      }
+    }
+  }
+
+  &.lightMode {
+    .darkmodeSwitch {
+      border: 1px solid color lighten($color: $color-darkGrey, $amount: 20);
+      .knob {
+        background-color: lighten($color: $color-darkGrey, $amount: 20);
+        transform: translate3d(26px, 0, 0)
+      }
+      &:hover {
+        .knob {
+          background-color: lighten($color: $color-darkGrey, $amount: 0);
+        }
+      }
+      .switchIcon {
+        &.moon {
+          transform: translate3d(-5px, 0, 0);
+          opacity: 0;
+        }
+        &.sun {
+          opacity: 1;
+          transform: translate3d(0px, 0, 0);
         }
       }
     }

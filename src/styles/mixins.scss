@@ -5,6 +5,8 @@
   letter-spacing: 2px;
   font-weight: bold;
   text-transform: uppercase;
+  transition: color $transition-fast ease-in-out;
+  will-change: color;
 }
 
 @mixin type-title-m {
@@ -14,6 +16,8 @@
   letter-spacing: 2px;
   font-weight: bold;
   text-transform: uppercase;
+  transition: color $transition-fast ease-in-out;
+  will-change: color;
 }
 
 @mixin type-body {
@@ -22,6 +26,8 @@
   margin: 0 0 $spacing-m 0;
   letter-spacing: 0px;
   font-weight: normal;
+  transition: color $transition-fast ease-in-out;
+  will-change: color;
 }
 
 @mixin type-link {
@@ -30,11 +36,10 @@
   margin: 0;
   letter-spacing: 0px;
   font-weight: 500;
-  opacity: 0.6;
-  transition: opacity $transition-fast ease-in-out;
+  transition: color $transition-fast ease-in-out;
+  will-change: color;
 
   &:hover {
     cursor: pointer;
-    opacity: 1;
   }
 }
