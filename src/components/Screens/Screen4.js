@@ -33,12 +33,11 @@ const Screen4 = () => {
   }, [])
 
   return (
-    <div className={styles.screen} style={{top: `300vh`, alignItems: 'flex-start', paddingTop: '10vh'}}>
-      <div className={styles.left}></div>
+    <div className={classNames([styles.screen, styles.alignRight])} style={{top: `300vh`, alignItems: 'flex-start', paddingTop: '10vh'}}>
 
       <span className={classNames([styles.big1, styles.gradient1])} >1</span>
 
-      <div ref={titleRef} className={styles.right} style={{paddingLeft: '10vw'}}>
+      <div ref={titleRef} className={styles.content} style={{paddingLeft: '8vw'}}>
         <h2>
           Win a bitcoin?<br />
           Or other crypto-

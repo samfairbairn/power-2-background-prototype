@@ -37,7 +37,7 @@ const Screen5 = () => {
 
       <span className={classNames([styles.big1, styles.gradient2])} >1</span>
 
-      <div ref={titleRef} className={styles.left}>
+      <div ref={titleRef} className={styles.content}>
         <h2>
           Power of 2<br />
           fun cubic game

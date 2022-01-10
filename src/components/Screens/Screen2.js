@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { MathUtils } from 'three';
 import { useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import classNames from 'classnames';
 import styles from './screen.module.scss';
 
 const Screen2 = () => {
@@ -32,10 +33,9 @@ const Screen2 = () => {
   }, [])
 
   return (
-    <div className={styles.screen} style={{top: `100vh`}}>
-      <div className={styles.left}></div>
+    <div className={classNames([styles.screen, styles.alignRight])} style={{top: `100vh`}}>
 
-      <div ref={titleRef} className={styles.right}>
+      <div ref={titleRef} className={styles.content}>
         <h2>
           What's POWER2?
         </h2>

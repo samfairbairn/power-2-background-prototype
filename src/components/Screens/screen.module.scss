@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .screen {
   position: absolute;
@@ -7,32 +8,49 @@
   left: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
+  justify-content: flex-start;
 
-.left,
-.right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  width: 50%;
-  flex-shrink: 0;
-  flex-grow: 0;
-  padding: $spacing-l;
-  pointer-events: none;
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 40%;
+    margin-left: 10%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 0 0 0 $spacing-m;
+    pointer-events: none;
 
-  p {
-    max-width: 85%;
+    @include device-l {
+      width: 50%;
+    }
+
+    @include device-m {
+      width: 80%;
+    }
+  
+    p {
+      max-width: 85%;
+    }
   }
-}
+  
+  &.alignRight {
+    // align-items: flex-end;
+    justify-content: flex-end;
+    .content {
+      width: 50%;
+      margin-left: 0%;
+      padding: 0 $spacing-l 0 0;
 
-.left {
-  width: 40%;
-  margin-left: 10%;
+      @include device-l {
+        width: 60%;
+      }
 
-  p {
-    max-width: 100%;
+      @include device-m {
+        width: 90%;
+      }
+    }
   }
 }
 
@@ -59,8 +77,34 @@
   left: 50%;
   width: 100px;
   margin-left: -40px;
-  margin-top: 10px;
+  margin-top: -20px;
   line-height: 1;
+  @include device-l {
+    left: 60%;
+  }
+
+  @include device-m {
+    font-size: 150px;
+    position: absolute;
+    top: 0;
+    left: 60px;
+    opacity: 0.5;
+  }
+}
+
+.alignRight {
+  .big1 {
+    @include device-l {
+      left: 40%;
+    }
+    @include device-m {
+      position: absolute;
+      top: 0;
+      left: auto;
+      right: 0;
+      opacity: 0.3;
+    }
+  }
 }
 
 .separator {
@@ -111,12 +155,19 @@
   transition: color $transition-fast ease-in-out;
   will-change: color;
 
+  @include device-l {
+    font-size: $text-size-xl;
+  }
+
   .super {
     position: relative;
     display: inline-block;
     font-size: $text-size-xl;
     font-weight: bold;
-    transform: translate3d(0, -20px, 0)
+    transform: translate3d(0, -20px, 0);
+    @include device-l {
+      font-size: $text-size-xl * 0.8;
+    }
   }
 }
 

@@ -1,4 +1,28 @@
 
+@mixin device-small {
+  @media only screen and (max-width:767px) {
+    @content;
+  }
+}
+
+@mixin device-m {
+  @media only screen and (max-width:768px) {
+    @content;
+  }
+}
+
+@mixin device-l {
+  @media only screen and (max-width:1080px) {
+    @content;
+  }
+}
+
+@mixin device-xl {
+  @media only screen and (max-width:1440px) {
+    @content;
+  }
+}
+
 @mixin type-title-l {
   font-size: $text-size-xl;
   line-height: 1.1em;
@@ -8,6 +32,12 @@
   text-transform: uppercase;
   transition: color $transition-fast ease-in-out;
   will-change: color;
+  @include device-xl {
+    font-size: $text-size-xl * 0.8;
+  }
+  @include device-m {
+    font-size: $text-size-xl * 0.6;
+  }
 }
 
 @mixin type-title-m {
@@ -19,6 +49,12 @@
   text-transform: uppercase;
   transition: color $transition-fast ease-in-out;
   will-change: color;
+  @include device-xl {
+    font-size: $text-size-l * 0.8;
+  }
+  @include device-m {
+    font-size: $text-size-l * 0.6;
+  }
 }
 
 @mixin type-title-s {
@@ -30,6 +66,12 @@
   text-transform: uppercase;
   transition: color $transition-fast ease-in-out;
   will-change: color;
+  @include device-xl {
+    font-size: $text-size-ml * 0.8;
+  }
+  @include device-m {
+    font-size: $text-size-ml * 0.6;
+  }
 }
 
 @mixin type-body {
@@ -40,6 +82,12 @@
   font-weight: normal;
   transition: color $transition-fast ease-in-out;
   will-change: color;
+  @include device-xl {
+    font-size: $text-size-m * 0.8;
+  }
+  @include device-m {
+    font-size: $text-size-s;
+  }
 }
 
 @mixin type-link {
