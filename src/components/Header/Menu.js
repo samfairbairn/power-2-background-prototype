@@ -16,7 +16,7 @@ function Menu() {
     if (scroll) {
       const _scrollPos = scrollPos / ((window.innerHeight * scroll.pages) - window.innerHeight)
 
-      if (_scrollPos > 0.75 && _scrollPos < 0.9) {
+      if (_scrollPos > (2/(scroll.pages-1)) && _scrollPos < (5/(scroll.pages-1))) {
         setActiveIndex(1)
       } else {
         setActiveIndex(0)

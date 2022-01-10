@@ -83,7 +83,7 @@
         }
 
         &.isActive {
-          opacity: 1;
+          color: darken($color: $color-white, $amount: 0);
           &::after {
             transform: scaleX(1);
           }
@@ -98,6 +98,9 @@
         .link {
           color: lighten($color: $color-darkGrey, $amount: 20);
           &:hover {
+            color: lighten($color: $color-darkGrey, $amount: 0);
+          }
+          &.isActive {
             color: lighten($color: $color-darkGrey, $amount: 0);
           }
           &::after {

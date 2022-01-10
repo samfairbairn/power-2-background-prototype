@@ -78,7 +78,7 @@ function Composition({context}) {
     properties.current.positionTL.pause();
 
     properties.current.scaleTL = new TimelineLite();
-    properties.current.scaleTL.to(properties.current, {scale: 0.75, duration: 1, ease: Power1.easeInOut});
+    properties.current.scaleTL.to(properties.current, {scale: 0.6, duration: 1, ease: Power1.easeInOut});
     properties.current.scaleTL.pause();
 
     properties.current.rotationTL = new TimelineLite();
@@ -131,7 +131,7 @@ function Composition({context}) {
       setNumberOfRows(_noOfRows);
 
       if (_noOfRows === 1) properties.current.scaleFactor = 1
-      if (_noOfRows === 2) properties.current.scaleFactor = 2.3
+      if (_noOfRows === 2) properties.current.scaleFactor = 2.5
       if (_noOfRows === 3) properties.current.scaleFactor = 3.6
     }
 
@@ -145,7 +145,7 @@ function Composition({context}) {
     // setCurrentScale(properties.current.scale)
 
     // camera z position 
-    properties.current.positionTL.seek(fullRange * properties.current.positionTL.duration())
+    properties.current.positionTL.seek(positionRange * properties.current.positionTL.duration())
     state.camera.position.z = properties.current.positionZ
 
   })
