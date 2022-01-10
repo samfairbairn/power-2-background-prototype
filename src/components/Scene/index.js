@@ -41,11 +41,13 @@ function Composition({context}) {
 
     properties.current = {
       lookatX: -(width/6),
+      lookatY: height/16,
       positionZ: 20,
       scale: 1,
       rotation: 0.008,
       blocks: 0,
       lookatTL: undefined,
+      lookatTLY: undefined,
       positionTL: undefined,
       rotationTL: undefined,
       blocksTL: undefined,
@@ -59,6 +61,10 @@ function Composition({context}) {
     properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
     properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power0.easeInOut});
     properties.current.lookatTL.pause();
+
+    properties.current.lookatTLY = new TimelineLite();
+    properties.current.lookatTLY.to(properties.current, {lookatY: 0, duration: 1, ease: Power1.easeInOut});
+    properties.current.lookatTLY.pause();
 
     properties.current.positionTL = new TimelineLite();
     properties.current.positionTL.to(properties.current, {positionZ: 25, duration: 2, ease: Power1.easeInOut});
@@ -85,12 +91,14 @@ function Composition({context}) {
     setScrollPos(currentScroll)
 
     // ranges
-    const fullRange = scroll.range(0 / scroll.pages, 4 / scroll.pages)
+    const fullRange = scroll.range(0 / scroll.pages, 4.5 / scroll.pages)
     const positionRange = scroll.range(0 / scroll.pages, 3 / scroll.pages)
+    const yRange = scroll.range(0 / scroll.pages, 1 / scroll.pages)
 
     // horizontal position
     properties.current.lookatTL.seek(fullRange * properties.current.lookatTL.duration())
-    state.camera.lookAt(properties.current.lookatX, 0, 0)
+    if (yRange < 1) properties.current.lookatTLY.seek(yRange * properties.current.lookatTLY.duration())
+    state.camera.lookAt(properties.current.lookatX, properties.current.lookatY, 0)
     
     // rotation speed
     properties.current.rotationTL.seek(fullRange)
