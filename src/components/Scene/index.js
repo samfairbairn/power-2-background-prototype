@@ -66,7 +66,7 @@ function Composition({context}) {
     properties.current.positionTL.pause();
 
     properties.current.scaleTL = new TimelineLite();
-    properties.current.scaleTL.to(properties.current, {scale: 0.5, duration: 1, ease: Power1.easeInOut});
+    properties.current.scaleTL.to(properties.current, {scale: 0.75, duration: 1, ease: Power1.easeInOut});
     properties.current.scaleTL.pause();
 
     properties.current.rotationTL = new TimelineLite();
@@ -74,7 +74,8 @@ function Composition({context}) {
     properties.current.rotationTL.pause();
 
     properties.current.blocksTL = new TimelineLite();
-    properties.current.blocksTL.to(properties.current, {blocks: 27, duration: 1, ease: Power3.easeIn});
+    // properties.current.blocksTL.to(properties.current, {blocks: 27, duration: 1, ease: Power3.easeIn});
+    properties.current.blocksTL.to(properties.current, {blocks: 7, duration: 1, ease: Power3.easeIn});
     properties.current.blocksTL.pause();
   }, [])
 
