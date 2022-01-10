@@ -33,6 +33,8 @@ function Composition({context}) {
   const [currentScaleFactor, setCurrentScaleFactor] = useState(1)
   const [currentScale, setCurrentScale] = useState(1)
 
+  const [showShape, setShowShape] = useState(true)
+
   const properties = useRef()
 
   useState(() => {
@@ -109,6 +111,12 @@ function Composition({context}) {
     }
 
     state.camera.lookAt(properties.current.lookatX, properties.current.lookatY, 0)
+
+    if (yRange2 >= 1 && showShape) {
+      setShowShape(false);
+    } else if (yRange2 < 1 && !showShape) {
+      setShowShape(true);
+    }
     
     // rotation speed
     properties.current.rotationTL.seek(fullRange)
@@ -142,6 +150,8 @@ function Composition({context}) {
     state.camera.position.z = properties.current.positionZ
 
   })
+
+  if (!showShape) return null
 
   return (
     <>
