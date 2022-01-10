@@ -121,7 +121,7 @@ function Composition({context}) {
     properties.current.rotationTL.seek(fullRange)
     
     // set number of blocks
-    const blocksRange = scroll.range(2 / scroll.pages, 1.5 / scroll.pages)
+    const blocksRange = scroll.range(1.5 / scroll.pages, 1.5 / scroll.pages)
     properties.current.blocksTL.seek(blocksRange)
     const _blocks = MathUtils.clamp(Math.floor(properties.current.blocks) + 1, 1, 27)
     
