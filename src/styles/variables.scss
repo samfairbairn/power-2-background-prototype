@@ -5,12 +5,14 @@ $typeface: 'Brandon Grotesque', sans-serif;
 
 $text-size-xl: 68px;
 $text-size-l: 52px;
+$text-size-ml: 30px;
 $text-size-m: 22px;
 $text-size-s: 16px;
 
 $color-white: #ffffff;
 $color-black: #000000;
 $color-darkGrey: #333333;
+$color-pink: #ff87b5;
 
 $color-background: $color-black;
 
@@ -18,6 +20,13 @@ $spacing-xl: 60px;
 $spacing-l: 40px;
 $spacing-m: 20px;
 $spacing-s: 10px;
+
+$layer-0: 0;
+$layer-1: 100;
+$layer-2: 200;
+$layer-3: 200;
+$layer-9: 999;
+
 
 $easeInOutCubic: cubic-bezier(0.65, 0, 0.35, 1);
 $easeOutCubic: cubic-bezier(0.33, 1, 0.68, 1);

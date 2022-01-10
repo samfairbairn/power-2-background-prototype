@@ -11,13 +11,9 @@ const Screen1 = () => {
       <div className={classNames(styles.content, webFontsLoaded && styles.show)}>
         <h1>
           <span className={styles.titleLine}>Dual No Loss Lottos</span><br />
-          <span className={styles.titleLine}>Double Luck</span><br />
-          <span className={styles.titleLine}>Win Twice</span>
-        </h1>
-        <h1>
-          <span className={styles.titleLine2}>Simple Play</span><br />
-          <span className={styles.titleLine2}>You can only Win</span><br />
-          <span className={styles.titleLine2}>Never Lose</span>
+          <span className={styles.titleLine}>One Click to Play</span><br />
+          <span className={styles.titleLine}>Win 1 + 1 Prizes</span><br />
+          <span className={styles.titleLine}>Free for n times</span>
         </h1>
       </div>
     </div>

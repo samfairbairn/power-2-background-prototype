@@ -37,24 +37,22 @@ const Screen2 = () => {
 
       <div ref={titleRef} className={styles.right}>
         <h2>
-          POWER2:<br/>
+          What's POWER2?
+        </h2>
+        <h2>
           Always Free Draw<br />
           for Dual Lotos<br />
           With Double Luck
         </h2>
 
         <p>
-          Dual-Lotto, Double Luck, Win Twice<br/>
-          because TWO is better than ONE.
+          Because TWO is better than ONE, with each weekly draw,<br/>
+          two no-loss FREE lottos will be generatedto enable double luck<br/>
+          experience. You have TWO chances to win:
         </p>
+        <p>1: Crypto currency including bitcoin!</p>
+        <p>Plus 1: Valuable NFTs including popular NFTs, and famous artist collaboration POWER2 iNFT which have additional utilities.</p>
 
-        <p>
-          For each round, two no-loss free lottos will be generated to enable double luck experience. One draw for two prizes. One for crypto currecny, another one for the airdrop BOOSTER, which plays a critical role in enabling the game to be fun, and most importantly, to give you more chances to get rich.
-        </p>
-
-        {/* <p>
-          POWER2 is the easiest and most enjoyable way to get rich on the Solana blockchain by using human-centered and gamification design.
-        </p> */}
       </div>
     </div>
   )

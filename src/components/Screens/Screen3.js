@@ -33,30 +33,18 @@ const Screen3 = () => {
 
   return (
     <div className={styles.screen} style={{top: `200vh`}}>
-      <div ref={titleRef} className={styles.left}>
-        {/* <h2>
-          Thanks to the <br />
-          magic of defi! <br />
-          It is no loss! <br />
-          You can only win,<br />
-          Never lose!
-        </h2> */}
-
-        <h2>
-          Never lose!<br />
-          Thanks to the <br />
-          magic of defi.
-        </h2>
-
-        <p>
-          It all starts from a block on the chain.
-        </p>
-
-        <p>
-          When a deposit is made into POWER2 that deposit is automatically routed to other decentralized fincance protocols to begin earning interest, and the deposits can be withdrawn at any time with no fee! The deposits help create the prize fund but is never taken from you. You play for no losses!
-        </p>
-      </div>
-      <div className={styles.right}>
+      <div ref={titleRef} className={styles.center}>
+        <span className={styles.xlTitle}>
+          ( <span style={{fontWeight: 'bold'}}><span className={styles.gradient1}>1</span> + <span className={styles.gradient2}>1</span></span> )<sup className={styles.super}>n</sup>
+        </span>
+        <h1>
+          1 + 1 Magic boxes<br/>
+          With big prize
+        </h1>
+        <h3>
+          Free for you to open, week after week.<br/>
+          The more you play, the higher power of 2.
+        </h3>
       </div>
     </div>
   )

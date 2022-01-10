@@ -1,3 +1,4 @@
+
 @mixin type-title-l {
   font-size: $text-size-xl;
   line-height: 1.1em;
@@ -14,6 +15,17 @@
   line-height: 1.1em;
   margin: 0 0 $spacing-l 0;
   letter-spacing: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: color $transition-fast ease-in-out;
+  will-change: color;
+}
+
+@mixin type-title-s {
+  font-size: $text-size-ml;
+  line-height: 1.8em;
+  margin: 0 0 $spacing-l 0;
+  letter-spacing: 1px;
   font-weight: bold;
   text-transform: uppercase;
   transition: color $transition-fast ease-in-out;

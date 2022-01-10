@@ -30,20 +30,20 @@
   opacity: 0;
   transform: translate3d(0, -20px, 0);
   
-  @for $i from 1 through 6 {
+  @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
       transition: opacity 1s $easeInOutCubic #{$i * .05}s, transform 1s $easeOutCubic #{$i * .05}s;
     }
   }
 }
 
-.titleLine2 {
-  @for $i from 1 through 6 {
-    &:nth-child(#{$i}) {
-      transition: opacity 1s $easeInOutCubic #{($i * .05) + 0.25}s, transform 1s $easeOutCubic #{($i * .05) + 0.25}s;
-    }
-  }
-}
+// .titleLine2 {
+//   @for $i from 1 through 6 {
+//     &:nth-child(#{$i}) {
+//       transition: opacity 1s $easeInOutCubic #{($i * .05) + 0.25}s, transform 1s $easeOutCubic #{($i * .05) + 0.25}s;
+//     }
+//   }
+// }
 
 .show {
   .titleLine,

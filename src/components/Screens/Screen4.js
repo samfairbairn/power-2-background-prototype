@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { MathUtils } from 'three';
 import { useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import classNames from 'classnames';
 import styles from './screen.module.scss';
 
 const Screen4 = () => {
@@ -32,21 +33,30 @@ const Screen4 = () => {
   }, [])
 
   return (
-    <div className={styles.screen} style={{top: `300vh`}}>
+    <div className={styles.screen} style={{top: `300vh`, alignItems: 'flex-start', paddingTop: '10vh'}}>
       <div className={styles.left}></div>
 
-      <div ref={titleRef} className={styles.right}>
+      <span className={classNames([styles.big1, styles.gradient1])} >1</span>
+
+      <div ref={titleRef} className={styles.right} style={{paddingLeft: '10vw'}}>
         <h2>
-          High winning odds!<br/>
-          Because you have<br />
-          double luck!
+          Win a bitcoin?<br />
+          Or other crypto-
+          currency with <br/>
+          high winning odds!
         </h2>
 
         <p>
-          Because everyone wants to feel lucky<br/>
-          POWER2 gives you double luck<br/>
-          Have fun with frequent small prizes,<br/>
-          while waiting for the big prize.
+          In the weekly Lotto 1, the more people join<br />
+          the larger the cube grows, the bigger the prize! 
+        </p>
+
+        <p>
+          Game your odds, the more you deposit the higher your chances to win. The winning odds formula is immutably written into the smart contract for anyone to review.
+        </p>
+
+        <p>
+          Have fun with frequent small prizes while waiting for the big prize!
         </p>
 
       </div>

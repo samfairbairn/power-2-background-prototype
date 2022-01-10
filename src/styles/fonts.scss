@@ -90,15 +90,15 @@ $font-path: "../assets/fonts" !default;
 ** Light
 */
 
-// @font-face {
-//   font-family: 'Brandon Grotesque';
-//   src: url('#{$font-path}/BrandonGrotesque-Light.woff2') format('woff2'),
-//       url('#{$font-path}/BrandonGrotesque-Light.woff') format('woff'),
-//       url('#{$font-path}/BrandonGrotesque-Light.ttf') format('truetype');
-//   font-weight: 300;
-//   font-style: normal;
-//   font-display: swap;
-// }
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-path}/BrandonGrotesque-Light.woff2') format('woff2'),
+      url('#{$font-path}/BrandonGrotesque-Light.woff') format('woff'),
+      url('#{$font-path}/BrandonGrotesque-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 
 // @font-face {
 //   font-family: 'Brandon Grotesque';

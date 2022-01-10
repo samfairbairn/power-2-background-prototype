@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { MathUtils } from 'three';
 import { useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import classNames from 'classnames';
 import styles from './screen.module.scss';
 
 const Screen5 = () => {
@@ -32,10 +33,11 @@ const Screen5 = () => {
   }, [])
 
   return (
-    <div className={styles.screen} style={{top: `400vh`}}>
-      <div className={styles.left}></div>
+    <div className={styles.screen} style={{top: `450vh`, alignItems: 'flex-start', paddingTop: '10vh'}}>
 
-      <div ref={titleRef} className={styles.right}>
+      <span className={classNames([styles.big1, styles.gradient2])} >1</span>
+
+      <div ref={titleRef} className={styles.left}>
         <h2>
           Power of 2<br />
           fun cubic game
@@ -62,6 +64,9 @@ const Screen5 = () => {
           Are you ready for the various transformative cubic games?
         </p>
       </div>
+      
+      <div className={styles.right}></div>
+      
     </div>
   )
 };

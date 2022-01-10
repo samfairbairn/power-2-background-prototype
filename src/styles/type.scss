@@ -10,6 +10,10 @@ h2 {
   @include type-title-m;
 }
 
+h3 {
+  @include type-title-s;
+}
+
 p {
   @include type-body;
 }
@@ -18,12 +22,12 @@ a {
   @include type-link;
 }
 
-h1, h2, h3, h4, p, a, li {
+h1, h2, h3, h4, p, a, li, span {
   color: $color-white;
 }
 
 .is-light-mode {
-  h1, h2, h3, h4, p, a, li {
+  h1, h2, h3, h4, p, a, li, span {
     color: $color-darkGrey;
   }
 }
