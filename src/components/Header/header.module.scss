@@ -27,7 +27,7 @@
   
   &.goingDown {
     position: fixed;
-    transition: transform $transition-normal $easeOutCubic;
+    transition: background-color $transition-normal $easeOutCubic, transform $transition-normal $easeOutCubic;
     background-color: rgba($color-black, 0.8);
     &.lightMode {
       background-color: rgba($color-white, 0.9);
@@ -36,7 +36,7 @@
   
   &.goingUp {
     position: fixed;
-    transition: transform $transition-normal $easeOutCubic;
+    transition: background-color $transition-normal $easeOutCubic, transform $transition-normal $easeOutCubic;
     background-color: rgba($color-black, 0.8);
     &.lightMode {
       background-color: rgba($color-white, 0.9);
