@@ -41,7 +41,7 @@ function Menu() {
   return (
     <div className={styles.menu}>
       <ul className={styles.links}>
-        <li className={classNames([styles.link, activeIndex === 1 && styles.isActive])} onClick={() => { triggerScroll(0.75) }}>Prize 1 + Prize 2</li>
+        <li className={classNames([styles.link, activeIndex === 1 && styles.isActive])} onClick={() => { triggerScroll(2/(scroll.pages-1)) }}>Prize 1 + Prize 2</li>
         <li className={styles.link}>Roadmap</li>
         <li className={styles.link}>Whitepaper</li>
       </ul>
