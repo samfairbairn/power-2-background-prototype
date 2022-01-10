@@ -107,7 +107,6 @@ function Composition({context}) {
     if (yRange < 1) properties.current.lookatTLY.seek(yRange * properties.current.lookatTLY.duration())
     if (yRange2 < 1) {
       properties.current.lookatTLY2.seek(yRange2 * properties.current.lookatTLY2.duration())
-      // properties.current.scaleTL2.seek(yRange2 * properties.current.scaleTL2.duration())
     }
 
     state.camera.lookAt(properties.current.lookatX, properties.current.lookatY, 0)
@@ -206,7 +205,7 @@ function Scene() {
     <div className={styles.scene + ` ${lightMode ? 'is-light-mode' : ''}`}>
       {/* <Leva collapsed={false} /> */}
       <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 20], near: 1, far: 150 }}>
-        <ScrollControls damping={10} pages={5} >
+        <ScrollControls damping={10} pages={6.5} >
           <Composition context={context} />
           <Screens />
         </ScrollControls>
