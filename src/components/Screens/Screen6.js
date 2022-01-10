@@ -4,6 +4,8 @@ import { useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import styles from './screen.module.scss';
 
+import {ReactComponent as CycleImage} from '../../assets/cycle.svg'
+
 const Screen6 = () => {
 
   const scroll = useScroll()
@@ -32,9 +34,9 @@ const Screen6 = () => {
   }, [])
 
   return (
-    <div className={styles.screen} style={{top: `550vh`}}>
+    <div className={styles.screen} style={{top: `550vh`, height: '150vh', flexDirection: "column"}}>
 
-      <div ref={titleRef} className={styles.center}>
+      <div ref={titleRef} className={styles.center} style={{height: '75vh'}}>
         <h2>
           Why HODL POWER2 token & iNFT
         </h2>
@@ -49,6 +51,10 @@ const Screen6 = () => {
           So remember, always have diamond hands, and you will not be disappointed.
         </p>
 
+      </div>
+
+      <div className={styles.virtuousCycle}>
+        <CycleImage />
       </div>
       
     </div>

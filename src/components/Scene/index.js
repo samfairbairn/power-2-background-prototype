@@ -59,7 +59,7 @@ function Composition({context}) {
 
     properties.current.lookatTL = new TimelineLite();
     properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
-    properties.current.lookatTL.to(properties.current, {lookatX: -width/4, duration: 1, ease: Power1.easeInOut});
+    properties.current.lookatTL.to(properties.current, {lookatX: -width/6, duration: 1, ease: Power1.easeInOut});
     properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
     properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power0.easeInOut});
     properties.current.lookatTL.pause();
@@ -205,7 +205,7 @@ function Scene() {
     <div className={styles.scene + ` ${lightMode ? 'is-light-mode' : ''}`}>
       {/* <Leva collapsed={false} /> */}
       <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 20], near: 1, far: 150 }}>
-        <ScrollControls damping={10} pages={6.5} >
+        <ScrollControls damping={10} pages={7} >
           <Composition context={context} />
           <Screens context={context} />
         </ScrollControls>
