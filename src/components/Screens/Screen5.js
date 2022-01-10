@@ -39,30 +39,26 @@ const Screen5 = () => {
 
       <div ref={titleRef} className={styles.content}>
         <h2>
-          Power of 2<br />
-          fun cubic game
+          Yes! One More!
+        </h2>
+        <h2>
+          Collectible NFTs?<br />
+          Power2 iNFTs?<br/>
+          t could be anything!
         </h2>
 
         <p>
-          Each deposit has weekly dual lottos:<br/>
-          POWER2 Cube Lotto 1 + Magic Cube Lotto 2.<br />
-          And you can keep auto-joining the dual-lottos game.
+          For the weekly Lotto 2, anything is possible.
         </p>
 
         <p>
-          In the POWER2 Cube Lotto 1,<br />
-          the more you play, there's more power of 2.<br />
-          The more people join, the larger the cube, the bigger the prize.
+          It contains a valuable prize which could be anything from desirable NFTs like Degen Ape, BAYC, or CryptoPunk, or could see the release of new collections. The possibilities are limited only by your imagination as they will be decided by the community.
         </p>
 
         <p>
-          As for the Magic Cube Lotto 2,<br />
-          everything is possible.
+        Moreover, we will be collaborating with well-known artists to create POWER2 iNFT collections that earn governance tokens weekly and even more benefits. Click to check our valuable and intelligent iNFTs for you.
         </p>
 
-        <p>
-          Are you ready for the various transformative cubic games?
-        </p>
       </div>
       
       <div className={styles.right}></div>
