@@ -12,30 +12,6 @@ import { AppContext } from "../../context/appContext";
 import { TimelineLite, Power0, Power1, Power3 } from "gsap/all"; 
 import Grid from "./Grid"
 
-// moving light
-
-function Light() {
-  const ref = useRef()
-  // const positions = useMemo(() => [...new Array(number)].map(() => [3 - Math.random() * 6, Math.random() * 4, 3 - Math.random() * 6]), [])
-  let radius = 2
-  useFrame((state) => {
-    ref.current.position.y = Math.sin(state.clock.getElapsedTime() / 2) * Math.PI * radius
-    ref.current.position.x = Math.cos(state.clock.getElapsedTime() / 2) * Math.PI * radius
-    ref.current.position.z = Math.sin(state.clock.getElapsedTime() / 2) * Math.PI * radius
-  })
-  return (
-    <pointLight
-      ref={ref}
-      position={[0, 0, 0]}
-      intensity={15}
-      shadow-radius={10}
-      castShadow={false}
-      shadow-mapSize-width={4096}
-      shadow-mapSize-height={4096}
-      />
-  )
-}
-
 // fog
 
 function Fog() {
@@ -108,8 +84,8 @@ function Composition({context}) {
     setScrollPos(currentScroll)
 
     // ranges
-    const fullRange = scroll.range(0 / 10, 10 / 10)
-    const positionRange = scroll.range(0 / 10, 8 / 10)
+    const fullRange = scroll.range(0 / scroll.pages, 4 / scroll.pages)
+    const positionRange = scroll.range(0 / scroll.pages, 3 / scroll.pages)
 
     // horizontal position
     properties.current.lookatTL.seek(fullRange * properties.current.lookatTL.duration())
@@ -119,7 +95,7 @@ function Composition({context}) {
     properties.current.rotationTL.seek(fullRange)
     
     // set number of blocks
-    const blocksRange = scroll.range(7 / 10, 3 / 10)
+    const blocksRange = scroll.range(2 / scroll.pages, 1.5 / scroll.pages)
     properties.current.blocksTL.seek(blocksRange)
     const _blocks = MathUtils.clamp(Math.floor(properties.current.blocks) + 1, 1, 27)
     
@@ -151,22 +127,19 @@ function Composition({context}) {
   return (
     <>
         
-      <Fog />
+      { !lightMode && (<Fog />) }
 
       <ambientLight intensity={1} />
 
       { lightMode && (
-        <>
-          <pointLight
-            position={[0, 10, 20]}
-            intensity={30}
-            castShadow={true}
-            shadow-radius={10} 
-            shadow-mapSize-width={4096}
-            shadow-mapSize-height={4096}
-          />
-          {/* <Light /> */}
-        </>
+        <pointLight
+          position={[0, 10, 20]}
+          intensity={12}
+          castShadow={true}
+          shadow-radius={1} 
+          shadow-mapSize-width={4096}
+          shadow-mapSize-height={4096}
+        />
       )}
       
       <Suspense fallback={null}>
@@ -180,11 +153,11 @@ function Composition({context}) {
           />
       </Suspense>
 
-      { lightMode && (
+      {/* { lightMode && (
         <EffectComposer multisampling={0}>
           <SSAO samples={50} radius={10} intensity={50} luminanceInfluence={0.4} />
         </EffectComposer>
-      )}
+      )} */}
     </>
   )
 }
