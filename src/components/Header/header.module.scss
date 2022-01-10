@@ -12,7 +12,7 @@
   background-color: rgba($color-black, 0);
   transition: background-color $transition-normal ease-in-out;
   will-change: transform;
-  z-index: 999;
+  z-index: $layer-9;
   
   .logo {
     height: 35px;
