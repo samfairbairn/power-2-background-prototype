@@ -16,7 +16,7 @@
   
   .logo {
     height: 35px;
-    margin-left: 2px;
+    margin-left: 5px;
   }
   
   &.inTop {
@@ -111,22 +111,22 @@
   .darkmodeSwitch {
     position: relative;
     display: inline-block;
-    width: 50px;
-    height: 24px;
+    width: 42px;
+    height: 20px;
     border: 1px solid darken($color: $color-white, $amount: 40);
-    border-radius: 12px;
+    border-radius: 10px;
     cursor: pointer;
     transition: border $transition-fast ease-in-out;
     will-change: border;
-    margin-left: $spacing-xl;
+    margin-left: 30px;
 
     .knob {
       position: absolute;
       display: inline-block;
-      width: 18px;
-      height: 18px;
+      width: 14px;
+      height: 14px;
       background-color: darken($color: $color-white, $amount: 40);
-      border-radius: 9px;
+      border-radius: 7px;
       top: 2px;
       left: 2px;
       transition: background-color $transition-fast ease-in-out, transform $transition-normal $easeInOutCubic;
@@ -155,11 +155,11 @@
       }
 
       &.moon {
-        right: 8px;
+        right: 6px;
         transform: translate3d(0, 0, 0);
-        width: 10px;
-        height: 10px;
-        top: 6px;
+        width: 8px;
+        height: 8px;
+        top: 5px;
         svg {
           path {
             fill: darken($color: $color-white, $amount: 40)
@@ -168,10 +168,10 @@
       }
       
       &.sun {
-        left: 7px;
-        width: 12px;
-        height: 12px;
-        top: 5px;
+        left: 2px;
+        width: 20px;
+        height: 20px;
+        top: -1px;
         opacity: 0;
         transform: translate3d(5px, 0, 0);
         svg {
@@ -188,7 +188,7 @@
       border: 1px solid color lighten($color: $color-darkGrey, $amount: 20);
       .knob {
         background-color: lighten($color: $color-darkGrey, $amount: 20);
-        transform: translate3d(26px, 0, 0)
+        transform: translate3d(22px, 0, 0)
       }
       &:hover {
         .knob {
