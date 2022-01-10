@@ -66,6 +66,10 @@ function Composition({context}) {
     properties.current.lookatTLY.to(properties.current, {lookatY: 0, duration: 1, ease: Power1.easeInOut});
     properties.current.lookatTLY.pause();
 
+    properties.current.lookatTLY2 = new TimelineLite();
+    properties.current.lookatTLY2.to(properties.current, {lookatY: -(height*2), duration: 1, ease: Power1.easeInOut});
+    properties.current.lookatTLY2.pause();
+
     properties.current.positionTL = new TimelineLite();
     properties.current.positionTL.to(properties.current, {positionZ: 25, duration: 2, ease: Power1.easeInOut});
     properties.current.positionTL.to(properties.current, {positionZ: 20, duration: 1, ease: Power1.easeInOut});
@@ -94,10 +98,16 @@ function Composition({context}) {
     const fullRange = scroll.range(0 / scroll.pages, 4.5 / scroll.pages)
     const positionRange = scroll.range(0 / scroll.pages, 3 / scroll.pages)
     const yRange = scroll.range(0 / scroll.pages, 1 / scroll.pages)
+    const yRange2 = scroll.range(3.5 / scroll.pages, 2 / scroll.pages)
 
     // horizontal position
     properties.current.lookatTL.seek(fullRange * properties.current.lookatTL.duration())
     if (yRange < 1) properties.current.lookatTLY.seek(yRange * properties.current.lookatTLY.duration())
+    if (yRange2 < 1) {
+      properties.current.lookatTLY2.seek(yRange2 * properties.current.lookatTLY2.duration())
+      // properties.current.scaleTL2.seek(yRange2 * properties.current.scaleTL2.duration())
+    }
+
     state.camera.lookAt(properties.current.lookatX, properties.current.lookatY, 0)
     
     // rotation speed
