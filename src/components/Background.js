@@ -76,10 +76,12 @@ window.toggleLightMode = () => {
         config.SHADING = false
         config.PRESSURE_ITERATIONS = 5
         config.BACK_TARGET = 255
+        config.DYE_RESOLUTION = 256
     } else {
         config.SHADING = true
         config.PRESSURE_ITERATIONS = 10
         config.BACK_TARGET =  0
+        config.DYE_RESOLUTION = 512
     }
 }
 
