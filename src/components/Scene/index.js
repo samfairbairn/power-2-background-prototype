@@ -42,7 +42,7 @@ function Composition({context}) {
     setScroll({pages: scroll.pages, el: scroll.el})
 
     properties.current = {
-      lookatX: -(width/5),
+      lookatX: -(width/6),
       lookatY: height/16,
       positionZ: 7,
       scale: 1,
