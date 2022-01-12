@@ -1,4 +1,3 @@
-import { Scroll } from '@react-three/drei'
 import classNames from 'classnames'
 import Screen1 from './Screen1'
 import Screen2 from './Screen2'

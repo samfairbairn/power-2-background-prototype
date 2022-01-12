@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState, useContext } from 'react';
 import { MathUtils } from 'three';
-import { useScroll } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
 import classNames from 'classnames';
 import styles from './screen.module.scss';
 import { AppContext } from "../../context/appContext";
 
 const Screen2 = () => {
 
-  // const scroll = useScroll()
   const [isVisible, setVisible] = useState(true)
   const yPos = useRef(0)
   const offset = useRef(0)
@@ -28,11 +25,10 @@ const Screen2 = () => {
     offset.current = MathUtils.lerp(offset.current, isVisible ? 0 : window.innerHeight * 0.2, 0.05)
     titleRef.current.style.transform = `translate3d(0, ${offset.current}px, 0)`
     titleRef.current.style.opacity = MathUtils.lerp(titleRef.current.style.opacity, isVisible ? 1 : 0, 0.05)
-  }, [scrollPos])
+  }, [scrollPos, isVisible])
 
   useEffect(() => {
     yPos.current = titleRef.current.getBoundingClientRect().y - window.innerHeight + (window.innerHeight * 0.3)
-    console.log(yPos.current)
   }, [])
 
   return (

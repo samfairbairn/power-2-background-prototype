@@ -264,6 +264,8 @@ function Scene() {
       // setScroll(_scroll)
     })
     tick()
+    
+    // eslint-disable-next-line
   }, [])
 
   return (
