@@ -69,7 +69,7 @@ function Composition({context}) {
     properties.current.lookatTLY.pause();
 
     properties.current.lookatTLY2 = new TimelineLite();
-    properties.current.lookatTLY2.to(properties.current, {lookatY: -(height*2), duration: 1, ease: Power1.easeInOut});
+    properties.current.lookatTLY2.to(properties.current, {lookatY: -(height*3), duration: 1, ease: Power1.easeInOut});
     properties.current.lookatTLY2.pause();
 
     properties.current.positionTL = new TimelineLite();
@@ -100,7 +100,7 @@ function Composition({context}) {
     const fullRange = scroll.range(0 / scroll.pages, 4.5 / scroll.pages)
     const positionRange = scroll.range(0 / scroll.pages, 3 / scroll.pages)
     const yRange = scroll.range(0 / scroll.pages, 1 / scroll.pages)
-    const yRange2 = scroll.range(3.5 / scroll.pages, 2 / scroll.pages)
+    const yRange2 = scroll.range(2.8 / scroll.pages, 4 / scroll.pages)
 
     // horizontal position
     properties.current.lookatTL.seek(fullRange * properties.current.lookatTL.duration())
@@ -111,9 +111,11 @@ function Composition({context}) {
 
     state.camera.lookAt(properties.current.lookatX, properties.current.lookatY, 0)
 
-    if (yRange2 >= 1 && showShape) {
+    console.log(yRange2)
+
+    if (yRange2 >= 0.5 && showShape) {
       setShowShape(false);
-    } else if (yRange2 < 1 && !showShape) {
+    } else if (yRange2 < 0.5 && !showShape) {
       setShowShape(true);
     }
     
