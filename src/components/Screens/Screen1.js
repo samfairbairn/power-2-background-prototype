@@ -4,7 +4,7 @@ import useFontFaceObserver from 'use-font-face-observer'
 
 const Screen1 = () => {
   
-  const webFontsLoaded = useFontFaceObserver([{family: `Brandon Grotesque`}]);
+  const webFontsLoaded = useFontFaceObserver([{family: `Brandon Grotesque`, weight: `bold`,}]);
 
   return (
     <div className={styles.screen} style={{top: `0vh`}}>

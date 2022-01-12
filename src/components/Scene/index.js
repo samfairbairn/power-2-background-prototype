@@ -111,8 +111,6 @@ function Composition({context}) {
 
     state.camera.lookAt(properties.current.lookatX, properties.current.lookatY, 0)
 
-    console.log(yRange2)
-
     if (yRange2 >= 0.5 && showShape) {
       setShowShape(false);
     } else if (yRange2 < 0.5 && !showShape) {
