@@ -4,7 +4,7 @@ import React, { useEffect, useRef, Suspense, useState, useContext } from 'react'
 import styles from './style.module.scss';
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Color, MathUtils } from 'three';
-import { ScrollControls, useScroll } from '@react-three/drei'
+import { ScrollControls, useScroll, ScrollContainer } from '@react-three/drei'
 import { EffectComposer, SSAO } from '@react-three/postprocessing'
 import { Leva, useControls } from 'leva'
 import Screens from '../Screens'
@@ -20,11 +20,11 @@ function Fog() {
 
 // main composition
 
-function Composition({context}) {
+function Composition({context, scroll}) {
 
   const { lightMode, setScrollPos, setScroll } = context;
 
-  const scroll = useScroll()
+  // const scroll = useScroll()
 
   const { width, height } = useThree((state) => state.viewport)
   const [numberOfShapes, setNumberOfShapes] = useState(1)
@@ -39,7 +39,7 @@ function Composition({context}) {
 
   useState(() => {
 
-    setScroll({pages: scroll.pages, el: scroll.el})
+    // setScroll({pages: scroll.pages, el: scroll.el})
 
     properties.current = {
       lookatX: -(width/6),
@@ -91,16 +91,32 @@ function Composition({context}) {
     properties.current.blocksTL.pause();
   }, [])
 
+  const range = (start, diff) => {
+    // scroll
+    // const diff = end - start
+    const progress = scroll - start
+    return MathUtils.clamp(progress / diff, 0, 1);
+  }
+
   useFrame((state, delta) => {
 
-    const currentScroll = (scroll.pages - 1) * scroll.offset * window.innerHeight;
-    setScrollPos(currentScroll)
+    // const currentScroll = (scroll.pages - 1) * scroll.offset * window.innerHeight;
+    // setScrollPos(currentScroll)
 
     // ranges
-    const fullRange = scroll.range(0 / scroll.pages, 4.5 / scroll.pages)
-    const positionRange = scroll.range(0 / scroll.pages, 3 / scroll.pages)
-    const yRange = scroll.range(0 / scroll.pages, 1 / scroll.pages)
-    const yRange2 = scroll.range(3.5 / scroll.pages, 2 / scroll.pages)
+    // const fullRange = scroll.range(0 / scroll.pages, 4.5 / scroll.pages)
+    // const positionRange = scroll.range(0 / scroll.pages, 3 / scroll.pages)
+    // const yRange = scroll.range(0 / scroll.pages, 1 / scroll.pages)
+    // const yRange2 = scroll.range(3.5 / scroll.pages, 2 / scroll.pages)
+
+    const fullRange = range(0 / 7, 4.5 / 7)
+    const positionRange = range(0 / 7, 3 / 7)
+    const yRange = range(0 / 7, 1 / 7)
+    const yRange2 = range(3.5 / 7, 2 / 7)
+    // const fullRange = scroll
+    // const positionRange = scroll
+    // const yRange = scroll
+    // const yRange2 = scroll
 
     // horizontal position
     properties.current.lookatTL.seek(fullRange * properties.current.lookatTL.duration())
@@ -121,7 +137,7 @@ function Composition({context}) {
     properties.current.rotationTL.seek(fullRange)
     
     // set number of blocks
-    const blocksRange = scroll.range(1.75 / scroll.pages, 1.5 / scroll.pages)
+    const blocksRange = range(1.75 / 7, 1.5 / 7)
     properties.current.blocksTL.seek(blocksRange)
     const _blocks = MathUtils.clamp(Math.floor(properties.current.blocks) + 1, 1, 27)
     
@@ -178,6 +194,7 @@ function Composition({context}) {
           scaleFactor={currentScaleFactor}
           scale={currentScale}
           lightMode={lightMode}
+          scroll={scroll}
           />
       </Suspense>
 
@@ -193,7 +210,7 @@ function Composition({context}) {
 function Scene() {
 
   const context = useContext(AppContext);
-  const { lightMode, setLightMode } = context
+  const { lightMode, setLightMode, setScrollPos } = context
 
   // const { _lightMode } = useControls({ _lightMode: false })
 
@@ -201,15 +218,67 @@ function Scene() {
     if (lightMode !== window._bgConfig.LIGHTMODE) window.toggleLightMode()
   }, [lightMode])
 
+  const delta = useRef(0)
+  const lastTick = useRef(0)
+  const targetScroll = useRef(0)
+  const realScroll = useRef(0)
+  const [scroll, setScroll] = useState(0);
+
+  const tick = () => {
+    const now = Date.now()
+    const _delta = now - lastTick.current;
+    // lastTick.current = now;
+    if (_delta > 1000/60) {
+      delta.current = _delta;
+      lastTick.current = now;
+      render()
+    }
+    window.requestAnimationFrame(tick)
+  }
+
+  const render = () => {
+    // setScroll(MathUtils.damp(scroll, targetScroll.current, 0.1, delta.current))
+    // setScroll(MathUtils.lerp(Math.floor(scroll * 1000), Math.floor(targetScroll.current * 1000), 0.0005) / 1000)
+
+    // console.log(scroll)
+    // console.log(targetScroll.current - scroll)
+    if (Math.round(realScroll.current * 10000) !== Math.round(targetScroll.current * 10000)) {
+      realScroll.current = realScroll.current + (targetScroll.current - realScroll.current) * 0.1
+    }
+    // console.log(realScroll.current)
+    // setScroll(scroll + (targetScroll.current - scroll) * 0.5)
+    setScroll(realScroll.current)
+  }
+
+  useEffect(() => {
+    // console.log(targetScroll.current, scroll);
+    setScrollPos(scroll)
+  }, [scroll, setScrollPos])
+
+  useEffect(() => {
+    window.addEventListener('scroll', e => {
+      let _scroll = e.target.scrollingElement.scrollTop / (e.target.scrollingElement.scrollHeight - e.target.scrollingElement.clientHeight)
+      // console.log('scroll', _scroll)
+      // _scroll = MathUtils.clamp(_scroll, 0, 1);
+      targetScroll.current = _scroll
+      // setScroll(_scroll)
+    })
+    tick()
+  }, [])
+
   return (
     <div className={styles.scene + ` ${lightMode ? 'is-light-mode' : ''}`}>
       {/* <Leva collapsed={false} /> */}
-      <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 20], near: 1, far: 150 }}>
-        <ScrollControls damping={10} pages={7} >
-          <Composition context={context} />
-          <Screens context={context} />
-        </ScrollControls>
-      </Canvas>
+      <div style={{ position: 'fixed', top: '0', left: '0', width: '100vw', height: '100vh'}}>
+        <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 20], near: 1, far: 150 }}>
+          {/* <ScrollContainer scroll={scroll}>
+            </ScrollContainer> */}
+          {/* <ScrollControls damping={10} pages={7} > */}
+            <Composition context={context} scroll={scroll} />
+          {/* </ScrollControls> */}
+        </Canvas>
+      </div>
+      <Screens context={context} />
     </div>
   );
 }

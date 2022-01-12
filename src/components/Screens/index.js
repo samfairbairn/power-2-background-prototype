@@ -14,7 +14,7 @@ const Screens = ({context}) => {
   const { lightMode } = context;
 
   return (
-    <Scroll html style={{ width: '100%' }}>
+    <>
       <Screen1 />
       <Screen2 />
       <Screen3 />
@@ -24,7 +24,7 @@ const Screens = ({context}) => {
       </div>
       <Screen5 />
       <Screen6 />
-    </Scroll>
+    </>
   )
 };
 

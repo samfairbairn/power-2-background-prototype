@@ -17,8 +17,8 @@ function Rig({ children }) {
   return <group ref={ref}>{children}</group>
 }
 
-function Grid ({lightMode, rows, shapes, rotationSpeed, scale, scaleFactor}) {
-  const scroll = useScroll()
+function Grid ({lightMode, rows, shapes, rotationSpeed, scale, scaleFactor, scroll}) {
+  // const scroll = useScroll()
 
   const object = useLoader(Rhino3dmLoader, '/assets/3d/POWER2-1_cube_Mesh.3dm', (loader) => {
     // loader.setLibraryPath('https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/')
@@ -46,8 +46,8 @@ function Grid ({lightMode, rows, shapes, rotationSpeed, scale, scaleFactor}) {
 
   useFrame((state, delta) => {
   
-    const r1 = scroll.range(0 / 5, 5 / 5)
-    rotationTL.seek(r1 * rotationTL.duration())
+    // const r1 = scroll.range(0 / 5, 5 / 5)
+    rotationTL.seek(scroll * rotationTL.duration())
     
     updateRotation({x: rotation.x + rotationSpeed, y: rotation.y + rotationSpeed, z: rotation.z + rotationSpeed})
 

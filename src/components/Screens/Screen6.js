@@ -14,24 +14,24 @@ const Screen6 = () => {
   const offset = useRef(0)
   const titleRef = useRef()
   
-  useFrame((state, delta) => {
-    const currentScroll = (scroll.pages - 1) * scroll.offset * window.innerHeight;
+  // useFrame((state, delta) => {
+  //   const currentScroll = (scroll.pages - 1) * scroll.offset * window.innerHeight;
     
-    if (currentScroll > yPos.current && !isVisible) {
-      setVisible(true)
-    } else if (currentScroll < yPos.current && isVisible) {
-      setVisible(false)
-    }
+  //   if (currentScroll > yPos.current && !isVisible) {
+  //     setVisible(true)
+  //   } else if (currentScroll < yPos.current && isVisible) {
+  //     setVisible(false)
+  //   }
 
-    offset.current = MathUtils.lerp(offset.current, isVisible ? 0 : window.innerHeight * 0.2, 0.05)
-    titleRef.current.style.transform = `translate3d(0, ${offset.current}px, 0)`
-    titleRef.current.style.opacity = MathUtils.lerp(titleRef.current.style.opacity, isVisible ? 1 : 0, 0.05)
+  //   offset.current = MathUtils.lerp(offset.current, isVisible ? 0 : window.innerHeight * 0.2, 0.05)
+  //   titleRef.current.style.transform = `translate3d(0, ${offset.current}px, 0)`
+  //   titleRef.current.style.opacity = MathUtils.lerp(titleRef.current.style.opacity, isVisible ? 1 : 0, 0.05)
 
-  })
+  // })
   
-  useEffect(() => {
-    yPos.current = titleRef.current.getBoundingClientRect().y - window.innerHeight + (window.innerHeight * 0.3)
-  }, [])
+  // useEffect(() => {
+  //   yPos.current = titleRef.current.getBoundingClientRect().y - window.innerHeight + (window.innerHeight * 0.3)
+  // }, [])
 
   return (
     <div className={styles.screen} style={{top: `550vh`, height: '150vh', flexDirection: "column"}}>
