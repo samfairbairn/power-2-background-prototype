@@ -3,6 +3,7 @@ import { MathUtils } from 'three';
 import { useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import styles from './screen.module.scss';
+import classNames from 'classnames';
 
 import {ReactComponent as CycleImage} from '../../assets/cycle.svg'
 
@@ -34,29 +35,29 @@ const Screen6 = () => {
   }, [])
 
   return (
-    <div className={styles.screen} style={{top: `500vh`, height: '150vh', flexDirection: "column"}}>
+    <div className={styles.screen} style={{top: `650vh`, height: '100vh', flexDirection: "column", justifyContent: 'center'}}>
 
-      <div ref={titleRef} className={styles.center} style={{height: '75vh'}}>
-        <h2>
-          Why HODL POWER2 token & <span className={styles.specialI}>i</span>NFT?
-        </h2>
-        <h2>
-          They'll grow to the moon, thanks to <br className="desktop-only"/>
-          POWER2 Virtuous Snowball Cycles.
-        </h2>
-
+      <div ref={titleRef} className={classNames([styles.center, styles.row])}>
+        <div className={styles.left}>
+          <h2>
+            OH!
+          </h2>
+          <h2>
+            YOU CAN ONLY WIN, <br />NEVER LOSE!
+          </h2>
+          <h2>
+            THANKS TO THE <br />MAGIC OF DEFI.
+          </h2>
+        </div>
+        <div className={styles.right}>
         <p>
-          The Virtuous Snowball Cycles forms a positive back loop of higher demands,<br className="desktop-only"/>
-          which causes higher POWER2 token and iNFT prices.<br className="desktop-only"/>
-          So remember, always have diamond hands, and you will not be disappointed.
+          When a deposit is made into POWER2 that deposit is automatically routed to other decentralized finance protocols to begin earning interest, it’s this interest that creates the prize fund, but your deposit is never taken from you and you can withdraw at any time with no fee. You play for no losses!
         </p>
-
+        <p>
+          Your deposit enrols you into the weekly dual lottos, the more you deposit the higher chances you have of winning, and you will be automatically enrolled into the next round for free as long as your deposit remains in the vault.
+        </p>
+        </div>
       </div>
-
-      <div className={styles.virtuousCycle}>
-        <CycleImage />
-      </div>
-      
     </div>
   )
 };
