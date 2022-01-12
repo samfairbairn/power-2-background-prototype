@@ -5,8 +5,6 @@ import { useFrame } from '@react-three/fiber'
 import styles from './screen.module.scss';
 import classNames from 'classnames';
 
-import {ReactComponent as CycleImage} from '../../assets/cycle.svg'
-
 const Screen6 = () => {
 
   const scroll = useScroll()
