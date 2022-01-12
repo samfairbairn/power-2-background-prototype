@@ -136,8 +136,9 @@
 
     path {
       stroke-width: 2px;
-      fill: none;
+      fill: $color-black;
       stroke: $color-white;
+      transition: fill $transition-fast ease-in-out;
     }
   }
 
@@ -146,6 +147,7 @@
     border-top: 1px solid $color-black;
     .plusIcon {
       path {
+        fill: $color-white;
         stroke: $color-black;
       }
     }
