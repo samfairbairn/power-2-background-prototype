@@ -10,10 +10,10 @@ const Screen1 = () => {
     <div className={styles.screen} style={{top: `0vh`}}>
       <div className={classNames(styles.content, webFontsLoaded && styles.show)}>
         <h1>
-          <span className={styles.titleLine}>Dual No Loss Lottos</span><br />
-          <span className={styles.titleLine}>One Click to Play</span><br />
-          <span className={styles.titleLine}>Win 1 + 1 Prizes</span><br />
-          <span className={styles.titleLine}>Free for n times</span>
+          <span className={styles.titleLine}>No-Loss Dual-Lotto</span><br />
+          <span className={classNames([styles.titleLine, styles.mobileTitle])}>One Click to Play</span><br />
+          <span className={classNames([styles.titleLine, styles.mobileTitle])}>Win 1 + 1 Prizes</span><br />
+          <span className={classNames([styles.titleLine, styles.mobileTitle])}>Free for n times</span>
         </h1>
       </div>
     </div>

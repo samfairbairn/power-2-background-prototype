@@ -42,8 +42,8 @@ const Screen3 = () => {
           With big prize
         </h1>
         <h3>
-          Free for you to open, week after week.<br/>
-          The more you play, the higher power of 2.
+          Free for you to open, <br className="mobile-only" />week after week.<br/>
+          The more you play, <br className="mobile-only" />the higher power of 2.
         </h3>
       </div>
     </div>

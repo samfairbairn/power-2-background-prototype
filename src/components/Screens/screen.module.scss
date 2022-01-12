@@ -27,11 +27,16 @@
     }
 
     @include device-m {
-      width: 85%;
+      width: 100%;
+      margin: 0;
+      padding: 0 $spacing-m;
     }
   
     p {
       max-width: 85%;
+      @include device-m {
+        max-width: 100%;
+      }
     }
   }
   
@@ -48,7 +53,9 @@
       }
 
       @include device-m {
-        width: 90%;
+        width: 100%;
+        margin: 0;
+        padding: 0 $spacing-m;
       }
     }
   }

@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .screen {
   position: absolute;
@@ -33,6 +34,14 @@
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
       transition: opacity 1s $easeInOutCubic #{$i * .05}s, transform 1s $easeOutCubic #{$i * .05}s;
+    }
+  }
+
+  @include device-m {
+    line-height: 1.4em;
+    &.mobileTitle {
+      font-size: $text-size-xl * 0.4;
+      line-height: 1.1em;
     }
   }
 }

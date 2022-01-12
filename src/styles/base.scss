@@ -1,5 +1,6 @@
 
 @import './variables.scss';
+@import './mixins.scss';
 
 html {
   -webkit-font-smoothing: antialiased;
@@ -80,4 +81,18 @@ button {
   opacity: 0;
   pointer-events: none;
   width: 5px;
+}
+
+.mobile-only {
+  display: none;
+  @include device-m {
+    display: block;
+  }
+}
+
+.desktop-only {
+  display: block;
+  @include device-m {
+    display: none;
+  }
 }
