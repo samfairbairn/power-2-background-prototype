@@ -72,7 +72,15 @@ window._bgConfig = config;
 
 window.toggleLightMode = () => {
     config.LIGHTMODE = !config.LIGHTMODE
-    config.BACK_TARGET = config.LIGHTMODE ? 255 : 0
+    if (config.LIGHTMODE) {
+        config.SHADING = false
+        config.PRESSURE_ITERATIONS = 5
+        config.BACK_TARGET = 255
+    } else {
+        config.SHADING = true
+        config.PRESSURE_ITERATIONS = 10
+        config.BACK_TARGET =  0
+    }
 }
 
 function pointerPrototype () {
@@ -1194,7 +1202,7 @@ function render (target) {
     let fbo = target == null ? null : target.fbo;
     if (!config.TRANSPARENT)
         if (Math.round(config.BACK_COLOR) !== Math.round(config.BACK_TARGET))
-            config.BACK_COLOR =  config.BACK_COLOR + (config.BACK_TARGET - config.BACK_COLOR) * 0.1
+            config.BACK_COLOR =  config.BACK_COLOR + (config.BACK_TARGET - config.BACK_COLOR) * 0.05
         drawColor(fbo, normalizeColor({ r: config.BACK_COLOR, g: config.BACK_COLOR, b: config.BACK_COLOR }));
     if (target == null && config.TRANSPARENT)
         drawCheckerboard(fbo);
