@@ -40,15 +40,17 @@ const Screen2 = () => {
           What's POWER2?
         </h2>
         <h2>
-          Always Free Draw for Dual Lotos With Double Luck
+          A free to play dual-lotto<br />
+          with 1 + 1 prizes,<br />
+          for double luck!
         </h2>
 
         <p>
-          Because TWO is better than ONE, with each weekly draw, two no-loss FREE lottos will be generated to enable double luck experience. <br className="desktop-only"/>
+          Because TWO is better than ONE, with each weekly draw, <br className="desktop-only"/>two no-loss FREE lottos will be generated to enable double luck <br className="desktop-only"/>experience. 
           You have TWO chances to win:
         </p>
         <p>1: Crypto currency including bitcoin!</p>
-        <p>Plus 1: Valuable NFTs including popular NFTs, and famous artist collaboration POWER2 iNFT which have additional utilities.</p>
+        <p>Plus 1: Valuable NFTs including popular NFTs, and famous artist <br className="desktop-only"/>collaboration POWER2 iNFT which have additional utilities.</p>
 
       </div>
     </div>

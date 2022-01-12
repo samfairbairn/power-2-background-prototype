@@ -154,6 +154,14 @@
   }
 }
 
+.specialI {
+  text-transform: lowercase;
+  color: $color-white;
+  background: -webkit-linear-gradient(90deg, #{$color-pink}, #{$color-white});
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 
 .xlTitle {
   font-size: $text-size-xl * 1.25;

@@ -38,7 +38,7 @@ const Screen6 = () => {
 
       <div ref={titleRef} className={styles.center} style={{height: '75vh'}}>
         <h2>
-          Why HODL POWER2 token & iNFT
+          Why HODL POWER2 token & <span className={styles.specialI}>i</span>NFT
         </h2>
         <h2>
           They'll grow to the moon, thanks to <br className="desktop-only"/>

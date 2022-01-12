@@ -43,8 +43,8 @@ const Screen5 = () => {
         </h2>
         <h2>
           Collectible NFTs?<br />
-          Power2 iNFTs?<br/>
-          t could be anything!
+          Power2 <span className={styles.specialI}>i</span>NFTs?<br/>
+          it could be anything!
         </h2>
 
         <p>
