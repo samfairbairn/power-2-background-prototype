@@ -15,10 +15,9 @@ const Screen2 = () => {
   const titleRef = useRef()
 
   const { scrollPos } = useContext(AppContext);
-  // const { scrollPos } = context
-
+  
   useEffect(() => {
-    // console.log('scrollPos', scrollPos * document.body.scrollHeight)
+    
     const currentScroll = scrollPos * document.body.scrollHeight
     if (currentScroll > yPos.current && !isVisible) {
       setVisible(true)
@@ -31,23 +30,6 @@ const Screen2 = () => {
     titleRef.current.style.opacity = MathUtils.lerp(titleRef.current.style.opacity, isVisible ? 1 : 0, 0.05)
   }, [scrollPos])
 
-  console.log(document.body.scrollHeight)
-  
-  // useFrame((state, delta) => {
-  //   const currentScroll = (scroll.pages - 1) * scroll.offset * window.innerHeight;
-    
-  //   if (currentScroll > yPos.current && !isVisible) {
-  //     setVisible(true)
-  //   } else if (currentScroll < yPos.current && isVisible) {
-  //     setVisible(false)
-  //   }
-
-  //   offset.current = MathUtils.lerp(offset.current, isVisible ? 0 : window.innerHeight * 0.2, 0.05)
-  //   titleRef.current.style.transform = `translate3d(0, ${offset.current}px, 0)`
-  //   titleRef.current.style.opacity = MathUtils.lerp(titleRef.current.style.opacity, isVisible ? 1 : 0, 0.05)
-
-  // })
-  
   useEffect(() => {
     yPos.current = titleRef.current.getBoundingClientRect().y - window.innerHeight + (window.innerHeight * 0.3)
     console.log(yPos.current)
