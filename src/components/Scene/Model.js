@@ -1,11 +1,7 @@
-import React, { useMemo, useState } from 'react';
-import { useFrame } from '@react-three/fiber'
+import React, { useMemo } from 'react';
 import { EdgesGeometry } from 'three';
 
 function Model({lightMode, rows, geo, x, y, z}) {
-
-  const [showMat, setShowMat] = useState(false);
-  const [lastChange, setLastChange] = useState(false);
 
   geo = geo.clone();
   geo.center();
@@ -20,14 +16,6 @@ function Model({lightMode, rows, geo, x, y, z}) {
   geo.scale(shapeWidth/5, shapeWidth/5, shapeWidth/5);
   
   const edges = useMemo(() => new EdgesGeometry(geo), [geo]);
-
-  useFrame((state, delta) => {
-    let now = state.clock.getElapsedTime()
-    if (now - lastChange > 4 && Math.random() > 0.98) {
-      setLastChange(now)
-      setShowMat(!showMat)
-    }
-  })
 
   if (lightMode) {
     return (
