@@ -73,11 +73,10 @@
   font-weight: 300;
   text-align: center;
   position: absolute;
-  top: 10vh;
   left: 50%;
   width: 100px;
-  margin-left: -40px;
-  margin-top: -30px;
+  margin-left: -56px;
+  // margin-top: -30px;
   line-height: 1;
   @include device-l {
     left: 60%;
@@ -111,7 +110,7 @@
   position: absolute;
   width: 200vw;
   // height: 100vh;
-  top: 425vh;
+  top: 400vh;
   left: -50vw;
   transform-origin: center top;
   // background-color: $color-black;

@@ -33,9 +33,9 @@ const Screen4 = () => {
   }, [])
 
   return (
-    <div className={classNames([styles.screen, styles.alignRight])} style={{top: `300vh`, alignItems: 'flex-start', paddingTop: '20vh'}}>
+    <div className={classNames([styles.screen, styles.alignRight])} style={{top: `300vh`, alignItems: 'flex-end', paddingBottom: '20vh'}}>
 
-      <span className={classNames([styles.big1, styles.gradient1])} style={{top: '20vh'}}>1</span>
+      <span className={classNames([styles.big1, styles.gradient1])} style={{bottom: '50vh'}}>1</span>
 
       <div ref={titleRef} className={styles.content} style={{paddingLeft: '8vw'}}>
         <h2>
