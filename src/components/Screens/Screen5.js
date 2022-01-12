@@ -4,6 +4,7 @@ import { useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import classNames from 'classnames';
 import styles from './screen.module.scss';
+import cubeVideo from '../../assets/magic-cube.mp4'
 
 const Screen5 = () => {
 
@@ -33,7 +34,7 @@ const Screen5 = () => {
   }, [])
 
   return (
-    <div className={styles.screen} style={{top: `400vh`, alignItems: 'flex-start', paddingTop: '50vh'}}>
+    <div className={styles.screen} style={{top: `400vh`, alignItems: 'flex-start', paddingTop: '40vh'}}>
 
       <span className={classNames([styles.big1, styles.gradient2])} style={{top: '50vh'}}>1</span>
 
@@ -61,7 +62,11 @@ const Screen5 = () => {
 
       </div>
       
-      <div className={styles.right}></div>
+      <div className={styles.videoContainer}>
+        <video width="1080" height="1080" muted autoPlay loop>
+          <source src={cubeVideo} type="video/mp4" />
+        </video>
+      </div>
       
     </div>
   )
