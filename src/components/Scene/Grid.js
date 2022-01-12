@@ -3,6 +3,8 @@
 import React, { useRef, useMemo, useState } from 'react';
 import { useLoader, useFrame, useThree } from '@react-three/fiber'
 import { Rhino3dmLoader } from 'three/examples/jsm/loaders/3DMLoader'
+// import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
+// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { BoxGeometry, MathUtils, EdgesGeometry } from 'three';
 import { useScroll } from '@react-three/drei'
 import { TimelineLite, Power0, Power1 } from "gsap/all";
@@ -20,11 +22,10 @@ function Rig({ children }) {
 function Grid ({lightMode, rows, shapes, rotationSpeed, scale, scaleFactor}) {
   const scroll = useScroll()
 
-  const object = useLoader(Rhino3dmLoader, '/assets/3d/POWER2-1_cube_Mesh.3dm', (loader) => {
-    // loader.setLibraryPath('https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/')
+  const object = useLoader(Rhino3dmLoader, '/assets/3d/CUBE-NEW.3dm', (loader) => {
     loader.setLibraryPath('/assets/rhino3dm/')
   })
-  const geo = object.children[16].geometry;
+  const geo = useRef(object.children[0].geometry);
 
   const ref = useRef()
   const { width, height } = useThree((state) => state.viewport)
@@ -46,7 +47,7 @@ function Grid ({lightMode, rows, shapes, rotationSpeed, scale, scaleFactor}) {
 
   useFrame((state, delta) => {
   
-    const r1 = scroll.range(0 / 5, 5 / 5)
+    const r1 = scroll.range(0, 4.5 / scroll.pages)
     rotationTL.seek(r1 * rotationTL.duration())
     
     updateRotation({x: rotation.x + rotationSpeed, y: rotation.y + rotationSpeed, z: rotation.z + rotationSpeed})
@@ -71,13 +72,15 @@ function Grid ({lightMode, rows, shapes, rotationSpeed, scale, scaleFactor}) {
           _shapes.push(
             <Model
               rows={rows}
+              geo={geo.current}
               key={`shape-${x}-${y}-${z}`}
-              geo={geo}
               x={x}
               y={y}
               z={z}
               lightMode={lightMode}
-            />)
+            />
+          )
+            
         }
       }
     }
