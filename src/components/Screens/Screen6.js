@@ -5,8 +5,9 @@ import { useFrame } from '@react-three/fiber'
 import styles from './screen.module.scss';
 
 import {ReactComponent as CycleImage} from '../../assets/cycle.svg'
+import {ReactComponent as CycleImageWhite} from '../../assets/cycle-white.svg'
 
-const Screen6 = () => {
+const Screen6 = ({lightMode}) => {
 
   const scroll = useScroll()
   const [isVisible, setVisible] = useState(false)
@@ -54,7 +55,7 @@ const Screen6 = () => {
       </div>
 
       <div className={styles.virtuousCycle}>
-        <CycleImage />
+        {lightMode ? <CycleImageWhite /> : <CycleImage />}
       </div>
       
     </div>

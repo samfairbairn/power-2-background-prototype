@@ -24,7 +24,7 @@ const Screens = ({context}) => {
         <PlusIcon className={styles.plusIcon} />
       </div>
       <Screen5 />
-      <Screen6 />
+      <Screen6 lightMode={lightMode} />
       <Screen7 />
     </Scroll>
   )
