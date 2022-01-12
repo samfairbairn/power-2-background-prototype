@@ -6,14 +6,14 @@ function Model({lightMode, rows, geo, x, y, z}) {
   geo = geo.clone();
   geo.center();
 
-  let padding = 0.5;
-  let width = 5;
+  let padding = 0.05;
+  let width = 2;
   let totalPadding = (padding * (rows - 1)) / rows;
   let shapeWidth = (width - totalPadding) / rows;
   let offset = width / 2 * (rows - 1);
 
   geo.translate(x * (width + padding) - offset, y * (width + padding) - offset, z * (width + padding) - offset);
-  geo.scale(shapeWidth/5, shapeWidth/5, shapeWidth/5);
+  geo.scale(shapeWidth/width, shapeWidth/width, shapeWidth/width);
   
   const edges = useMemo(() => new EdgesGeometry(geo), [geo]);
 

@@ -58,7 +58,7 @@ function Grid ({lightMode, rows, shapes, rotationSpeed, scale, scaleFactor}) {
   })
 
   const outerEdges = useMemo(() => {
-    const width = 7.5;
+    const width = 2.5;
     const boundingBox = new BoxGeometry( width, width, width );
     return new EdgesGeometry(boundingBox)
   }, [])

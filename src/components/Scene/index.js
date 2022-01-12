@@ -15,7 +15,7 @@ import Grid from "./Grid"
 // fog
 
 function Fog() {
-  return (<fog attach="fog" args={[new Color( 0xF43880 ), 15, 28]} />) // 0xED9FB2
+  return (<fog attach="fog" args={[new Color( 0xF43880 ), 5, 11]} />) // 0xED9FB2
 }
 
 // main composition
@@ -42,9 +42,9 @@ function Composition({context}) {
     setScroll({pages: scroll.pages, el: scroll.el})
 
     properties.current = {
-      lookatX: -(width/6),
-      lookatY: height/16,
-      positionZ: 20,
+      lookatX: -(width/8),
+      lookatY: height/20,
+      positionZ: 7,
       scale: 1,
       rotation: 0.008,
       blocks: 0,
@@ -58,10 +58,10 @@ function Composition({context}) {
     }
 
     properties.current.lookatTL = new TimelineLite();
-    properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
+    properties.current.lookatTL.to(properties.current, {lookatX: width/5, duration: 1, ease: Power1.easeInOut});
     properties.current.lookatTL.to(properties.current, {lookatX: -width/6, duration: 1, ease: Power1.easeInOut});
-    properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
-    properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power0.easeInOut});
+    properties.current.lookatTL.to(properties.current, {lookatX: width/5, duration: 1, ease: Power1.easeInOut});
+    properties.current.lookatTL.to(properties.current, {lookatX: width/5, duration: 1, ease: Power0.easeInOut});
     properties.current.lookatTL.pause();
 
     properties.current.lookatTLY = new TimelineLite();
@@ -73,8 +73,8 @@ function Composition({context}) {
     properties.current.lookatTLY2.pause();
 
     properties.current.positionTL = new TimelineLite();
-    properties.current.positionTL.to(properties.current, {positionZ: 25, duration: 2, ease: Power1.easeInOut});
-    properties.current.positionTL.to(properties.current, {positionZ: 20, duration: 1, ease: Power1.easeInOut});
+    properties.current.positionTL.to(properties.current, {positionZ: 10, duration: 2, ease: Power1.easeInOut});
+    properties.current.positionTL.to(properties.current, {positionZ: 7, duration: 1, ease: Power1.easeInOut});
     properties.current.positionTL.pause();
 
     properties.current.scaleTL = new TimelineLite();
