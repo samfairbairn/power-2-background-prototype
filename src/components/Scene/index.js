@@ -157,16 +157,16 @@ function Composition({context}) {
         
       { !lightMode && (<Fog />) }
 
-      <ambientLight intensity={1} />
+      <ambientLight intensity={1}  />
 
       { lightMode && (
         <pointLight
           position={[0, 10, 20]}
-          intensity={12}
+          intensity={3}
           castShadow={true}
-          shadow-radius={1} 
-          shadow-mapSize-width={4096}
-          shadow-mapSize-height={4096}
+          shadow-radius={2} 
+          shadow-mapSize-width={2048}
+          shadow-mapSize-height={2048}
         />
       )}
       
@@ -204,7 +204,7 @@ function Scene() {
   return (
     <div className={styles.scene + ` ${lightMode ? 'is-light-mode' : ''}`}>
       {/* <Leva collapsed={false} /> */}
-      <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 20], near: 1, far: 150 }}>
+      <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 7], near: 1, far: 15 }}>
         <ScrollControls damping={10} pages={7} >
           <Composition context={context} />
           <Screens context={context} />

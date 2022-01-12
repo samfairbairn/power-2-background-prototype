@@ -20,7 +20,7 @@ function Model({lightMode, rows, geo, x, y, z}) {
   if (lightMode) {
     return (
       <mesh position={[0, 0, 0]} geometry={geo} castShadow receiveShadow>
-        <meshStandardMaterial roughness={0.5} color='#bdbbbb' />
+        <meshStandardMaterial roughness={0.5} color='#ffffff' />
       </mesh>
     )
   } else {
