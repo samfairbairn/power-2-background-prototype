@@ -2,6 +2,7 @@ import styles from './screen.module.scss';
 // import {ReactComponent as RoadmapImage} from '../../assets/roadmap.svg'
 // import RoadmapImage from '../../assets/roadmap.svg'
 import Logo from '../../assets/logo-simple.svg'
+import Button from '../Button'
 
 const Screen8 = () => {
 
@@ -13,6 +14,7 @@ const Screen8 = () => {
         {/* <div className={styles.roadmapWrapper}>
           <img src={RoadmapImage} alt="roadmap" />
         </div> */}
+        <Button />
       </div>
     </div>
   )
