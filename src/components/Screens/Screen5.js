@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import styles from './screen.module.scss';
 import cubeVideo from '../../assets/magic-cube.mp4'
+import ImageSequence from '../ImageSequence'
 
 const Screen5 = () => {
 
@@ -34,9 +35,10 @@ const Screen5 = () => {
       </div>
       
       <div className={styles.videoContainer}>
-        <video width="1080" height="1080" muted autoPlay loop>
+        {/* <video width="1080" height="1080" muted autoPlay loop>
           <source src={cubeVideo} type="video/mp4" />
-        </video>
+        </video> */}
+        <ImageSequence />
       </div>
       
     </div>
