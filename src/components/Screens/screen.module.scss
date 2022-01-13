@@ -165,7 +165,7 @@
 .videoContainer {
   position: relative;
   width: 40%;
-  padding-top: 40%;
+  // padding-top: 40%;
   margin: -25vh 5% 0;
 
   video {
@@ -287,7 +287,32 @@
   pointer-events: none;
   text-align: center;
 
-  svg {
-    width: 100%;
+  img {
+    width: 80%;
+    @include device-l {
+      width: 100%;
+    }
+  }
+}
+
+.roadmapWrapper {
+  width: 60vw;
+  margin-right: 5vw;
+  @include device-l {
+    width: 75vw;
+    margin-right: 6vw;
+  }
+  @include device-m {
+    width: 84vw;
+    margin-right: 8vw;
+  }
+}
+
+.logoSimple {
+  width: 30px;
+  margin-bottom: $spacing-ml;
+  @include device-xl {
+    width: 30px;
+    margin-bottom: $spacing-m;
   }
 }

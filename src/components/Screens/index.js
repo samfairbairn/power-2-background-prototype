@@ -7,6 +7,8 @@ import Screen4 from './Screen4'
 import Screen5 from './Screen5'
 import Screen6 from './Screen6'
 import Screen7 from './Screen7'
+import Screen8 from './Screen8'
+import Screen9 from './Screen9'
 import styles from './screen.module.scss';
 import { ReactComponent as PlusIcon } from '../../assets/plus.svg';
 
@@ -26,6 +28,8 @@ const Screens = ({context}) => {
       <Screen5 />
       <Screen6 lightMode={lightMode} />
       <Screen7 />
+      <Screen8 />
+      <Screen9 />
     </Scroll>
   )
 };

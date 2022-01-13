@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
-import { MathUtils } from 'three';
 import styles from './screen.module.scss';
 
-import {ReactComponent as CycleImage} from '../../assets/cycle.svg'
-import {ReactComponent as CycleImageWhite} from '../../assets/cycle-white.svg'
+// import {ReactComponent as CycleImage} from '../../assets/cycle.svg'
+// import {ReactComponent as CycleImageWhite} from '../../assets/cycle-white.svg'
+import CycleImage from '../../assets/cycle.svg'
+import CycleImageWhite from '../../assets/cycle-white.svg'
 
 const Screen6 = ({lightMode}) => {
 
   return (
-    <div className={styles.screen} style={{top: `500vh`, height: '150vh', flexDirection: "column"}}>
+    <div className={styles.screen} style={{top: `525vh`, height: '150vh', flexDirection: "column"}}>
 
       <div className={styles.center} style={{height: '75vh'}}>
         <h2>
@@ -28,7 +28,8 @@ const Screen6 = ({lightMode}) => {
       </div>
 
       <div className={styles.virtuousCycle}>
-        {lightMode ? <CycleImageWhite /> : <CycleImage />}
+        {/* {lightMode ? <CycleImageWhite /> : <CycleImage />} */}
+        {lightMode ? <img src={CycleImageWhite} alt="Virtuous Snowball Cycles" /> : <img src={CycleImage} alt="Virtuous Snowball Cycles" />}
       </div>
       
     </div>
