@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber'
 import { MathUtils } from 'three';
-import classNames from 'classnames';
 import styles from './styles.module.scss';
 
 import { ReactComponent as ArrowIcon } from '../../assets/button-arrow.svg';

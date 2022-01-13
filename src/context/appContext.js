@@ -30,7 +30,7 @@ const AppProvider = ({ children }) => {
   }, [])
   
   return (
-    <AppContext.Provider value={{lightMode, setLightMode, scrollPos, setScrollPos, setScroll, scroll}}>
+    <AppContext.Provider value={{lightMode, setLightMode, scrollPos, setScrollPos, setScroll, scroll, screenRatio, isMobile}}>
       {children}
     </AppContext.Provider>
   );

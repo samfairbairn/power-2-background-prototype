@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import styles from './screen.module.scss';
-import cubeVideo from '../../assets/magic-cube.mp4'
 import ImageSequence from '../ImageSequence'
 
 const Screen5 = () => {
