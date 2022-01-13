@@ -17,6 +17,13 @@
   .logo {
     height: 35px;
     margin-left: 5px;
+    :global {
+      .base-line {
+        transition: fill $transition-normal ease-in-out;
+        will-change: fill, stroke;
+        fill: #fff;
+      }
+    }
   }
   
   &.inTop {
@@ -27,7 +34,7 @@
   
   &.goingDown {
     position: fixed;
-    transition: background-color $transition-normal $easeOutCubic, transform $transition-normal $easeOutCubic;
+    transition: background-color $transition-normal ease-in-out, transform $transition-normal $easeOutCubic;
     background-color: rgba($color-black, 0.8);
     &.lightMode {
       background-color: rgba($color-white, 0.9);
@@ -36,7 +43,7 @@
   
   &.goingUp {
     position: fixed;
-    transition: background-color $transition-normal $easeOutCubic, transform $transition-normal $easeOutCubic;
+    transition: background-color $transition-normal ease-in-out, transform $transition-normal $easeOutCubic;
     background-color: rgba($color-black, 0.8);
     &.lightMode {
       background-color: rgba($color-white, 0.9);
@@ -93,6 +100,13 @@
   }
 
   &.lightMode {
+    .logo {
+      :global {
+        .base-line {
+          fill: $color-darkGrey;
+        }
+      }
+    }
     .menu {
       .links {
         .link {
@@ -119,7 +133,7 @@
     border: 1px solid darken($color: $color-white, $amount: 40);
     border-radius: 10px;
     cursor: pointer;
-    transition: border $transition-fast ease-in-out;
+    transition: border $transition-normal ease-in-out;
     will-change: border;
     margin-left: 30px;
 
@@ -132,7 +146,7 @@
       border-radius: 7px;
       top: 2px;
       left: 2px;
-      transition: background-color $transition-fast ease-in-out, transform $transition-normal $easeInOutCubic;
+      transition: background-color $transition-normal ease-in-out, transform $transition-normal $easeInOutCubic;
       will-change: background-color, transform;
       transform: translate3d(0, 0, 0);
     }

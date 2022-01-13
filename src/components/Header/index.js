@@ -66,11 +66,11 @@ function Header() {
       ])}
       style={{transform: `translate3d(0, ${offset}px, 0)`}}
       >
-        {lightMode ? (
+        {/* {lightMode ? (
           <LightLogoIcon className={styles.logo} />
         ) : (
-          <LogoIcon className={styles.logo} />
-        )}
+          )} */}
+        <LogoIcon className={styles.logo} />
         <Menu />
       </div>
   );

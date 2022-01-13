@@ -138,7 +138,7 @@
       stroke-width: 2px;
       fill: $color-black;
       stroke: $color-white;
-      transition: fill $transition-fast ease-in-out;
+      transition: fill $transition-normal ease-in-out;
     }
   }
 
@@ -308,6 +308,72 @@
   }
 }
 
+.roadmapImage {
+  :global {
+    path, line, circle {
+      transition: fill $transition-normal ease-in-out, stroke $transition-normal ease-in-out;
+      will-change: fill, stroke;
+    }
+    .cls-1,.cls-11 {fill:none;stroke-miterlimit:10;}
+    .cls-1 {stroke:#58595b;}
+    .cls-2 {fill:#818284;}
+    .cls-3 {font-size:28.35px;fill:#221f20;letter-spacing:0.05em;}
+    .cls-3,.cls-5 {font-family:DINCondensed-Bold, DIN Condensed;font-weight:700;}
+    .cls-4{letter-spacing:0.05em;}
+    .cls-5{font-size:31.18px;fill:#f3f3f3;letter-spacing:0.05em;}
+    .cls-6{letter-spacing:0.04em;}
+    .cls-7{letter-spacing:0.03em;}
+    .cls-8{letter-spacing:0.03em;}
+    .cls-9{letter-spacing:-0.02em;}
+    .cls-10{letter-spacing:0.05em;}
+    .cls-11{stroke:#fff;stroke-width:0.62px;}
+    .cls-12{fill:#fff;}
+    .cls-13{letter-spacing:0.03em;}
+    .cls-14{letter-spacing:-0.01em;}
+  }
+}
+
+.cycleImage {
+  :global {
+    path, line, circle {
+      transition: fill $transition-normal ease-in-out, stroke $transition-normal ease-in-out;
+      will-change: fill, stroke;
+    }
+    .cls-1,
+    .cls-17{font-size:27.44px;}
+    .cls-1,.cls-17,.cls-2,.cls-20{fill:#f3f3f3;font-family:DINCondensed-Bold, DIN Condensed;font-weight:700;}
+    .cls-1{letter-spacing:0.07em;}
+    .cls-2,.cls-20{font-size:24.7px;}
+    .cls-2,.cls-22{letter-spacing:0.07em;}
+    .cls-3{letter-spacing:0.02em;}
+    .cls-4{letter-spacing:0.07em;}
+    .cls-5{letter-spacing:0.05em;}
+    .cls-6{letter-spacing:0.05em;}
+    .cls-10,.cls-11,.cls-12,.cls-13,.cls-18,.cls-19,.cls-23,.cls-7,.cls-8,.cls-9{fill:none;stroke-miterlimit:10;}
+    .cls-7{stroke:#d1d3d4;}
+    .cls-10,.cls-11,.cls-12,.cls-13,.cls-23,.cls-7,.cls-9{stroke-width:0.62px;}
+    .cls-23,.cls-8{stroke:#fff;}
+    .cls-8{stroke-width:5.67px;}
+    .cls-9{stroke:url(#linear-gradient);}
+    .cls-10{stroke:url(#linear-gradient-2);}
+    .cls-11{stroke:url(#linear-gradient-3);}
+    .cls-12{stroke:url(#linear-gradient-4);}
+    .cls-13{stroke:url(#linear-gradient-5);}
+    .cls-14{fill:#fff;}
+    .cls-15{fill:#221f20;}
+    .cls-16{fill:url(#linear-gradient-6);}
+    .cls-17{letter-spacing:0.05em;}
+    .cls-18,.cls-19{stroke:#221f20;}
+    .cls-18{stroke-width:3.4px;}
+    .cls-19{stroke-width:2.83px;}
+    .cls-20{letter-spacing:0.03em;}
+    .cls-21{letter-spacing:-0.01em;}
+    .cls-24{fill:#010101;fill-rule:evenodd;}
+    .cls-25{letter-spacing:0.04em;}
+    .cls-26{letter-spacing:0.05em;}
+  }
+}
+
 .logoSimple {
   width: 30px;
   margin-bottom: $spacing-ml;
@@ -355,6 +421,27 @@
       .footer {
         .link {
           color: $color-black;
+        }
+      }
+      .roadmapImage {
+        :global {
+          .cls-5{
+            fill:$color-darkGrey;
+          }
+          .cls-11{
+            stroke:$color-darkGrey;
+          }
+          .cls-12{
+            fill:$color-darkGrey;
+          }
+        }
+      }
+      .cycleImage {
+        :global {
+          .cls-1,.cls-17,.cls-2,.cls-20{fill:$color-darkGrey;}
+          .cls-7{stroke:$color-darkGrey;}
+          .cls-14{fill:#fff; stroke-width: 1px; stroke: $color-darkGrey;}
+          .cls-23,.cls-8{stroke:$color-darkGrey;}
         }
       }
     }
