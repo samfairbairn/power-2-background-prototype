@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber'
 import { MathUtils } from 'three';
 import styles from './styles.module.scss';
@@ -9,35 +9,50 @@ import { ReactComponent as ReadMoreIcon } from '../../assets/button-read-more.sv
 const Button = () => {
 
   const wrapper = useRef()
-  const resetTimer = useRef(undefined)
-  // const wrapperPos = useRef(undefined)
+  const inside = useRef()
+  
+  const isOuterHover = useRef(false)
+  const isInnerHover = useRef(false)
+
   const realMousePos = useRef({x: 0, y: 0})
   const lerpMousePos = useRef({x: 0, y: 0})
 
   const [lerpPos, setLerpPos] = useState({x: 0, y: 0})
 
   const onMouseMove = (e) => {
-
     let wrapperPos = wrapper.current.getBoundingClientRect()
-
-    if (resetTimer.current) {
-      clearTimeout(resetTimer.current);
-      resetTimer.current = undefined;
-    }
-
-    resetTimer.current = setTimeout(() => {
-      realMousePos.current = {
-        x: 0,
-        y: 0,
-      }
-    }, 250)
 
     realMousePos.current = {
       x: MathUtils.mapLinear(MathUtils.clamp(e.clientX - wrapperPos.left, 0, 240), 0, 240, -60, 60),
       y: MathUtils.mapLinear(MathUtils.clamp(e.clientY - wrapperPos.top, 0, 240), 0, 240, -60, 60),
     }
+  }
 
-    // console.log(MathUtils.clamp(e.clientY - wrapperPos.current.top, 0, 240))
+  const checkHover = () => {
+    setTimeout(() => {
+      if (!isOuterHover.current && !isInnerHover.current) {
+        realMousePos.current = {
+          x: 0,
+          y: 0,
+        }
+      }
+    }, 200)
+  }
+
+  const onMouseOuterOver = (e) => {
+    isOuterHover.current = true
+  }
+  const onMouseOuterOut = (e) => {
+    isOuterHover.current = false
+    checkHover()
+  }
+
+  const onMouseInnerOver = (e) => {
+    isInnerHover.current = true
+  }
+  const onMouseInnerOut = (e) => {
+    isInnerHover.current = false
+    checkHover()
   }
   
   useFrame((state) => {
@@ -50,14 +65,9 @@ const Button = () => {
     })
   })
 
-  useEffect(() => {
-    // wrapperPos.current = wrapper.current.getBoundingClientRect()
-    // console.log(wrapperPos.current)
-  }, [])
-
   return (
-    <div ref={wrapper} className={styles.buttonWrapper} onMouseMove={onMouseMove}>
-      <div className={styles.button} style={{transform: `translate3d(${lerpPos.x}px, ${lerpPos.y}px, 0)`}}>
+    <div ref={wrapper} className={styles.buttonWrapper} onMouseMove={onMouseMove} onMouseOver={onMouseOuterOver} onMouseOut={onMouseOuterOut}>
+      <div ref={inside} className={styles.button} onMouseOver={onMouseInnerOver} onMouseOut={onMouseInnerOut} style={{transform: `translate3d(${lerpPos.x}px, ${lerpPos.y}px, 0)`}}>
         <div className={styles.inside}></div>
         <ArrowIcon className={styles.arrow}/>
         <ReadMoreIcon className={styles.cta}/>

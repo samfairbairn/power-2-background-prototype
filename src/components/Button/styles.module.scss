@@ -33,6 +33,7 @@
       width: 160px;
       height: 160px;
       margin: -80px 0 0 -80px;
+      pointer-events: none;
       &.arrow {
         mix-blend-mode: difference;
       }
@@ -64,6 +65,7 @@
       transform: scale(0);
       transition: transform $transition-normal $easeOutCubic;
       will-change: transform;
+      pointer-events: none;
     }
     
     &:hover {
