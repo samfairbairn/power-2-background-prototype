@@ -123,3 +123,17 @@ $font-path: "../assets/fonts" !default;
 //   font-style: italic;
 //   font-display: swap;
 // }
+
+/*
+** DIN Condensed
+*/
+
+@font-face {
+  font-family: 'DIN Condensed';
+  src: url('#{$font-path}/DINCondensed-Bold.woff2') format('woff2'),
+      url('#{$font-path}/DINCondensed-Bold.woff') format('woff'),
+      url('#{$font-path}/DINCondensed-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}

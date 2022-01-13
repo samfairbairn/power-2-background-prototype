@@ -182,7 +182,7 @@
   line-height: 1.1em;
   margin: 0 0 $spacing-l 0;
   letter-spacing: 2px;
-  transition: color $transition-fast ease-in-out;
+  transition: color $transition-normal ease-in-out;
   will-change: color;
 
   @include device-l {
@@ -311,8 +311,52 @@
 .logoSimple {
   width: 30px;
   margin-bottom: $spacing-ml;
+  path {
+    fill: $color-white !important;
+    transition: fill $transition-normal ease-in-out;
+    will-change: fill;
+  }
   @include device-xl {
     width: 30px;
     margin-bottom: $spacing-m;
+  }
+}
+
+.footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: $spacing-m;
+
+  .link {
+    display: inline-block;
+    margin: 0 $spacing-l;
+    @include type-footer;
+    color: $color-white;
+    @include device-l {
+      margin: 0 $spacing-m;
+    }
+    @include device-m {
+      margin: 0 $spacing-s;
+    }
+  }
+}
+
+
+:global {
+  .is-light-mode {
+    :local {
+      .logoSimple {
+        path {
+          fill: $color-black !important;
+        }
+      }
+      .footer {
+        .link {
+          color: $color-black;
+        }
+      }
+    }
   }
 }
