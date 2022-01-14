@@ -333,6 +333,12 @@
   }
 }
 
+.puppyImage {
+  position: absolute;
+  right: 10vw;
+  width: 14vw;
+}
+
 .virtuousCycle {
   width: 90%;
   height: 100vh;
@@ -398,6 +404,9 @@
     width: 30px;
     margin-bottom: $spacing-m;
   }
+}
+.buttonWrapper {
+  margin: 0 0 $spacing-xl 0;
 }
 
 .footer {
