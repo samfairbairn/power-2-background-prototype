@@ -4,7 +4,6 @@ import styles from './header.module.scss';
 import { AppContext } from "../../context/appContext";
 import classNames from 'classnames';
 import { ReactComponent as LogoIcon } from '../../assets/logo.svg';
-// import { ReactComponent as LightLogoIcon } from '../../assets/logo_black.svg';
 import Menu from './Menu'
 
 function Header() {
@@ -66,10 +65,6 @@ function Header() {
       ])}
       style={{transform: `translate3d(0, ${offset}px, 0)`}}
       >
-        {/* {lightMode ? (
-          <LightLogoIcon className={styles.logo} />
-        ) : (
-          )} */}
         <LogoIcon className={styles.logo} />
         <Menu />
       </div>

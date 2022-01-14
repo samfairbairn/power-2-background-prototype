@@ -1,9 +1,5 @@
 import styles from './screen.module.scss';
-
 import {ReactComponent as CycleImage} from '../../assets/cycle.svg'
-// import {ReactComponent as CycleImageWhite} from '../../assets/cycle-white.svg'
-// import CycleImage from '../../assets/cycle.svg'
-// import CycleImageWhite from '../../assets/cycle-white.svg'
 
 const Screen6 = ({lightMode}) => {
 
@@ -28,8 +24,6 @@ const Screen6 = ({lightMode}) => {
       </div>
 
       <div className={styles.virtuousCycle}>
-        {/* {lightMode ? <CycleImageWhite /> : <CycleImage />} */}
-        {/* {lightMode ? <img src={CycleImageWhite} alt="Virtuous Snowball Cycles" /> : <img src={CycleImage} alt="Virtuous Snowball Cycles" />} */}
         <CycleImage className={styles.cycleImage} />
       </div>
       
