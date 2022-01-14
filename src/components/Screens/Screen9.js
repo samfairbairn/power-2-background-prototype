@@ -5,17 +5,19 @@ import Button from '../Button'
 const Screen8 = () => {
 
   return (
-    <div className={styles.screen} style={{top: `925vh`, height: '75vh', flexDirection: "column", justifyContent: 'center'}}>
+    <div className={styles.screen} style={{top: `1150vh`, height: '75vh', flexDirection: "column"}}>
       <div className={styles.center}>
         <LogoSimple className={styles.logoSimple} />
-        <h2 style={{marginBottom: 0}}>Whitepaper</h2>
-        <Button />
+        <h2>Whitepaper</h2>
+        <div className={styles.buttonWrapper}>
+          <Button url="https://docs.power2.finance/whitepaper/" />
+        </div>
       </div>
       <div className={styles.footer}>
-        <a href='https://google.com' className={styles.link}>Twitter</a>
-        <a href='https://google.com' className={styles.link}>Medium</a>
-        <a href='https://google.com' className={styles.link}>Telegram</a>
-        <a href='https://google.com' className={styles.link}>Discord</a>
+        <a href='https://twitter.com/Power2___' target="_blank" rel="noreferrer" className={styles.link}>Twitter</a>
+        <a href='https://power2.medium.com/' target="_blank" rel="noreferrer" className={styles.link}>Medium</a>
+        <a href='https://google.com' target="_blank" rel="noreferrer" className={styles.link}>Telegram</a>
+        <a href='https://google.com' target="_blank" rel="noreferrer" className={styles.link}>Discord</a>
       </div>
     </div>
   )
