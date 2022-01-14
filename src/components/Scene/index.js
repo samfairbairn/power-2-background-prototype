@@ -42,7 +42,7 @@ function Composition({context}) {
     setScroll({pages: scroll.pages, el: scroll.el})
 
     properties.current = {
-      lookatX: -(width/6),
+      lookatX: -(width/7),
       lookatY: height/16,
       positionZ: 7,
       scale: 1,
@@ -59,7 +59,7 @@ function Composition({context}) {
 
     properties.current.lookatTL = new TimelineLite();
     properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
-    properties.current.lookatTL.to(properties.current, {lookatX: -width/5, duration: 1, ease: Power1.easeInOut});
+    properties.current.lookatTL.to(properties.current, {lookatX: -width/3, duration: 1, ease: Power1.easeInOut});
     properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power1.easeInOut});
     properties.current.lookatTL.to(properties.current, {lookatX: width/4, duration: 1, ease: Power0.easeInOut});
     properties.current.lookatTL.pause();
