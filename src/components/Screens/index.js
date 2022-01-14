@@ -14,13 +14,13 @@ import { ReactComponent as PlusIcon } from '../../assets/plus.svg';
 
 const Screens = ({context}) => {
 
-  const { lightMode } = context;
+  const { lightMode, scrollPos } = context;
 
   return (
     <Scroll html style={{ width: '100%' }}>
       <Screen1 />
       <Screen2 />
-      <Screen3 />
+      <Screen3 scrollPos={scrollPos} />
       <Screen4 />
       <div className={classNames([styles.separator, lightMode && styles.isLightMode])}>
         <PlusIcon className={styles.plusIcon} />

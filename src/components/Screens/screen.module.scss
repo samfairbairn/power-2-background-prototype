@@ -201,20 +201,56 @@
 }
 
 .xlTitle {
+  position: relative;
   font-size: $text-size-xl * 1.25;
   line-height: 1.1em;
-  margin: 0 0 $spacing-l 0;
+  margin: 0 0 $spacing-s 0;
   letter-spacing: 2px;
   transition: color $transition-normal ease-in-out;
   will-change: color;
-
+  font-weight: bold;
+  margin-left: -80px;
+  
   @include device-l {
+    margin-left: -60px;
     font-size: $text-size-xl;
+  }
+  
+  @include device-m {
+    margin-left: -40px;
+    font-size: $text-size-l;
+  }
+
+  .bullet {
+    position: relative;
+    transform: translateY(-16px);
+    display: inline-block;
+    font-size: 60px;
+    @include device-l {
+      font-size: 50px;
+      transform: translateY(-8px);
+    }
+    @include device-m {
+      font-size: 40px;
+      transform: translateY(-8px);
+    }
+  }
+
+  .count {
+    position: absolute;
+    left: 324px;
+    @include device-l {
+      left: 268px;
+    }
+    @include device-m {
+      left: 208px;
+    }
   }
 
   .super {
     position: relative;
     display: inline-block;
+    font-size: $text-size-xl;
     font-size: $text-size-xl;
     font-weight: bold;
     transform: translate3d(0, -20px, 0);
