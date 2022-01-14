@@ -12,7 +12,7 @@ const Screen3 = ({scrollPos}) => {
   useEffect(() => {
     let _scrollPos = scrollPos / window.innerHeight;
     
-    if ((_scrollPos < 1 || _scrollPos > 3) && animate.current) {
+    if ((_scrollPos < 1.25 || _scrollPos > 2.75) && animate.current) {
       animate.current = false
       setN(1)
       nVal.current = 1
@@ -20,14 +20,14 @@ const Screen3 = ({scrollPos}) => {
       timer.current = undefined
     }
     
-    if (_scrollPos > 1.5 && _scrollPos < 2 && !animate.current && !timer.current) {
+    if (_scrollPos > 1.5 && _scrollPos < 2.25 && !animate.current && !timer.current) {
       timer.current = setTimeout(() => {
-        if (_scrollPos > 1.5 && _scrollPos < 2 && !animate.current) {
+        if (_scrollPos > 1.5 && _scrollPos < 2.25 && !animate.current) {
           clearTimeout(timer.current)
           timer.current = undefined
           animate.current = true
         }
-      }, 2000)
+      }, 1000)
     }
   }, [scrollPos])
 
