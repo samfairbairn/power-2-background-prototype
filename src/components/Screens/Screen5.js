@@ -5,7 +5,7 @@ import ImageSequence from '../ImageSequence'
 const Screen5 = () => {
 
   return (
-    <div className={styles.screen} style={{top: `400vh`, height: '125vh', alignItems: 'flex-start', paddingTop: '40vh'}}>
+    <div className={styles.screen} style={{top: `400vh`, height: '100vh', alignItems: 'flex-start', paddingTop: '40vh'}}>
 
       <span className={classNames([styles.big1, styles.gradient2])} style={{top: '50vh'}}>1</span>
 
@@ -20,15 +20,11 @@ const Screen5 = () => {
         </h2>
 
         <p>
-          For the weekly Lotto 2, anything is possible.
+          It could be a desirable NFT like Degen Ape, BAYC, or CryptoPunk. The possibilities are limited only by your imagination as they will be decided by the community.
         </p>
 
         <p>
-          It contains a valuable prize which could be anything from desirable NFTs like Degen Ape, BAYC, or CryptoPunk, or could see the release of new collections. The possibilities are limited only by your imagination as they will be decided by the community.
-        </p>
-
-        <p>
-        Moreover, we will be collaborating with well-known artists to create POWER2 iNFT collections that earn governance tokens weekly and even more benefits. Click to check our valuable and intelligent iNFTs for you.
+        We will also collaborate with well-known artists to create POWER2 iNFT collections that earn governance tokens weekly and even more benefits, for example: <span style={{fontWeight: 'bold'}}>2% of the POWER2 net profit.</span>
         </p>
 
       </div>

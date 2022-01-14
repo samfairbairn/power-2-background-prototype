@@ -4,21 +4,19 @@ import styles from './screen.module.scss';
 const Screen4 = () => {
 
   return (
-    <div className={classNames([styles.screen, styles.alignRight])} style={{top: `300vh`, alignItems: 'flex-end', paddingBottom: '20vh'}}>
+    <div className={classNames([styles.screen, styles.alignRight])} style={{top: `300vh`, alignItems: 'flex-end', paddingBottom: '25vh'}}>
 
       <span className={classNames([styles.big1, styles.gradient1])} style={{bottom: '50vh'}}>1</span>
 
       <div className={styles.content} style={{paddingLeft: '8vw'}}>
+
         <h2>
-          Win a bitcoin?<br />
-          Or other crypto-
-          currency with <br/>
+          $ XXXXXX Prizes with<br />
           high winning odds!
         </h2>
 
         <p>
-          In the weekly Lotto 1, the more people join<br />
-          the larger the cube grows, the bigger the prize! 
+          The more people join, the larger the cube grows, the bigger the $ prize! 
         </p>
 
         <p>

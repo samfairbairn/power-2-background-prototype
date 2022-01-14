@@ -1,12 +1,15 @@
 import styles from './screen.module.scss';
-import {ReactComponent as CycleImage} from '../../assets/cycle.svg'
+import classNames from 'classnames';
+import CycleImage3 from '../../assets/CYCLE_Dark-08.svg'
+import CycleImageLight3 from '../../assets/CYCLES_light-08.svg'
 
 const Screen6 = ({lightMode}) => {
 
   return (
-    <div className={styles.screen} style={{top: `525vh`, height: '150vh', flexDirection: "column"}}>
+    <div className={styles.screen} style={{top: `800vh`, height: '150vh', flexDirection: "column"}}>
 
-      <div className={styles.center} style={{height: '75vh'}}>
+      <div className={classNames([styles.content, styles.wide])} style={{ height: '50vh' }}>
+        
         <h2>
           Why HODL POWER2 token & <span className={styles.specialI}>i</span>NFT?
         </h2>
@@ -24,7 +27,11 @@ const Screen6 = ({lightMode}) => {
       </div>
 
       <div className={styles.virtuousCycle}>
-        <CycleImage className={styles.cycleImage} />
+        { lightMode ? 
+          <img src={CycleImageLight3} alt="virtuous cycles" />
+        :
+          <img src={CycleImage3} alt="virtuous cycles" />
+        }     
       </div>
       
     </div>
