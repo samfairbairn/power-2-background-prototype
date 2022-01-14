@@ -25,7 +25,7 @@
 
 @mixin type-title-l {
   font-size: $text-size-xl;
-  line-height: 1.1em;
+  line-height: 1.2em;
   margin: 0 0 $spacing-l 0;
   letter-spacing: 2px;
   font-weight: bold;
@@ -42,9 +42,9 @@
 
 @mixin type-title-m {
   font-size: $text-size-l;
-  line-height: 1.1em;
+  line-height: 1.2em;
   margin: 0 0 $spacing-l 0;
-  letter-spacing: 0px;
+  letter-spacing: 1px;
   font-weight: bold;
   text-transform: uppercase;
   transition: color $transition-normal ease-in-out;
@@ -59,8 +59,8 @@
 
 @mixin type-title-s {
   font-size: $text-size-ml;
-  line-height: 1.8em;
-  margin: 0 0 $spacing-l 0;
+  line-height: 2em;
+  margin: $spacing-s 0 $spacing-m 0;
   letter-spacing: 1px;
   font-weight: bold;
   text-transform: uppercase;

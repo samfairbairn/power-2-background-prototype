@@ -90,6 +90,13 @@ button {
   }
 }
 
+.small-only {
+  display: none;
+  @include device-l {
+    display: block;
+  }
+}
+
 .desktop-only {
   display: block;
   @include device-m {
