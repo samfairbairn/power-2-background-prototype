@@ -4,9 +4,9 @@ import { MathUtils } from 'three';
 import styles from './styles.module.scss';
 
 import { ReactComponent as ArrowIcon } from '../../assets/button-arrow.svg';
-import { ReactComponent as ReadMoreIcon } from '../../assets/button-read-more.svg';
+import ReadMoreIcon from '../../assets/button-read-more.svg';
 
-const Button = () => {
+const Button = ({url}) => {
 
   const wrapper = useRef()
   const inside = useRef()
@@ -65,12 +65,19 @@ const Button = () => {
     })
   })
 
+  const onClick = () => {
+    if (url) {
+      window.open(url, '_blank');
+    }
+  }
+
   return (
     <div ref={wrapper} className={styles.buttonWrapper} onMouseMove={onMouseMove} onMouseOver={onMouseOuterOver} onMouseOut={onMouseOuterOut}>
-      <div ref={inside} className={styles.button} onMouseOver={onMouseInnerOver} onMouseOut={onMouseInnerOut} style={{transform: `translate3d(${lerpPos.x}px, ${lerpPos.y}px, 0)`}}>
+      <div ref={inside} onClick={onClick} className={styles.button} onMouseOver={onMouseInnerOver} onMouseOut={onMouseInnerOut} style={{transform: `translate3d(${lerpPos.x}px, ${lerpPos.y}px, 0)`}}>
         <div className={styles.inside}></div>
         <ArrowIcon className={styles.arrow}/>
-        <ReadMoreIcon className={styles.cta}/>
+        {/* <ReadMoreIcon className={styles.cta}/> */}
+        <img src={ReadMoreIcon} alt='read more' className={styles.cta} />
       </div>
     </div>
   )
