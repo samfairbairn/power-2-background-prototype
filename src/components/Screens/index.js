@@ -6,6 +6,7 @@ import Screen3 from './Screen3'
 import Screen4 from './Screen4'
 import Screen5 from './Screen5'
 import Screen5b from './Screen5b'
+import Screen5c from './Screen5c'
 import Screen6 from './Screen6'
 import Screen7 from './Screen7'
 import Screen8 from './Screen8'
@@ -27,9 +28,10 @@ const Screens = ({context}) => {
         <PlusIcon className={styles.plusIcon} />
       </div>
       <Screen5 />
-      <Screen6 lightMode={lightMode} />
       <Screen5b />
       <Screen7 />
+      <Screen5c />
+      <Screen6 lightMode={lightMode}/>
       <Screen8 />
       <Screen9 />
     </Scroll>
