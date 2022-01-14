@@ -18,7 +18,7 @@ function Menu() {
 
       if (_scrollPos > (2/(scroll.pages-1)) && _scrollPos < (5/(scroll.pages-1))) {
         setActiveIndex(1)
-      } else if (_scrollPos > (7.6/(scroll.pages-1)) && _scrollPos < (9/(scroll.pages-1))) {
+      } else if (_scrollPos > (9.5/(scroll.pages-1)) && _scrollPos < (10.75/(scroll.pages-1))) {
         setActiveIndex(2)
       } else {
         setActiveIndex(0)
@@ -39,13 +39,17 @@ function Menu() {
     }
   }
 
+  const whitepaperClick = () => {
+    window.open('https://docs.power2.finance/whitepaper/', '_blank');
+  }
+
 
   return (
     <div className={styles.menu}>
       <ul className={styles.links}>
         <li className={classNames([styles.link, activeIndex === 1 && styles.isActive])} onClick={() => { triggerScroll(2/(scroll.pages-1)) }}>Prize ( 1 + 1 )</li>
-        <li className={classNames([styles.link, activeIndex === 2 && styles.isActive])} onClick={() => { triggerScroll(7.75/(scroll.pages-1)) }}>Roadmap</li>
-        <li className={styles.link}>Whitepaper</li>
+        <li className={classNames([styles.link, activeIndex === 2 && styles.isActive])} onClick={() => { triggerScroll( 9.75/(scroll.pages-1)) }}>Roadmap</li>
+        <li className={styles.link} onClick={whitepaperClick}>Whitepaper</li>
       </ul>
       <DarkModeSwitch />
     </div>
