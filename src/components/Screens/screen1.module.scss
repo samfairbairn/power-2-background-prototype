@@ -33,7 +33,7 @@
   
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
-      transition: opacity 1s $easeInOutCubic #{$i * .05}s, transform 1s $easeOutCubic #{$i * .05}s;
+      transition: opacity 1s $easeInOutCubic #{$i * .1}s, transform 1s $easeOutCubic #{$i * .1}s;
     }
   }
 
