@@ -150,10 +150,12 @@ function Composition({context}) {
 
   })
 
-  if (!showShape) return null
+  const DisableRender = () => useFrame(() => null, 1000)
 
   return (
     <>
+
+      {!showShape && <DisableRender />}
         
       { !lightMode && (<Fog />) }
 
