@@ -4,7 +4,7 @@ import React, { useEffect, useRef, Suspense, useState, useContext } from 'react'
 import styles from './style.module.scss';
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Color, MathUtils } from 'three';
-import { ScrollControls, useScroll } from '@react-three/drei'
+import { ScrollControls, useScroll, AdaptiveDpr } from '@react-three/drei'
 import { EffectComposer, SSAO } from '@react-three/postprocessing'
 import { Leva, useControls } from 'leva'
 import Screens from '../Screens'
@@ -205,6 +205,7 @@ function Scene() {
     <div className={styles.scene + ` ${lightMode ? 'is-light-mode' : ''}`}>
       {/* <Leva collapsed={false} /> */}
       <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 7], near: 1, far: 15 }}>
+        <AdaptiveDpr pixelated />
         <ScrollControls damping={10} pages={12.25} >
           <Composition context={context} />
           <Screens context={context} />
