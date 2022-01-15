@@ -8,7 +8,7 @@ const Screen6 = ({lightMode}) => {
   return (
     <div className={styles.screen} style={{top: `800vh`, height: '150vh', flexDirection: "column"}}>
 
-      <div className={classNames([styles.content, styles.wide])} style={{ height: '50vh' }}>
+      <div className={classNames([styles.content, styles.wide])} style={{ height: '75vh' }}>
         
         <h2>
           Why HODL POWER2 token & <span className={styles.specialI}>i</span>NFT?
