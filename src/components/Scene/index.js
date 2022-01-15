@@ -82,7 +82,7 @@ function Composition({context}) {
     properties.current.scaleTL.pause();
 
     properties.current.rotationTL = new TimelineLite();
-    properties.current.rotationTL.to(properties.current, {rotation: 0.005, duration: 1, ease: Power1.easeInOut});
+    properties.current.rotationTL.to(properties.current, {rotation: 0.001, duration: 1, ease: Power1.easeInOut});
     properties.current.rotationTL.pause();
 
     properties.current.blocksTL = new TimelineLite();
