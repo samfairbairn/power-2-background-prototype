@@ -17,6 +17,7 @@
   .logo {
     height: 35px;
     margin-left: 5px;
+    cursor: pointer;
     :global {
       .base-line {
         transition: fill $transition-normal ease-in-out;

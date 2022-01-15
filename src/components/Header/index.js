@@ -6,10 +6,13 @@ import classNames from 'classnames';
 import { ReactComponent as LogoIcon } from '../../assets/logo.svg';
 import Menu from './Menu'
 
+import { gsap, Power1, ScrollToPlugin } from "gsap/all"; 
+gsap.registerPlugin(ScrollToPlugin);
+
 function Header() {
 
   const context = useContext(AppContext);
-  const { lightMode, scrollPos } = context
+  const { lightMode, scrollPos, scroll } = context
 
   const [pos, setPos] = useState(2) // 0: abstop, 1: hidden, 2: visible
   // const [inTop, setInTop] = useState(true) // 0: abstop, 1: hidden, 2: visible
@@ -54,6 +57,10 @@ function Header() {
 
   }, [scrollPos, pos, offset])
 
+  const triggerScroll = () => {
+    gsap.to(scroll.el, {duration: 1, scrollTo: {y: 0}, ease: Power1.easeInOut}); 
+  }
+
   return (
     <div 
       className={classNames([
@@ -65,7 +72,7 @@ function Header() {
       ])}
       style={{transform: `translate3d(0, ${offset}px, 0)`}}
       >
-        <LogoIcon className={styles.logo} />
+        <LogoIcon onClick={() => { triggerScroll() }} className={styles.logo} />
         <Menu />
       </div>
   );
