@@ -1,7 +1,7 @@
 import styles from './screen.module.scss';
 import classNames from 'classnames';
-import CycleImage3 from '../../assets/CYCLE_Dark-08.svg'
-import CycleImageLight3 from '../../assets/CYCLES_light-08.svg'
+import CycleImage3 from '../../assets/cycles_dark-08.svg'
+import CycleImageLight3 from '../../assets/cycle_light-08.svg'
 
 const Screen6 = ({lightMode}) => {
 
