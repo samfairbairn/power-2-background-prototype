@@ -6,9 +6,9 @@ import CycleImageLight3 from '../../assets/cycle_light-08.svg'
 const Screen6 = ({lightMode}) => {
 
   return (
-    <div className={styles.screen} style={{top: `800vh`, height: '150vh', flexDirection: "column"}}>
+    <div className={classNames([styles.screen, styles.fluid])} style={{flexDirection: "column"}}>
 
-      <div className={classNames([styles.content, styles.wide])} style={{ height: '75vh' }}>
+      <div className={classNames([styles.content, styles.wide])} style={{marginBottom: '10vh'}}>
         
         <h2>
           Why HODL POWER2 token & <span className={styles.specialI}>i</span>NFT?

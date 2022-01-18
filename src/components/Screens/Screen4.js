@@ -4,11 +4,12 @@ import styles from './screen.module.scss';
 const Screen4 = () => {
 
   return (
-    <div className={classNames([styles.screen, styles.alignRight])} style={{top: `300vh`, alignItems: 'flex-end', paddingBottom: '25vh'}}>
+    <div className={classNames([styles.screen, styles.alignRight])} style={{top: `300vh`, height: '100vh'}}>
 
-      <span className={classNames([styles.big1, styles.gradient1])} style={{bottom: '50vh'}}>1</span>
+      <span className={classNames([styles.big1, styles.gradient1])} style={{bottom: '15vh'}}>1</span>
 
-      <div className={styles.content} style={{paddingLeft: '8vw'}}>
+      <div className={styles.content} style={{paddingLeft: '4vw'}}>
+        {/* <span className={classNames([styles.big1, styles.gradient1])}>1</span> */}
 
         <h2>
           $ XXXXXX Prizes with<br />

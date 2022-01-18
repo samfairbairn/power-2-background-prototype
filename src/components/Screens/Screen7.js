@@ -4,7 +4,7 @@ import classNames from 'classnames';
 const Screen7 = () => {
 
   return (
-    <div className={styles.screen} style={{top: `600vh`, height: '100vh', flexDirection: "column", justifyContent: 'center'}}>
+    <div className={classNames([styles.screen, styles.fluid])} style={{flexDirection: "column", justifyContent: 'center'}}>
 
       <div className={classNames([styles.content, styles.wide])}>
         <div className={styles.left}>

@@ -5,11 +5,12 @@ import ImageSequence from '../ImageSequence'
 const Screen5 = () => {
 
   return (
-    <div className={styles.screen} style={{top: `400vh`, height: '100vh', alignItems: 'flex-start', paddingTop: '40vh'}}>
+    <div className={styles.screen} style={{top: `400vh`, height: '100vh'}}>
 
-      <span className={classNames([styles.big1, styles.gradient2])} style={{top: '50vh'}}>1</span>
+      <span className={classNames([styles.big1, styles.gradient2])} style={{top: '15vh'}}>1</span>
 
-      <div className={styles.content}>
+      <div className={styles.content} style={{ alignItems: 'flex-start', marginTop: '20vh'}}>
+        {/* <span className={classNames([styles.big1, styles.gradient2, styles.right])}>1</span> */}
         <h2>
           Yes! One More!
         </h2>

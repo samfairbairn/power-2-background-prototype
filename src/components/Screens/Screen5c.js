@@ -5,7 +5,7 @@ import {ReactComponent as PuppyImage} from '../../assets/puppy.svg'
 const Screen5b = ({lightMode}) => {
 
   return (
-    <div className={classNames([styles.screen, styles.column])} style={{top: `700vh`, height: '100vh'}}>
+    <div className={classNames([styles.screen, styles.column, styles.fluid])}>
 
       <div className={classNames([styles.content, styles.wide])}>
         <h2>

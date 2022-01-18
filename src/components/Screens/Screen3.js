@@ -50,7 +50,7 @@ const Screen3 = ({scrollPos}) => {
   }, [])
 
   return (
-    <div className={styles.screen} style={{top: `200vh`}}>
+    <div className={styles.screen} style={{top: `200vh`, height: '100vh'}}>
       <div className={styles.center}>
         <span className={styles.xlTitle}>
           <span style={{fontWeight: '400'}}>( </span>

@@ -1,3 +1,4 @@
+import React, { useCallback, useEffect, useRef, useMemo } from 'react';
 import { Scroll } from '@react-three/drei'
 import classNames from 'classnames'
 import Screen1 from './Screen1'
@@ -16,7 +17,8 @@ import { ReactComponent as PlusIcon } from '../../assets/plus.svg';
 
 const Screens = ({context}) => {
 
-  const { lightMode, scrollPos } = context;
+  const { lightMode, scrollPos, isMobile } = context;
+  const partTwo = useRef()
 
   return (
     <Scroll html style={{ width: '100%' }}>
@@ -28,12 +30,14 @@ const Screens = ({context}) => {
         <PlusIcon className={styles.plusIcon} />
       </div>
       <Screen5 />
-      <Screen5b />
-      <Screen7 />
-      <Screen5c />
-      <Screen6 lightMode={lightMode}/>
-      <Screen8 />
-      <Screen9 />
+      <div ref={partTwo} className={classNames([styles.screen, styles.secondPart, isMobile && styles.isMobile])}>
+        <Screen5b />
+        <Screen7 />
+        <Screen5c />
+        <Screen6 lightMode={lightMode}/>
+        <Screen8 />
+        <Screen9 />
+      </div>
     </Scroll>
   )
 };

@@ -4,7 +4,7 @@
 .screen {
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
   left: 0;
   display: flex;
   align-items: center;
@@ -13,6 +13,24 @@
   &.column {
     flex-direction: column;
     justify-content: center;
+  }
+
+  &.fluid {
+    position: relative;
+    // margin: 20vh auto;
+  }
+
+  &.secondPart {
+    top: 550vh;
+    height: 700vh;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    &.isMobile{
+      @include device-m {
+        height: 500vh;
+      }
+    }
   }
 
   .content {
@@ -349,7 +367,7 @@
 
 .virtuousCycle {
   width: 90%;
-  height: 75vh;
+  // height: 75vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -361,7 +379,7 @@
   text-align: center;
 
   img {
-    width: 100%;
+    width: 80%;
     @include device-l {
       width: 100%;
     }

@@ -1,11 +1,12 @@
 import styles from './screen.module.scss';
+import classNames from 'classnames';
 import { ReactComponent as LogoSimple } from '../../assets/logo-simple.svg'
 import Button from '../Button'
 
 const Screen8 = () => {
 
   return (
-    <div className={styles.screen} style={{top: `1150vh`, height: '75vh', flexDirection: "column"}}>
+    <div className={classNames([styles.screen, styles.fluid])} style={{flexDirection: "column"}}>
       <div className={styles.center}>
         <LogoSimple className={styles.logoSimple} />
         <h2>Whitepaper</h2>

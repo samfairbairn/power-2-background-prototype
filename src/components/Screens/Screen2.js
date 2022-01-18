@@ -4,7 +4,7 @@ import styles from './screen.module.scss';
 const Screen2 = () => {
 
   return (
-    <div className={classNames([styles.screen, styles.alignRight])} style={{top: `100vh`}}>
+    <div className={classNames([styles.screen, styles.alignRight])} style={{top: `100vh`, height: '100vh'}}>
 
       <div className={styles.content}>
         <h2>

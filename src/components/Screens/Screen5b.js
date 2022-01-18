@@ -4,7 +4,7 @@ import classNames from 'classnames';
 const Screen5b = ({lightMode}) => {
 
   return (
-    <div className={classNames([styles.screen, styles.column])} style={{height: '100vh', top: `500vh`}}>
+    <div className={classNames([styles.screen, styles.column, styles.fluid])}>
 
       <div className={classNames([styles.content, styles.wide])}>
         <h2>

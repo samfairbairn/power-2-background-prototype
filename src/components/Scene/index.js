@@ -195,20 +195,25 @@ function Composition({context}) {
 function Scene() {
 
   const context = useContext(AppContext);
-  const { lightMode, setLightMode } = context
-
-  // const { _lightMode } = useControls({ _lightMode: false })
+  const { lightMode, isMobile } = context
 
   useEffect(() => {
     if (lightMode !== window._bgConfig.LIGHTMODE) window.toggleLightMode()
   }, [lightMode])
 
+  const pages = useRef(undefined)
+  
+  useEffect(() => {
+    const secondPart = isMobile && window.innerWidth < 768 ? 5 : 7
+    pages.current = 5.5 + secondPart
+  }, [isMobile])
+
   return (
     <div className={styles.scene + ` ${lightMode ? 'is-light-mode' : ''}`}>
-      {/* <Leva collapsed={false} /> */}
       <Canvas shadows dpr={[1, 2]} gl={{ alpha: true, antialias: false }} camera={{ fov: 50, position: [0, 0, 7], near: 1, far: 15 }}>
         <AdaptiveDpr pixelated />
-        <ScrollControls damping={10} pages={12.25} >
+        {/* <ScrollControls damping={10} pages={12.25} > */}
+        <ScrollControls damping={10} pages={pages.current} >
           <Composition context={context} />
           <Screens context={context} />
         </ScrollControls>
