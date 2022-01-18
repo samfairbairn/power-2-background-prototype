@@ -7,7 +7,7 @@ const Screen8 = () => {
 
   return (
     <div className={classNames([styles.screen, styles.fluid])} style={{flexDirection: "column"}}>
-      <div className={styles.center}>
+      <div className={styles.center} style={{marginBottom: '10vh'}}>
         <LogoSimple className={styles.logoSimple} />
         <h2>Whitepaper</h2>
         <div className={styles.buttonWrapper}>
