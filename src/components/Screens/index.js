@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useMemo } from 'react';
+import React, { useRef } from 'react';
 import { Scroll } from '@react-three/drei'
 import classNames from 'classnames'
 import Screen1 from './Screen1'
