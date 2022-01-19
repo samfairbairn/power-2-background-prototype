@@ -4,7 +4,7 @@ import styles from './header.module.scss';
 import { AppContext } from "../../context/appContext";
 import classNames from 'classnames';
 import { ReactComponent as LogoIcon } from '../../assets/logo.svg';
-import Menu from './Menu'
+import Menu from '../Menu'
 
 import { gsap, Power1, ScrollToPlugin } from "gsap/all"; 
 gsap.registerPlugin(ScrollToPlugin);
@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollToPlugin);
 function Header() {
 
   const context = useContext(AppContext);
-  const { lightMode, scrollPos, scroll } = context
+  const { lightMode, scrollPos, scroll, isMobile, menuOpen, toggleMenu } = context
 
   const [pos, setPos] = useState(2) // 0: abstop, 1: hidden, 2: visible
   // const [inTop, setInTop] = useState(true) // 0: abstop, 1: hidden, 2: visible
@@ -59,12 +59,14 @@ function Header() {
 
   const triggerScroll = () => {
     gsap.to(scroll.el, {duration: 1, scrollTo: {y: 0}, ease: Power1.easeInOut}); 
+    if (menuOpen) toggleMenu()
   }
 
   return (
     <div 
       className={classNames([
         styles.container,
+        menuOpen && styles.menuOpen,
         lightMode && styles.lightMode,
         pos === 2 && styles.goingUp,
         pos === 1 && styles.goingDown,
@@ -73,7 +75,16 @@ function Header() {
       style={{transform: `translate3d(0, ${offset}px, 0)`}}
       >
         <LogoIcon onClick={() => { triggerScroll() }} className={styles.logo} />
-        <Menu />
+        {isMobile ? (
+          <div className={classNames(styles.burgerMenu, menuOpen && styles.open)} onClick={toggleMenu}>
+            <span className={classNames(styles.line, styles.top)}></span>
+            <span className={classNames(styles.line, styles.middle1)}></span>
+            <span className={classNames(styles.line, styles.middle2)}></span>
+            <span className={classNames(styles.line, styles.bottom)}></span>
+          </div>
+        ) : (
+          <Menu />
+        )}
       </div>
   );
 }
