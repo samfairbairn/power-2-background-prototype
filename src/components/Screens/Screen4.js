@@ -5,6 +5,7 @@ const Screen4 = () => {
 
   return (
     <div className={classNames([styles.screen, styles.alignRight])} style={{top: `300vh`, height: '100vh'}}>
+      <div className={styles.backgroundGradient}></div>
 
       <span className={classNames([styles.big1, styles.gradient1])} style={{bottom: '15vh'}}>1</span>
 

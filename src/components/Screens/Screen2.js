@@ -5,7 +5,8 @@ const Screen2 = () => {
 
   return (
     <div className={classNames([styles.screen, styles.alignRight])} style={{top: `100vh`, height: '100vh'}}>
-
+      <div className={styles.backgroundGradient}></div>
+      
       <div className={styles.content}>
         <h2>
           Welcome to POWER2
