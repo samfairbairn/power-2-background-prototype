@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { AppContext } from "../../context/appContext";
-import styles from './header.module.scss';
+import styles from './menu.module.scss';
 
 import { ReactComponent as MoonIcon } from '../../assets/moon.svg';
 import { ReactComponent as SunIcon } from '../../assets/sun.svg';
