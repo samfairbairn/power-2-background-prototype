@@ -32,6 +32,7 @@ const Screen6 = ({lightMode}) => {
         :
           <img src={CycleImage3} alt="virtuous cycles" />
         }     
+        <span className={styles.scrollLabel}>{'<< scroll >>'}</span>
       </div>
       
     </div>

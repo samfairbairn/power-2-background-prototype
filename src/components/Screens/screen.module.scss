@@ -405,13 +405,43 @@
   flex-shrink: 0;
   flex-grow: 0;
   padding: $spacing-l;
-  pointer-events: none;
+  // pointer-events: none;
   text-align: center;
+
+  .scrollLabel {
+    position: absolute;
+    width: 100px;
+    left: 50%;
+    bottom: -20px;
+    opacity: 0.4;
+    text-align: center;
+    @include type-body;
+    margin-left: -50px;
+    display: none;
+    font-size: $text-size-xs;
+    @include device-m {
+      display: block;
+    }
+  }
+
+  @include device-l {
+    padding: $spacing-m;
+  }
+  
+  @include device-m {
+    padding: $spacing-s $spacing-m $spacing-l;
+    display: block;
+    overflow-x: scroll;
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
 
   img {
     width: 80%;
     @include device-l {
       width: 100%;
+    }
+    @include device-m {
+      width: 200%;
     }
   }
 }
@@ -426,7 +456,8 @@
     // margin-right: 6vw;
   }
   @include device-m {
-    width: 84vw;
+    width: 98vw;
+    margin-left: 2svw;
     // margin-right: 8vw;
   }
 }
