@@ -15,7 +15,6 @@ function Menu() {
   useEffect(() => {
     if (scroll) {
       const _scrollPos = scrollPos / ((window.innerHeight * scroll.pages) - window.innerHeight)
-      console.log(scrollPos / window.innerHeight)
 
       if (_scrollPos > (2/(scroll.pages-1)) && _scrollPos < (5/(scroll.pages-1))) {
         setActiveIndex(1)
