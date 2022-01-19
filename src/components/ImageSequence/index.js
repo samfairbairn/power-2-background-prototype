@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 const images = []
 
 for (let i = 13; i < 253; i++) {
-  images.push(require(`../../assets/sequence/mAGIC CUBE 0111.257.${i}.png`));
+  images.push(require(`../../assets/sequence_small/mAGIC CUBE 0111.257.${i}.png`));
 }
 
 const ImageSequence = () => {
