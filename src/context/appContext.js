@@ -8,6 +8,7 @@ const AppProvider = ({ children }) => {
   const [scroll, setScroll] = useState(undefined);
   const [screenRatio, setScreenRatio] = useState(undefined);
   const [isMobile, setIsMobile] = useState(undefined);
+  const [menuOpen, setMenuOpen] = useState(undefined);
 
   let resizeTimer = useRef()
 
@@ -21,6 +22,10 @@ const AppProvider = ({ children }) => {
       resizeTimer.current = undefined
       setScreenRatio(window.innerWidth / window.innerHeight)
     }, 500)
+  }
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen)
   }
 
   useEffect(() => {
@@ -38,7 +43,7 @@ const AppProvider = ({ children }) => {
   }, [])
   
   return (
-    <AppContext.Provider value={{lightMode, setLightMode, scrollPos, setScrollPos, setScroll, scroll, screenRatio, isMobile}}>
+    <AppContext.Provider value={{lightMode, setLightMode, scrollPos, setScrollPos, setScroll, scroll, screenRatio, isMobile, menuOpen, toggleMenu}}>
       {children}
     </AppContext.Provider>
   );
