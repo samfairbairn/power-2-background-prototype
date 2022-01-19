@@ -24,6 +24,14 @@ const AppProvider = ({ children }) => {
   }
 
   useEffect(() => {
+    if (lightMode) {
+      document.body.classList.add('is-light-mode')
+    } else {
+      document.body.classList.remove('is-light-mode')
+    }
+  }, [lightMode])
+
+  useEffect(() => {
     setScreenRatio(window.innerWidth / window.innerHeight)
     setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
     window.addEventListener('resize', onResize)
