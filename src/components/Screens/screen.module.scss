@@ -131,39 +131,42 @@
 }
 
 .big1 {
+  position: absolute;
+  display: inline-block;
   font-size: 250px;
   font-weight: 300;
   text-align: center;
-  position: absolute;
   left: 50%;
   width: 100px;
   margin-left: -56px;
   // margin-top: -30px;
   line-height: 1;
+  top: 15vh;
+
   @include device-l {
     left: 60%;
   }
 
   @include device-m {
     font-size: 150px;
-    position: absolute;
-    top: 0;
-    left: 60px;
-    opacity: 0.5;
+    // opacity: 0.6;
+    top: 5vh;
+    left: 30%;
   }
 }
 
 .alignRight {
   .big1 {
+    bottom: 15vh;
+    top: auto;
+
     @include device-l {
       left: 40%;
     }
     @include device-m {
-      position: absolute;
-      top: 0;
-      left: auto;
-      right: 0;
-      opacity: 0.3;
+      bottom: 5vh;
+      top: auto;
+      left: 70%;
     }
   }
 }
