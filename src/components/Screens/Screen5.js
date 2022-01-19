@@ -1,8 +1,22 @@
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './screen.module.scss';
-import ImageSequence from '../ImageSequence'
+import ImageSequence from '../ImageSequence';
 
-const Screen5 = () => {
+const Screen5 = ({scrollPos}) => {
+
+  const [pageVisible, setPageVisible] = useState(false)
+
+  useEffect(() => {
+    let _scrollPos = scrollPos / window.innerHeight;
+
+    if (!pageVisible && _scrollPos >= 3 && _scrollPos <= 4.5) {
+      setPageVisible(true)
+    } else if (pageVisible && (_scrollPos < 3 || _scrollPos > 4.5)) {
+      setPageVisible(false)
+    }
+
+  }, [scrollPos, pageVisible]);
 
   return (
     <div className={styles.screen} style={{top: `400vh`, height: '100vh'}}>
@@ -34,7 +48,7 @@ const Screen5 = () => {
         {/* <video width="1080" height="1080" muted autoPlay loop>
           <source src={cubeVideo} type="video/mp4" />
         </video> */}
-        <ImageSequence />
+        <ImageSequence play={pageVisible} />
       </div>
       
     </div>

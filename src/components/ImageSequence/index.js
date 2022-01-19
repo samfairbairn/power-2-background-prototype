@@ -8,11 +8,12 @@ for (let i = 13; i < 253; i++) {
   images.push(require(`../../assets/sequence_small/mAGIC CUBE 0111.257.${i}.png`));
 }
 
-const ImageSequence = () => {
+const ImageSequence = ({play}) => {
 
   const [isLoaded, setIsLoaded] = useState(false)
   const [frame, setFrame] = useState(0)
   const curFrame = useRef(0)
+  const _play = useRef(false)
   // const loadedImages = useRef([])
   const loaded = useRef(0)
   const lastTick = useRef(0)
@@ -50,7 +51,7 @@ const ImageSequence = () => {
       const delta = now - lastTick.current;
       if (delta > 1000/30) {
         lastTick.current = now;
-        render()
+        if (_play.current) render()
       }
       requestAnimationFrame(tick)
     }
@@ -67,7 +68,12 @@ const ImageSequence = () => {
     }
 
     preloadImages()
+
   }, [])
+  
+  useEffect(() => {
+    _play.current = play
+  }, [play])
 
   return (
     <div className={styles.imageSequence}>

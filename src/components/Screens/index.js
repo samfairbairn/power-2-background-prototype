@@ -29,7 +29,7 @@ const Screens = ({context}) => {
       <div className={classNames([styles.separator, lightMode && styles.isLightMode])}>
         <PlusIcon className={styles.plusIcon} />
       </div>
-      <Screen5 />
+      <Screen5 scrollPos={scrollPos} />
       <div ref={partTwo} className={classNames([styles.screen, styles.secondPart, isMobile && styles.isMobile])}>
         <Screen5b />
         <Screen7 />
