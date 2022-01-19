@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Scene from './components/Scene';
 import background from './components/Background';
 import Header from './components/Header';
+import MobileMenu from './components/MobileMenu';
 import AppProvider from './context/appContext';
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
   return (
     <div className="App">
       <AppProvider>
-        <Header></Header>
+        <Header />
         <Scene />
+        <MobileMenu />
       </AppProvider>
     </div>
   );

@@ -99,6 +99,10 @@
   transition: color $transition-normal ease-in-out;
   will-change: color;
 
+  @include device-m {
+    font-size: $text-size-s * 1.4;
+  }
+
   &:hover {
     cursor: pointer;
   }
