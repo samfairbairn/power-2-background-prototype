@@ -22,7 +22,7 @@ html, body {
 }
 
 body {
-  transition: background-color $transition-normal ease-in-out;
+  // transition: background-color $transition-normal ease-in-out;
   background-color: $color-black;
   &.is-light-mode {
     background-color: $color-white;

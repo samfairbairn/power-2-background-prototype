@@ -214,7 +214,7 @@
       stroke-width: 2px;
       fill: $color-black;
       stroke: $color-white;
-      transition: fill $transition-normal ease-in-out;
+      // transition: fill $transition-normal ease-in-out;
     }
   }
 
@@ -259,7 +259,7 @@
   line-height: 1.1em;
   margin: 0 0 $spacing-s 0;
   letter-spacing: 2px;
-  transition: color $transition-normal ease-in-out;
+  // transition: color $transition-normal ease-in-out;
   will-change: color;
   font-weight: bold;
   margin-left: -80px;
@@ -395,7 +395,7 @@
 
   :global {
     path, line, circle {
-      transition: fill $transition-normal ease-in-out, stroke $transition-normal ease-in-out;
+      // transition: fill $transition-normal ease-in-out, stroke $transition-normal ease-in-out;
       will-change: fill, stroke;
     }
     .cls-1{fill:none;stroke:#f1f2f2;stroke-miterlimit:10;}
@@ -483,7 +483,7 @@
 .roadmapImage {
   :global {
     path, line, circle {
-      transition: fill $transition-normal ease-in-out, stroke $transition-normal ease-in-out;
+      // transition: fill $transition-normal ease-in-out, stroke $transition-normal ease-in-out;
       will-change: fill, stroke;
     }
     .cls-1,.cls-5{fill:none;stroke-miterlimit:10;}
@@ -502,7 +502,7 @@
   margin-bottom: $spacing-ml;
   path {
     fill: $color-white !important;
-    transition: fill $transition-normal ease-in-out;
+    // transition: fill $transition-normal ease-in-out;
     will-change: fill;
   }
   @include device-xl {

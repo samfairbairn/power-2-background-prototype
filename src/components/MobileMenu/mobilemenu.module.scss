@@ -13,9 +13,12 @@
   height: 100vh;
   background-color: $color-background;
   transform-origin: center left;
-  transition-property: transform, background-color;
-  transition-duration: $transition-normal, $transition-normal;
-  transition-timing-function: $easeInOutCubic, ease-in-out;
+  // transition-property: transform, background-color;
+  // transition-duration: $transition-normal, $transition-normal;
+  // transition-timing-function: $easeInOutCubic, ease-in-out;
+  transition-property: transform;
+  transition-duration: $transition-normal;
+  transition-timing-function: $easeInOutCubic;
 
   &.lightMode {
     background-color: $color-white;
@@ -53,7 +56,7 @@
         }
         path {
           fill: darken($color: $color-white, $amount: 20);;
-          transition: fill $transition-normal ease-in-out;
+          // transition: fill $transition-normal ease-in-out;
         }
       }
     }

@@ -25,7 +25,7 @@
     border-radius: 80px;
     border: 1px solid $color-white;
     cursor: pointer;
-    transition: border $transition-normal ease-in-out;
+    // transition: border $transition-normal ease-in-out;
     will-change: border;
 
     svg, 
@@ -53,7 +53,7 @@
       line,
       path {
         stroke: $color-white;
-        transition: stroke $transition-normal ease-in-out;
+        // transition: stroke $transition-normal ease-in-out;
         will-change: stroke;
       }
     }

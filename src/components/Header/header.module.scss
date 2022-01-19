@@ -10,7 +10,7 @@
   height: 80px;
   width: 100%;
   background-color: rgba($color-black, 0);
-  transition: background-color $transition-normal ease-in-out;
+  // transition: background-color $transition-normal ease-in-out;
   will-change: transform;
   z-index: $layer-9;
   
@@ -25,7 +25,7 @@
     cursor: pointer;
     :global {
       .base-line {
-        transition: fill $transition-normal ease-in-out;
+        // transition: fill $transition-normal ease-in-out;
         will-change: fill, stroke;
         fill: #fff;
       }
@@ -40,7 +40,8 @@
   
   &.goingDown {
     position: fixed;
-    transition: background-color $transition-normal ease-in-out, transform $transition-normal $easeOutCubic;
+    // transition: background-color $transition-normal ease-in-out, transform $transition-normal $easeOutCubic;
+    transition: transform $transition-normal $easeOutCubic;
     background-color: rgba($color-black, 0.8);
     &.menuOpen {
       background-color: rgba($color-black, 0);
@@ -55,7 +56,8 @@
   
   &.goingUp {
     position: fixed;
-    transition: background-color $transition-normal ease-in-out, transform $transition-normal $easeOutCubic;
+    // transition: background-color $transition-normal ease-in-out, transform $transition-normal $easeOutCubic;
+    transition: transform $transition-normal $easeOutCubic;
     background-color: rgba($color-black, 0.8);
     &.menuOpen {
       background-color: rgba($color-black, 0);
@@ -81,9 +83,12 @@
       left: 0;
       transform-origin: center center;
       background-color: $color-white;
-      transition-property: opacity, transform, background-color;
-      transition-duration: $transition-fast, $transition-fast, $transition-normal;
-      transition-timing-function: $easeInOutCubic, $easeInOutCubic, ease-in-out;
+      // transition-property: opacity, transform, background-color;
+      // transition-duration: $transition-fast, $transition-fast, $transition-normal;
+      // transition-timing-function: $easeInOutCubic, $easeInOutCubic, ease-in-out;
+      transition-property: opacity, transform;
+      transition-duration: $transition-fast, $transition-fast;
+      transition-timing-function: $easeInOutCubic, $easeInOutCubic;
       opacity: 1;
 
       &.top {

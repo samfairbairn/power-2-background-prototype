@@ -93,7 +93,7 @@
     border: 1px solid darken($color: $color-white, $amount: 40);
     border-radius: 10px;
     cursor: pointer;
-    transition: border $transition-normal ease-in-out;
+    // transition: border $transition-normal ease-in-out;
     will-change: border;
     margin-left: 30px;
 
@@ -114,7 +114,8 @@
       border-radius: 7px;
       top: 2px;
       left: 2px;
-      transition: background-color $transition-normal ease-in-out, transform $transition-normal $easeInOutCubic;
+      // transition: background-color $transition-normal ease-in-out, transform $transition-normal $easeInOutCubic;
+      transition: transform $transition-normal $easeInOutCubic;
       will-change: background-color, transform;
       transform: translate3d(0, 0, 0);
 
