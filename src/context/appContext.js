@@ -40,6 +40,9 @@ const AppProvider = ({ children }) => {
     setScreenRatio(window.innerWidth / window.innerHeight)
     setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
     window.addEventListener('resize', onResize)
+    const lightModeSetting = localStorage.getItem('lightMode');
+    setLightMode(lightModeSetting === '1')
+    
   }, [])
   
   return (

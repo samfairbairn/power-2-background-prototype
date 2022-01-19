@@ -10,8 +10,14 @@ function DarkModeSwitch() {
   const context = useContext(AppContext);
   const { setLightMode, lightMode } = context
 
+  const toggleLightMode = () => {
+    const newLightMode = !lightMode
+    localStorage.setItem('lightMode', newLightMode ? '1' : '0');
+    setLightMode(newLightMode)
+  }
+
   return (
-    <div className={styles.darkmodeSwitch} onClick={() => { setLightMode(!lightMode) }}>
+    <div className={styles.darkmodeSwitch} onClick={toggleLightMode}>
       <div className={classNames([styles.switchIcon, styles.moon])}><MoonIcon /></div>
       <div className={classNames([styles.switchIcon, styles.sun])}><SunIcon /></div>
       <span className={styles.knob}></span>
