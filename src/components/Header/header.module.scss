@@ -74,7 +74,7 @@
     display: inline-block;
     position: relative;
     width: 30px;
-    height: 30px;
+    height: 26px;
 
     .line {
       position: absolute;
@@ -111,6 +111,12 @@
         &.top,
         &.bottom {
           opacity: 0;
+        }
+        &.top {
+          transform: translate3d(0, 10px, 0) scale(0);
+        }
+        &.bottom {
+          transform: translate3d(0, 10px, 0) scale(0);
         }
         &.middle1 {
           transform: rotate(45deg);
