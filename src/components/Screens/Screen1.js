@@ -17,7 +17,7 @@ const Screen1 = () => {
     <div className={styles.screen} style={{top: `0vh`}}>
       <div className={classNames(styles.content, showTitle && styles.show)}>
         <h1>
-          <span className={styles.titleLine}>POWER2 No-Loss Cube</span><br />
+          <span className={styles.titleLine}>POWER2 <br className="mobile-only" />No-Loss Cube</span><br />
           <span className={classNames([styles.titleLine, styles.mobileTitle])}>Win <span className={_styles.gradient1}>1</span> + <span className={_styles.gradient2}>1</span> Prizes</span><br />
           <span className={classNames([styles.titleLine, styles.mobileTitle])}>Every single day</span>
         </h1>
