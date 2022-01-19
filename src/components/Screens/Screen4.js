@@ -9,7 +9,7 @@ const Screen4 = () => {
 
       <span className={classNames([styles.big1, styles.gradient1])}>1</span>
 
-      <div className={styles.content} style={{paddingLeft: '4vw'}}>
+      <div className={classNames([styles.content, styles.prizes1])}>
         {/* <span className={classNames([styles.big1, styles.gradient1])}>1</span> */}
 
         <h2>

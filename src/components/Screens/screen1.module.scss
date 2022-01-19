@@ -22,6 +22,9 @@
   flex-grow: 0;
   padding: $spacing-l;
   pointer-events: none;
+  @include device-m {
+    padding: $spacing-l $spacing-ml;
+  }
 }
 
 .titleLine,
