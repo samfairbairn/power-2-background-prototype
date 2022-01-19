@@ -10,7 +10,6 @@
   height: 80px;
   width: 100%;
   background-color: rgba($color-black, 0);
-  // transition: background-color $transition-normal ease-in-out;
   will-change: transform;
   z-index: $layer-9;
   
@@ -40,33 +39,19 @@
   
   &.goingDown {
     position: fixed;
-    // transition: background-color $transition-normal ease-in-out, transform $transition-normal $easeOutCubic;
     transition: transform $transition-normal $easeOutCubic;
     background-color: rgba($color-black, 0.8);
-    &.menuOpen {
-      background-color: rgba($color-black, 0);
-    }
     &.lightMode {
       background-color: rgba($color-white, 0.9);
-      &.menuOpen {
-        background-color: rgba($color-white, 0);
-      }
     }
   }
   
   &.goingUp {
     position: fixed;
-    // transition: background-color $transition-normal ease-in-out, transform $transition-normal $easeOutCubic;
     transition: transform $transition-normal $easeOutCubic;
     background-color: rgba($color-black, 0.8);
-    &.menuOpen {
-      background-color: rgba($color-black, 0);
-    }
     &.lightMode {
       background-color: rgba($color-white, 0.9);
-      &.menuOpen {
-        background-color: rgba($color-white, 0);
-      }
     }
   }
 
