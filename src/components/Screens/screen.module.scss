@@ -403,11 +403,16 @@
   width: 15vw;
 
   :global {
-    path, line, circle {
-      // transition: fill $transition-normal ease-in-out, stroke $transition-normal ease-in-out;
-      will-change: fill, stroke;
+    .is-light-mode {
+      :local {
+        filter: invert(1);
+      }
     }
-    .cls-1{fill:none;stroke:#f1f2f2;stroke-miterlimit:10;}
+    // path, line, circle {
+    //   // transition: fill $transition-normal ease-in-out, stroke $transition-normal ease-in-out;
+    //   will-change: fill, stroke;
+    // }
+    // .cls-1{fill:none;stroke:#f1f2f2;stroke-miterlimit:10;}
   }
   @include device-l {
     top: -20vh;
@@ -419,6 +424,16 @@
     right: 40%;
     width: 20vw;
     top: -15vh;
+  }
+}
+
+:global {
+  .is-light-mode {
+    :local {
+      .puppyImage {
+        filter: invert(1);
+      }
+    }
   }
 }
 
