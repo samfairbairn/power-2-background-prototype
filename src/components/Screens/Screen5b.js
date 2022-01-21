@@ -15,7 +15,7 @@ const Screen5b = ({lightMode}) => {
           I. One click to deposit. Done!
         </h3>
         <h3>
-          II. 1 + 1 prizes are awarded, every, single, day!
+          II. <span className={styles.gradient1}>1</span> + <span className={styles.gradient2}>1</span> prizes are awarded, every, single, day!
         </h3>
         <h3>
           III. Your money is still yours. Withdraw anytime with no fee!
