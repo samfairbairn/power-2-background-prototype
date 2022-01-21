@@ -1,6 +1,7 @@
 import styles from './screen.module.scss';
 import classNames from 'classnames';
-import {ReactComponent as PuppyImage} from '../../assets/puppy.svg'
+// import {ReactComponent as PuppyImage} from '../../assets/puppy.svg'
+import PuppyImage from '../../assets/dog-tail.gif'
 
 const Screen5b = ({lightMode}) => {
 
@@ -22,7 +23,8 @@ const Screen5b = ({lightMode}) => {
           because our team members are all animals lovers.
         </p>
 
-        <PuppyImage className={styles.puppyImage} />
+        {/* <PuppyImage className={styles.puppyImage} /> */}
+        <img src={PuppyImage} className={styles.puppyImage} alt='puppy' />
       </div>
 
       
