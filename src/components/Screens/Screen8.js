@@ -2,11 +2,11 @@ import { useEffect, useRef } from 'react';
 import ReactGA from 'react-ga';
 import styles from './screen.module.scss';
 import classNames from 'classnames';
-import {ReactComponent as RoadmapImage} from '../../assets/roadmap.svg'
-import { ReactComponent as LogoSimple } from '../../assets/logo-simple.svg'
+// import {ReactComponent as PuppyImage} from '../../assets/puppy.svg'
+import PuppyImage from '../../assets/dog-tail.gif'
 
-const Screen8 = ({scrollPos}) => {
-    
+const Screen8 = ({scrollPos, lightMode}) => {
+
   const tracked = useRef(false);
   const screen = useRef()
 
@@ -15,20 +15,34 @@ const Screen8 = ({scrollPos}) => {
       tracked.current = true
       ReactGA.event({
         category: "scroll",
-        action: "screen10: Roadmap"
+        action: "screen8: No-loss for charity"
       });
     }
   }, [scrollPos])
 
   return (
-    <div ref={screen} className={classNames([styles.screen, styles.fluid])} style={{flexDirection: "column", justifyContent: 'center'}}>
-      <div className={styles.center}>
-      <LogoSimple className={styles.logoSimple} />
-        <h2>Roadmap</h2>
-        <div className={styles.roadmapWrapper}>
-          <RoadmapImage className={styles.roadmapImage} />
-        </div>
+    <div ref={screen} className={classNames([styles.screen, styles.column, styles.fluid])}>
+
+      <div className={classNames([styles.content, styles.wide])}>
+        <h2>
+          No-loss for charity
+        </h2>
+
+        <p>
+          You don't need to spend a penny, just play the POWER2 CUBE <br className='desktop-only' />
+          and rescue animals at the same time.
+        </p>
+
+        <p>
+          1% of net fees will be donated to animal charities, <br className='desktop-only' />
+          because our team members are all animals lovers.
+        </p>
+
+        {/* <PuppyImage className={styles.puppyImage} /> */}
+        <img src={PuppyImage} className={styles.puppyImage} alt='puppy' />
       </div>
+
+      
     </div>
   )
 };

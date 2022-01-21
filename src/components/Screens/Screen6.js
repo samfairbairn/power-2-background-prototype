@@ -2,11 +2,9 @@ import { useEffect, useRef } from 'react';
 import ReactGA from 'react-ga';
 import styles from './screen.module.scss';
 import classNames from 'classnames';
-import CycleImage3 from '../../assets/cycles_dark-08.svg'
-import CycleImageLight3 from '../../assets/cycle_light-08.svg'
 
 const Screen6 = ({scrollPos, lightMode}) => {
-  
+
   const tracked = useRef(false);
   const screen = useRef()
 
@@ -15,39 +13,29 @@ const Screen6 = ({scrollPos, lightMode}) => {
       tracked.current = true
       ReactGA.event({
         category: "scroll",
-        action: "screen9: Why HODL"
+        action: "screen6: How To Play"
       });
     }
   }, [scrollPos])
 
   return (
-    <div ref={screen} className={classNames([styles.screen, styles.fluid])} style={{flexDirection: "column"}}>
+    <div ref={screen} className={classNames([styles.screen, styles.column, styles.fluid])}>
 
-      <div className={classNames([styles.content, styles.wide])} style={{marginBottom: '10vh'}}>
-        
+      <div className={classNames([styles.content, styles.wide])}>
         <h2>
-          Why HODL POWER2 token & <span className={styles.specialI}>i</span>NFT?
-        </h2>
-        <h2>
-          They'll grow to the moon, thanks to <br className="desktop-only"/>
-          POWER2 Virtuous Snowball Cycles.
+          How to play
         </h2>
 
-        <p>
-          The Virtuous Snowball Cycles forms a positive back loop of higher demands,<br className="desktop-only"/>
-          which causes higher POWER2 token and iNFT prices.<br className="desktop-only"/>
-          So remember, always have diamond hands, and you will not be disappointed.
-        </p>
+        <h3>
+          I. One click to deposit. Done!
+        </h3>
+        <h3>
+          II. <span className={styles.gradient1}>1</span> + <span className={styles.gradient2}>1</span> prizes are awarded, every, single, day!
+        </h3>
+        <h3>
+          III. Your money is still yours. Withdraw anytime with no fee!
+        </h3>
 
-      </div>
-
-      <div className={styles.virtuousCycle}>
-        { lightMode ? 
-          <img src={CycleImageLight3} alt="virtuous cycles" />
-        :
-          <img src={CycleImage3} alt="virtuous cycles" />
-        }     
-        <span className={styles.scrollLabel}>{'<< scroll >>'}</span>
       </div>
       
     </div>

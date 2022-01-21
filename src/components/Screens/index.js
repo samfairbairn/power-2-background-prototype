@@ -6,12 +6,12 @@ import Screen2 from './Screen2'
 import Screen3 from './Screen3'
 import Screen4 from './Screen4'
 import Screen5 from './Screen5'
-import Screen5b from './Screen5b'
-import Screen5c from './Screen5c'
 import Screen6 from './Screen6'
 import Screen7 from './Screen7'
 import Screen8 from './Screen8'
 import Screen9 from './Screen9'
+import Screen10 from './Screen10'
+import Screen11 from './Screen11'
 import styles from './screen.module.scss';
 import { ReactComponent as PlusIcon } from '../../assets/plus.svg';
 
@@ -31,12 +31,12 @@ const Screens = ({context}) => {
       </div>
       <Screen5 scrollPos={scrollPos} />
       <div ref={partTwo} className={classNames([styles.screen, styles.secondPart, isMobile && styles.isMobile])}>
-        <Screen5b scrollPos={scrollPos} />
+        <Screen6 scrollPos={scrollPos} />
         <Screen7 scrollPos={scrollPos} />
-        <Screen5c scrollPos={scrollPos} />
-        <Screen6 scrollPos={scrollPos} lightMode={lightMode}/>
         <Screen8 scrollPos={scrollPos} />
-        <Screen9 scrollPos={scrollPos} />
+        <Screen9 scrollPos={scrollPos} lightMode={lightMode}/>
+        <Screen10 scrollPos={scrollPos} />
+        <Screen11 scrollPos={scrollPos} />
       </div>
     </Scroll>
   )

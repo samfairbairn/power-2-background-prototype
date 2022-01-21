@@ -2,11 +2,11 @@ import { useEffect, useRef } from 'react';
 import ReactGA from 'react-ga';
 import styles from './screen.module.scss';
 import classNames from 'classnames';
-import { ReactComponent as LogoSimple } from '../../assets/logo-simple.svg'
-import Button from '../Button'
+import CycleImage3 from '../../assets/cycles_dark-08.svg'
+import CycleImageLight3 from '../../assets/cycle_light-08.svg'
 
-const Screen9 = ({scrollPos}) => {
-
+const Screen9 = ({scrollPos, lightMode}) => {
+  
   const tracked = useRef(false);
   const screen = useRef()
 
@@ -15,34 +15,41 @@ const Screen9 = ({scrollPos}) => {
       tracked.current = true
       ReactGA.event({
         category: "scroll",
-        action: "screen11: Footer"
+        action: "screen9: Why HODL"
       });
     }
   }, [scrollPos])
 
-  const track = (label) => {
-    ReactGA.event({
-      category: "social",
-      action: label,
-      label: 'Footer'
-    });
-  }
-
   return (
     <div ref={screen} className={classNames([styles.screen, styles.fluid])} style={{flexDirection: "column"}}>
-      <div className={styles.center} style={{marginBottom: '10vh'}}>
-        <LogoSimple className={styles.logoSimple} />
-        <h2>Whitepaper</h2>
-        <div className={styles.buttonWrapper}>
-          <Button url="https://docs.power2.finance/whitepaper/" />
-        </div>
+
+      <div className={classNames([styles.content, styles.wide])} style={{marginBottom: '10vh'}}>
+        
+        <h2>
+          Why HODL POWER2 token & <span className={styles.specialI}>i</span>NFT?
+        </h2>
+        <h2>
+          They'll grow to the moon, thanks to <br className="desktop-only"/>
+          POWER2 Virtuous Snowball Cycles.
+        </h2>
+
+        <p>
+          The Virtuous Snowball Cycles forms a positive back loop of higher demands,<br className="desktop-only"/>
+          which causes higher POWER2 token and iNFT prices.<br className="desktop-only"/>
+          So remember, always have diamond hands, and you will not be disappointed.
+        </p>
+
       </div>
-      <div className={styles.footer}>
-        <a href='https://twitter.com/POWER2_1plus1' onClick={() => { track("twitter") }} target="_blank" rel="noreferrer" className={styles.link}>Twitter</a>
-        <a href='https://power2.medium.com/' onClick={() => { track("medium") }} target="_blank" rel="noreferrer" className={styles.link}>Medium</a>
-        {/* <a href='https://google.com' target="_blank" rel="noreferrer" className={styles.link}>Telegram</a> */}
-        {/* <a href='https://google.com' target="_blank" rel="noreferrer" className={styles.link}>Discord</a> */}
+
+      <div className={styles.virtuousCycle}>
+        { lightMode ? 
+          <img src={CycleImageLight3} alt="virtuous cycles" />
+        :
+          <img src={CycleImage3} alt="virtuous cycles" />
+        }     
+        <span className={styles.scrollLabel}>{'<< scroll >>'}</span>
       </div>
+      
     </div>
   )
 };
