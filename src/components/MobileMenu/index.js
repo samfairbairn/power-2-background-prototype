@@ -27,8 +27,8 @@ function MobileMenu() {
       <Menu />
 
       <div className={styles.socials}>
-        <a href='https://google.com' target="_blank" rel="noreferrer"><TwitterIcon className={styles.twitter} /></a>
-        <a href='https://google.com' target="_blank" rel="noreferrer"><MediumIcon className={styles.medium} /></a>
+        <a href='https://twitter.com/POWER2_1plus1' target="_blank" rel="noreferrer"><TwitterIcon className={styles.twitter} /></a>
+        <a href='https://power2.medium.com/' target="_blank" rel="noreferrer"><MediumIcon className={styles.medium} /></a>
         <a href='https://google.com' target="_blank" rel="noreferrer"><TelegramIcon className={styles.telegram} /></a>
         <a href='https://google.com' target="_blank" rel="noreferrer"><DiscordIcon className={styles.discord} /></a>
       </div>
