@@ -9,7 +9,8 @@ function App() {
 
   useEffect(() => {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-    if (!isMobile) background.start();
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (!isMobile && !isSafari) background.start();
   }, [])
 
   return (
