@@ -25,7 +25,7 @@ const Screens = ({context}) => {
       <Screen1 />
       <Screen2 />
       <Screen3 scrollPos={scrollPos} />
-      <Screen4 />
+      <Screen4 scrollPos={scrollPos} />
       <div className={classNames([styles.separator, lightMode && styles.isLightMode])}>
         <PlusIcon className={styles.plusIcon} />
       </div>
