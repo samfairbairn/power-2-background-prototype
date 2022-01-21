@@ -6,8 +6,8 @@ import Menu from '../Menu'
 
 import { ReactComponent as TwitterIcon } from '../../assets/icons/twitter.svg';
 import { ReactComponent as MediumIcon } from '../../assets/icons/medium.svg';
-import { ReactComponent as TelegramIcon } from '../../assets/icons/telegram.svg';
-import { ReactComponent as DiscordIcon } from '../../assets/icons/discord.svg';
+// import { ReactComponent as TelegramIcon } from '../../assets/icons/telegram.svg';
+// import { ReactComponent as DiscordIcon } from '../../assets/icons/discord.svg';
 
 function MobileMenu() {
 
