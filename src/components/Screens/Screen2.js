@@ -1,12 +1,27 @@
+import React, { useEffect, useRef } from 'react';
+import ReactGA from 'react-ga';
 import classNames from 'classnames';
 import styles from './screen.module.scss';
 
-const Screen2 = () => {
+const Screen2 = ({scrollPos}) => {
+
+  const tracked = useRef(false);
+
+  useEffect(() => {
+    let _scrollPos = scrollPos / window.innerHeight;
+    if (!tracked.current && _scrollPos > 0.8) {
+      tracked.current = true
+      ReactGA.event({
+        category: "scroll",
+        action: "screen2: welcome"
+      });
+    }
+  }, [scrollPos])
 
   return (
     <div className={classNames([styles.screen, styles.alignRight])} style={{top: `100vh`, height: '100vh'}}>
       <div className={styles.backgroundGradient}></div>
-      
+
       <div className={styles.content}>
         <h2>
           Welcome to POWER2

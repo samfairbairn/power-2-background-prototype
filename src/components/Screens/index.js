@@ -23,7 +23,7 @@ const Screens = ({context}) => {
   return (
     <Scroll html style={{ width: '100%' }}>
       <Screen1 />
-      <Screen2 />
+      <Screen2 scrollPos={scrollPos} />
       <Screen3 scrollPos={scrollPos} />
       <Screen4 scrollPos={scrollPos} />
       <div className={classNames([styles.separator, lightMode && styles.isLightMode])}>
@@ -31,12 +31,12 @@ const Screens = ({context}) => {
       </div>
       <Screen5 scrollPos={scrollPos} />
       <div ref={partTwo} className={classNames([styles.screen, styles.secondPart, isMobile && styles.isMobile])}>
-        <Screen5b />
-        <Screen7 />
-        <Screen5c />
-        <Screen6 lightMode={lightMode}/>
-        <Screen8 />
-        <Screen9 />
+        <Screen5b scrollPos={scrollPos} />
+        <Screen7 scrollPos={scrollPos} />
+        <Screen5c scrollPos={scrollPos} />
+        <Screen6 scrollPos={scrollPos} lightMode={lightMode}/>
+        <Screen8 scrollPos={scrollPos} />
+        <Screen9 scrollPos={scrollPos} />
       </div>
     </Scroll>
   )

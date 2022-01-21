@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { AppContext } from "../../context/appContext";
 import styles from './menu.module.scss';
 import DarkModeSwitch from "./DarkModeSwitch";
+import ReactGA from "react-ga";
 
 import { gsap, Power1, ScrollToPlugin } from "gsap/all"; 
 gsap.registerPlugin(ScrollToPlugin);
@@ -42,9 +43,14 @@ function Menu() {
 
   const lastScroll = useRef(undefined)
   
-  const triggerScroll = (distance) => {
+  const triggerScroll = (distance, label) => {
     if (!scroll) return
     const now = Math.floor(Date.now() / 1000)
+
+    ReactGA.event({
+      category: "nav",
+      action: label
+    });
 
     if (!lastScroll || lastScroll.current !== now) {
       lastScroll.current = now
@@ -56,6 +62,10 @@ function Menu() {
   }
 
   const whitepaperClick = () => {
+    ReactGA.event({
+      category: "nav",
+      action: "whitepaper"
+    });
     window.open('https://docs.power2.finance/whitepaper/', '_blank');
   }
 
@@ -63,9 +73,9 @@ function Menu() {
   return (
     <div className={classNames([styles.menu, lightMode && styles.lightMode])}>
       <ul className={styles.links}>
-        <li className={classNames([styles.link, activeIndex === 1 && styles.isActive])} onClick={() => { triggerScroll(2/(scroll.pages-1)) }}>Prize ( 1 + 1 )</li>
-        <li className={classNames([styles.link, activeIndex === 2 && styles.isActive])} onClick={() => { triggerScroll( (isMobile ? 8.9 : 9.9)/(scroll.pages-1)) }}>Roadmap</li>
-        <li className={classNames([styles.link, activeIndex === 3 && styles.isActive])} onClick={() => { triggerScroll( (isMobile ? 10 : 11.5)/(scroll.pages-1)) }}>Community</li>
+        <li className={classNames([styles.link, activeIndex === 1 && styles.isActive])} onClick={() => { triggerScroll(2/(scroll.pages-1), "Prize ( 1 + 1 )") }}>Prize ( 1 + 1 )</li>
+        <li className={classNames([styles.link, activeIndex === 2 && styles.isActive])} onClick={() => { triggerScroll( (isMobile ? 8.9 : 9.9)/(scroll.pages-1), "Roadmap") }}>Roadmap</li>
+        <li className={classNames([styles.link, activeIndex === 3 && styles.isActive])} onClick={() => { triggerScroll( (isMobile ? 10 : 11.5)/(scroll.pages-1), "Community") }}>Community</li>
         <li className={styles.link} onClick={whitepaperClick}>Whitepaper</li>
       </ul>
       <DarkModeSwitch />

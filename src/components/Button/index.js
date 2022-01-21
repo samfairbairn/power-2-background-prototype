@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber'
 import { MathUtils } from 'three';
 import styles from './styles.module.scss';
+import ReactGA from "react-ga";
 
 import { ReactComponent as ArrowIcon } from '../../assets/button-arrow.svg';
 import ReadMoreIcon from '../../assets/button-read-more.svg';
@@ -67,6 +68,11 @@ const Button = ({url}) => {
 
   const onClick = () => {
     if (url) {
+      ReactGA.event({
+        category: "nav",
+        action: "whitepaper",
+        label: "footer"
+      });
       window.open(url, '_blank');
     }
   }

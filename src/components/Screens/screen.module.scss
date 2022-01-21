@@ -403,11 +403,6 @@
   width: 15vw;
 
   :global {
-    .is-light-mode {
-      :local {
-        filter: invert(1);
-      }
-    }
     // path, line, circle {
     //   // transition: fill $transition-normal ease-in-out, stroke $transition-normal ease-in-out;
     //   will-change: fill, stroke;

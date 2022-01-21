@@ -1,12 +1,27 @@
+import { useEffect, useRef } from 'react';
+import ReactGA from 'react-ga';
 import styles from './screen.module.scss';
 import classNames from 'classnames';
 import CycleImage3 from '../../assets/cycles_dark-08.svg'
 import CycleImageLight3 from '../../assets/cycle_light-08.svg'
 
-const Screen6 = ({lightMode}) => {
+const Screen6 = ({scrollPos, lightMode}) => {
+  
+  const tracked = useRef(false);
+  const screen = useRef()
+
+  useEffect(() => {
+    if (screen.current && screen.current.getBoundingClientRect().top / window.innerHeight < 0.5 && !tracked.current) {
+      tracked.current = true
+      ReactGA.event({
+        category: "scroll",
+        action: "screen9: Why HODL"
+      });
+    }
+  }, [scrollPos])
 
   return (
-    <div className={classNames([styles.screen, styles.fluid])} style={{flexDirection: "column"}}>
+    <div ref={screen} className={classNames([styles.screen, styles.fluid])} style={{flexDirection: "column"}}>
 
       <div className={classNames([styles.content, styles.wide])} style={{marginBottom: '10vh'}}>
         

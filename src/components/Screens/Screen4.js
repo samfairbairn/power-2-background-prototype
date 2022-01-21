@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
+import ReactGA from 'react-ga';
 import styles from './screen.module.scss';
 
 const Screen4 = ({scrollPos}) => {
 
   const lastTick = useRef(0);
   const animate = useRef(false);
-  const [randomNumber, setRandomNumber] = useState(undefined)
+  const [randomNumber, setRandomNumber] = useState(undefined);
+  const tracked = useRef(false);
 
   const getRandomNumber = () => {
     let _num = ''
@@ -18,6 +20,14 @@ const Screen4 = ({scrollPos}) => {
   
   useEffect(() => {
     let _scrollPos = scrollPos / window.innerHeight;
+    
+    if (!tracked.current && _scrollPos > 2.8) {
+      tracked.current = true
+      ReactGA.event({
+        category: "scroll",
+        action: "screen4: high winning odds"
+      });
+    }
     
     if ((_scrollPos < 2.25 || _scrollPos > 3.5) && animate.current) {
       animate.current = false

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import ReactGA from 'react-ga';
 import styles from './screen.module.scss';
 
 const Screen3 = ({scrollPos}) => {
@@ -8,9 +9,19 @@ const Screen3 = ({scrollPos}) => {
   const timer = useRef(undefined);
   const nVal = useRef(1);
   const [n, setN] = useState(1);
+
+  const tracked = useRef(false);
   
   useEffect(() => {
     let _scrollPos = scrollPos / window.innerHeight;
+
+    if (!tracked.current && _scrollPos > 1.8) {
+      tracked.current = true
+      ReactGA.event({
+        category: "scroll",
+        action: "screen3: 1 + 1 Prizes"
+      });
+    }
     
     if ((_scrollPos < 1.25 || _scrollPos > 2.75) && animate.current) {
       animate.current = false

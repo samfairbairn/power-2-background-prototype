@@ -5,6 +5,7 @@ import { AppContext } from "../../context/appContext";
 import classNames from 'classnames';
 import { ReactComponent as LogoIcon } from '../../assets/logo.svg';
 import Menu from '../Menu'
+import ReactGA from "react-ga";
 
 import { gsap, Power1, ScrollToPlugin } from "gsap/all"; 
 gsap.registerPlugin(ScrollToPlugin);
@@ -58,6 +59,10 @@ function Header() {
   }, [scrollPos, pos, offset])
 
   const triggerScroll = () => {
+    ReactGA.event({
+      category: "nav",
+      action: "logo"
+    });
     gsap.to(scroll.el, {duration: 1, scrollTo: {y: 0}, ease: Power1.easeInOut}); 
     if (menuOpen) toggleMenu()
   }

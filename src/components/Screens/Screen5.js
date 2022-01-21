@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import ReactGA from 'react-ga';
 import classNames from 'classnames';
 import styles from './screen.module.scss';
 import ImageSequence from '../ImageSequence';
@@ -6,6 +7,19 @@ import ImageSequence from '../ImageSequence';
 const Screen5 = ({scrollPos}) => {
 
   const [pageVisible, setPageVisible] = useState(false)
+  const tracked = useRef(false);
+
+  useEffect(() => {
+    let _scrollPos = scrollPos / window.innerHeight;
+
+    if (!tracked.current && _scrollPos > 3.8) {
+      tracked.current = true
+      ReactGA.event({
+        category: "scroll",
+        action: "screen5: one more!"
+      });
+    }
+  }, [scrollPos])
 
   useEffect(() => {
     let _scrollPos = scrollPos / window.innerHeight;

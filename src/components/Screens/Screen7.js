@@ -1,10 +1,25 @@
+import { useEffect, useRef } from 'react';
+import ReactGA from 'react-ga';
 import styles from './screen.module.scss';
 import classNames from 'classnames';
 
-const Screen7 = () => {
+const Screen7 = ({scrollPos}) => {
+
+  const tracked = useRef(false);
+  const screen = useRef()
+
+  useEffect(() => {
+    if (screen.current && screen.current.getBoundingClientRect().top / window.innerHeight < 0.5 && !tracked.current) {
+      tracked.current = true
+      ReactGA.event({
+        category: "scroll",
+        action: "screen7: The Magic Of Defi"
+      });
+    }
+  }, [scrollPos])
 
   return (
-    <div className={classNames([styles.screen, styles.fluid])} style={{flexDirection: "column", justifyContent: 'center'}}>
+    <div ref={screen} className={classNames([styles.screen, styles.fluid])} style={{flexDirection: "column", justifyContent: 'center'}}>
 
       <div className={classNames([styles.content, styles.wide])}>
         <div className={styles.left}>
