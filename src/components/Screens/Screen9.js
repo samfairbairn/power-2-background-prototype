@@ -17,8 +17,8 @@ const Screen8 = () => {
       <div className={styles.footer}>
         <a href='https://twitter.com/POWER2_1plus1' target="_blank" rel="noreferrer" className={styles.link}>Twitter</a>
         <a href='https://power2.medium.com/' target="_blank" rel="noreferrer" className={styles.link}>Medium</a>
-        <a href='https://google.com' target="_blank" rel="noreferrer" className={styles.link}>Telegram</a>
-        <a href='https://google.com' target="_blank" rel="noreferrer" className={styles.link}>Discord</a>
+        {/* <a href='https://google.com' target="_blank" rel="noreferrer" className={styles.link}>Telegram</a> */}
+        {/* <a href='https://google.com' target="_blank" rel="noreferrer" className={styles.link}>Discord</a> */}
       </div>
     </div>
   )
