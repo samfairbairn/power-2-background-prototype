@@ -61,7 +61,7 @@ const Screen4 = ({scrollPos}) => {
         </h2>
 
         <p>
-          The more people join, the larger the cube grows, <br class="desktop-only" />the bigger the $ prize! 
+          The more people join, the larger the cube grows, <br className="desktop-only" />the bigger the $ prize! 
         </p>
 
         <p>
