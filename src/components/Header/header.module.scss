@@ -22,6 +22,9 @@
     height: 35px;
     margin-left: 5px;
     cursor: pointer;
+    @include device-m {
+      height: 30px;
+    }
     :global {
       .base-line {
         // transition: fill $transition-normal ease-in-out;
@@ -58,8 +61,8 @@
   .burgerMenu {
     display: inline-block;
     position: relative;
-    width: 30px;
-    height: 26px;
+    width: 25px;
+    height: 20px;
 
     .line {
       position: absolute;
